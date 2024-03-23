@@ -8,7 +8,7 @@ My personal configuration files for [neovim](https://neovim.io/), powered by [ni
 ## Running
 You can run the following command to test the configuration:
 ```
-nix run github:LilleAila/nix-nvim
+nix run github:LilleAila/nvim-nix
 ```
 
 ## Notes
