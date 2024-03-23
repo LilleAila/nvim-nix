@@ -1,5 +1,6 @@
 {
   imports = [
+		./options.nix
   ];
 
 	colorschemes.gruvbox.enable = true;
