@@ -5,6 +5,8 @@ My personal configuration files for [neovim](https://neovim.io/), powered by [ni
 
 </div>
 
+At some point, i might move this into [LilleAila/dotfiles](https://github.com/LilleAila/dotfiles) if it gets too hard to maintain two different flakes and link them together.
+
 ## Running
 You can run the following command to test the configuration:
 ```
