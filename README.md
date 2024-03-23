@@ -1,17 +1,15 @@
-# Nixvim template
+<div align="center">
 
-This template gives you a good starting point for configuring nixvim standalone.
+# LilleAila's Neovim Configuration
+My personal configuration files for [neovim](https://neovim.io/), powered by [nixvim](https://github.com/nix-community/nixvim).
 
-## Configuring
+</div>
 
-To start configuring, just add or modify the nix files in `./config`.
-If you add a new configuration file, remember to add it to the
-[`config/default.nix`](./config/default.nix) file
-
-## Testing your new configuration
-
-To test your configuration simply run the following command
-
+## Running
+You can run the following command to test the configuration:
 ```
-nix run .
+nix run github:LilleAila/nix-nvim
 ```
+
+## Notes
+This config was created using the nixvim flake template: `nix flake init --template github:nix-community/nixvim`, and following [vimjoyer's video](https://www.youtube.com/watch?v=b641h63lqy0)
