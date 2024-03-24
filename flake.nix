@@ -30,9 +30,10 @@
         nixvimModule = {
           inherit pkgs;
           module = import ./config; # import the module directly
-          # You can use `extraSpecialArgs` to pass additional arguments to your module files
+
           extraSpecialArgs = {
-            # inherit (inputs) foo;
+						mkKeymap = mode: key: action: { inherit mode key action; };
+						mkKeymapWithOpts = mode: key: action: opts: { inherit mode key action opts; };
           };
         };
         nvim = nixvim'.makeNixvimWithModule nixvimModule;
