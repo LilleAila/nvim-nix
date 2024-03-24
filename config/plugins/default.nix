@@ -13,5 +13,6 @@
 		nvim-autopairs.enable = true;
 		nvim-tree.enable = true;
 		oil.enable = true;
+		which-key.enable = true;
 	};
 }
