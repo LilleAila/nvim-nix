@@ -10,11 +10,25 @@
 				"_" = "-pdf";
 				"pdf_escaped" = "-pdf -pdflatex=\"pdflatex -shell-escape %O %S\"";
 			};
-			view_method = "zathura"; # TODO: make work on different os
 			view_enabled = 1;
 			syntax_conceal_enable = 1;
 		};
 	};
+
+	# Detect OS and choose PDF viewer accordingly
+	extraConfigLua = /*lua*/ ''
+	local g = vim.g
+	local platform = vim.loop.os_uname().sysname
+	if platform == "Darwin" then
+		g.vimtex_view_method = "skim"
+		g.vimtex_view_skim_activate = 1
+	elseif platform == "Linux" then
+		g.vimtex_view_method = "zathura"
+		g.vimtex_view_zathura_activate = 1
+	else
+		g.vimtex_view_method = "generic"
+	end
+	'';
 
 	keymaps = [
 		(mkKeymap "n" "<leader>lc" ":VimtexCompile<cr>")
