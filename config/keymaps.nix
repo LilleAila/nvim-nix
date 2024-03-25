@@ -3,9 +3,6 @@
 {
 
 	keymaps = [
-		# Write with <C-s>
-		(mkKeymap "n" "<C-s>" ":w<cr>")
-
 		# Indent without exiting visual mode
     (mkKeymap "v" "<" "<gv")
     (mkKeymap "v" ">" ">gv")
@@ -20,8 +17,8 @@
 		# ; as an alias for :
     (mkKeymap "n" ";" ":")
 
-		# Buffer navigation
-    (mkKeymap "n" "<Tab>" ":bnext<CR>")
-    (mkKeymap "n" "<S-Tab>" ":bprevious<CR>")
+		# Buffer navigation (Configured through barbar keymap instead)
+		# (mkKeymap "n" "<Tab>" ":bnext<CR>")
+		# (mkKeymap "n" "<S-Tab>" ":bprevious<CR>")
 	];
 }

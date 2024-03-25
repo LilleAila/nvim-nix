@@ -9,6 +9,7 @@
 		./vimtex.nix
 		./files.nix
 		./sessions.nix
+		./buffers.nix
 	];
 
 	# colorschemes.gruvbox.enable = true;
@@ -17,9 +18,10 @@
 		colorSchemePlugin
 	];
 
+	# TODO: set up move.nvim
 	plugins = {
 		lualine.enable = true;
-		bufferline.enable = true;
+		# bufferline.enable = true;
 		luasnip.enable = true;
 		nvim-autopairs.enable = true;
 		comment-nvim.enable = true;
@@ -39,6 +41,7 @@
 				};
 			};
 		};
+
 	};
 
 	plugins.which-key = {
@@ -48,7 +51,6 @@
 			"<leader>tg" = "Git";
 			"<leader>s" = "Sessions";
 		};
-		# ignoreMissing = true;
 		triggersBlackList = {
 			i = ["h" "j" "k" "l" "v"];
 			v = ["h" "j" "k" "l"];
