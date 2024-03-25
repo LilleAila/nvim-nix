@@ -1,4 +1,4 @@
-{ mkKeymap, mkKeymapWithOpts, ... }:
+{ mkKeymap, mkKeymapWithOpts, colorSchemePlugin, ... }:
 
 {
 	imports = [
@@ -11,7 +11,11 @@
 		./sessions.nix
 	];
 
-	colorschemes.gruvbox.enable = true;
+	# colorschemes.gruvbox.enable = true;
+
+	extraPlugins = [
+		colorSchemePlugin
+	];
 
 	plugins = {
 		lualine.enable = true;

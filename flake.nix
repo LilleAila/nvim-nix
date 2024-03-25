@@ -8,6 +8,8 @@
 			nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
 			flake-parts.url = "github:hercules-ci/flake-parts";
+
+			nix-colors.url = "github:misterio77/nix-colors";
 		};
 
 		outputs = {
@@ -30,18 +32,25 @@
 			}: let
 				nixvimLib = nixvim.lib.${system};
 				nixvim' = nixvim.legacyPackages.${system};
-				nixvimModule = {
+				nixvimModule = let
+					mkKeymap = mode: key: action: {
+						inherit mode key action;
+						options = {
+							silent = true;
+						};
+					};
+					mkKeymapWithOpts = mode: key: action: options: { inherit mode key action options; };
+					colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
+					nix-colors-lib = inputs.nix-colors.lib.contrib { inherit pkgs; };
+					colorSchemePlugin = {
+						plugin = nix-colors-lib.vimThemeFromScheme { scheme = colorScheme; };
+						config = "colorscheme nix-${colorScheme.slug}";
+					};
+				in {
 					inherit pkgs;
 					module = import ./config; # import the module directly
-
 					extraSpecialArgs = {
-						mkKeymap = mode: key: action: {
-							inherit mode key action;
-							options = {
-								silent = true;
-							};
-						};
-						mkKeymapWithOpts = mode: key: action: options: { inherit mode key action options; };
+						inherit mkKeymap mkKeymapWithOpts colorSchemePlugin;
 					};
 				};
 				nvim = nixvim'.makeNixvimWithModule nixvimModule;

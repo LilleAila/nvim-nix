@@ -19,6 +19,8 @@
 				settings.check.command = "clippy";
 			};
 			hls.enable = true;
+
+			gopls.enable = true;
 		};
 
 		keymaps = {
