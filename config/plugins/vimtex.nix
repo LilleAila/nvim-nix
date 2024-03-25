@@ -31,17 +31,17 @@
 	'';
 
 	keymaps = [
-		(mkKeymap "n" "<leader>lc" ":VimtexCompile<cr>")
-		(mkKeymap "n" "<leader>lv" ":VimtexView<cr>")
-		(mkKeymap "n" "<leader>ls" ":VimtexStop<cr>")
-		(mkKeymap "n" "<leader>le" ":VimtexErrors<cr>")
-		(mkKeymap "n" "<leader>lS" ":VimtexStatus<cr>")
-		(mkKeymap "n" "<leader>li" ":VimtexInfo<cr>")
-		(mkKeymap "n" "<leader>lC" ":VimtexClean<cr>")
-		(mkKeymap "n" "<leader>lo" ":VimtexCompileSS<cr>")
+		(mkKeymap "n" "<leader>xc" ":VimtexCompile<cr>")
+		(mkKeymap "n" "<leader>xv" ":VimtexView<cr>")
+		(mkKeymap "n" "<leader>xs" ":VimtexStop<cr>")
+		(mkKeymap "n" "<leader>xe" ":VimtexErrors<cr>")
+		(mkKeymap "n" "<leader>xS" ":VimtexStatus<cr>")
+		(mkKeymap "n" "<leader>xi" ":VimtexInfo<cr>")
+		(mkKeymap "n" "<leader>xC" ":VimtexClean<cr>")
+		(mkKeymap "n" "<leader>xo" ":VimtexCompileSS<cr>")
 	];
 
 	plugins.which-key.registrations = {
-		"<leader>l" = "LaTeX";
+		"<leader>x" = "LaTeX";
 	};
 }
