@@ -15,9 +15,9 @@
 	};
 
 	keymaps = [
-		(mkKeymap "n" "<leader>sr" ":SessionRestore<cr>")
-		(mkKeymap "n" "<leader>ss" ":SessionSave<cr>")
-		(mkKeymap "n" "<leader>sd" ":SessionDelete<cr>")
+		(mkKeymap "n" "<leader>sr" ":SessionRestore<cr>" "Restore Session")
+		(mkKeymap "n" "<leader>ss" ":SessionSave<cr>" "Save Session")
+		(mkKeymap "n" "<leader>sd" ":SessionDelete<cr>" "Delete Session")
 	];
 
 	plugins.which-key.registrations = {

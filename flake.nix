@@ -33,12 +33,16 @@
 				nixvimLib = nixvim.lib.${system};
 				nixvim' = nixvim.legacyPackages.${system};
 				nixvimModule = let
-					mkKeymap = mode: key: action: {
+					mkKeymap = mode: key: action: desc: {
 						inherit mode key action;
 						options = {
+							inherit desc;
 							silent = true;
+							noremap = true;
 						};
 					};
+					# Make keymap without description:
+					mkKeymap' = mode: key: action: mkKeymap mode key action null;
 					mkKeymapWithOpts = mode: key: action: options: { inherit mode key action options; };
 					colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
 					nix-colors-lib = inputs.nix-colors.lib.contrib { inherit pkgs; };
@@ -50,7 +54,7 @@
 					inherit pkgs;
 					module = import ./config; # import the module directly
 					extraSpecialArgs = {
-						inherit mkKeymap mkKeymapWithOpts colorSchemePlugin;
+						inherit mkKeymap mkKeymap' mkKeymapWithOpts colorSchemePlugin;
 					};
 				};
 				nvim = nixvim'.makeNixvimWithModule nixvimModule;

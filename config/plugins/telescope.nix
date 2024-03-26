@@ -7,36 +7,36 @@
 		keymaps = {
 			"<leader>tt" = {
 				action = "find_files";
-				desc = "Telescope find files";
+				desc = "Files";
 			};
 			"<leader>ts" = {
 				action = "live_grep";
-				desc = "Telescope grep";
+				desc = "Grep";
 			};
 			"<leader>tb" = {
 				action = "buffers";
-				desc = "Telescope buffers";
+				desc = "Buffers";
 			};
 			"<leader>tr" = {
 				action = "oldfiles";
-				desc = "Telescope recent files";
+				desc = "Recent files";
 			};
 			"<leader>tq" = {
 				action = "quickfix";
-				desc = "Telescope quickfix";
+				desc = "Quickfix";
 			};
 
 			"<leader>tgb" = {
 				action = "git_branches";
-				desc = "Telescope git branches";
+				desc = "Branches";
 			};
 			"<leader>tgf" = {
 				action = "git_files";
-				desc = "Telescope git files";
+				desc = "Files";
 			};
 			"<leader>tgs" = {
 				action = "git_status";
-				desc = "Telescope git status";
+				desc = "Status";
 			};
 		};
 	};

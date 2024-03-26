@@ -31,14 +31,14 @@
 	'';
 
 	keymaps = [
-		(mkKeymap "n" "<leader>xc" ":VimtexCompile<cr>")
-		(mkKeymap "n" "<leader>xv" ":VimtexView<cr>")
-		(mkKeymap "n" "<leader>xs" ":VimtexStop<cr>")
-		(mkKeymap "n" "<leader>xe" ":VimtexErrors<cr>")
-		(mkKeymap "n" "<leader>xS" ":VimtexStatus<cr>")
-		(mkKeymap "n" "<leader>xi" ":VimtexInfo<cr>")
-		(mkKeymap "n" "<leader>xC" ":VimtexClean<cr>")
-		(mkKeymap "n" "<leader>xo" ":VimtexCompileSS<cr>")
+		(mkKeymap "n" "<leader>xc" ":VimtexCompile<cr>" "Compile")
+		(mkKeymap "n" "<leader>xv" ":VimtexView<cr>" "View")
+		(mkKeymap "n" "<leader>xs" ":VimtexStop<cr>" "Stop")
+		(mkKeymap "n" "<leader>xe" ":VimtexErrors<cr>" "Errors")
+		(mkKeymap "n" "<leader>xS" ":VimtexStatus<cr>" "Status")
+		(mkKeymap "n" "<leader>xi" ":VimtexInfo<cr>" "Info")
+		(mkKeymap "n" "<leader>xC" ":VimtexClean<cr>" "Clean")
+		(mkKeymap "n" "<leader>xo" ":VimtexCompileSS<cr>" "Compile Once")
 	];
 
 	plugins.which-key.registrations = {

@@ -71,7 +71,7 @@
 		# (mkKeymap "n" "<leader>ef" ":NvimTreeFocus<cr>")
 		# (mkKeymap "n" "<leader>er" ":NvimTreeRefresh<cr>")
 
-		(mkKeymap "n" "<leader>ee" ":Oil<cr>")
+		(mkKeymap "n" "<leader>ee" ":Oil<cr>" "Oil")
 	];
 
 	plugins.which-key.registrations = {

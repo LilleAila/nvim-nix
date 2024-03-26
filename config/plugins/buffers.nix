@@ -37,5 +37,7 @@
 
 	plugins.which-key.registrations = {
 		"<leader>b" = "Buffers";
+		"<leader>bo" = "Open";
+		"<leader>bp" = "Pin";
 	};
 }

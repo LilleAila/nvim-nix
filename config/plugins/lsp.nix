@@ -2,25 +2,25 @@
 
 {
 	plugins.lsp = {
+		# NOTE: All packages, including LSPs and formatters should be installed through devshells!!
 		enable = true;
 		servers = {
-			tsserver.enable = true;
-			tailwindcss.enable = true;
-			emmet_ls.enable = true;
-			eslint.enable = true;
-			lua-ls.enable = true;
-			jsonls.enable = true;
-			nil_ls.enable = true;
+			tsserver = { enable = true; package = null; };
+			tailwindcss = { enable = true; package = null; };
+			emmet_ls = { enable = true; package = null; };
+			eslint = { enable = true; package = null; };
+			lua-ls = { enable = true; package = null; };
+			jsonls = { enable = true; package = null; };
+			nil_ls = { enable = true; package = null; };
 			rust-analyzer = {
 				enable = true;
-				# NOTE: These packages are installed in devshells.
+				package = null;
 				installCargo = false;
 				installRustc = false;
 				settings.check.command = "clippy";
 			};
-			hls.enable = true;
-
-			gopls.enable = true;
+			hls = { enable = true; package = null; };
+			gopls = { enable = true; package = null; };
 		};
 
 		keymaps = {
@@ -65,8 +65,8 @@
 	};
 
 	keymaps = [
-		(mkKeymap "n" "<leader>lR" ":LspRestart<cr>")
-		(mkKeymap "n" "<leader>lI" ":LspInfo<cr>")
+		(mkKeymap "n" "<leader>lR" ":LspRestart<cr>" "Restart")
+		(mkKeymap "n" "<leader>lI" ":LspInfo<cr>" "Info")
 	];
 
 	plugins.conform-nvim = {
@@ -76,7 +76,6 @@
 			timeoutMs = 500;
 		};
 		formattersByFt = {
-			# NOTE: Formatters are also installed in devshells.
 			html = [[
 				"prettierd"
 				"prettier"
