@@ -15,17 +15,15 @@
 	# colorschemes.gruvbox.enable = true;
 
 	extraPlugins = [
-		colorSchemePlugin
+		colorSchemePlugin # From nix-colors
 	];
 
-	# TODO: set up move.nvim
 	plugins = {
-		lualine.enable = true;
-		# bufferline.enable = true;
 		luasnip.enable = true;
 		nvim-autopairs.enable = true;
 		comment-nvim.enable = true;
 		rainbow-delimiters.enable = true;
+		direnv.enable = true;
 
 		indent-blankline = {
 			enable = true;
@@ -42,6 +40,22 @@
 			};
 		};
 
+		lualine = {
+			enable = true;
+			globalstatus = true;
+			iconsEnabled = true;
+			# sectionSeparators = { left = ""; right = ""; };
+			sectionSeparators = { left = ""; right = ""; };
+			componentSeparators = { left = ""; right = ""; };
+			sections = {
+				lualine_a = [ "mode" ];
+				lualine_b = [ "branch" "diff" "diagnostics" ];
+				lualine_c = [ "filename" ];
+				lualine_x = [ "encoding" "fileformat" "filetype" ];
+				lualine_y = [ "progress" ];
+				lualine_z = [ "location" ];
+			};
+		};
 	};
 
 	plugins.which-key = {

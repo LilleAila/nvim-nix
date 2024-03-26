@@ -10,7 +10,7 @@
 		maximumLength = 30;
 		maximumPadding = 2;
 		minimumPadding = 1;
-		noNameTitle = "[Unnamed]";
+		noNameTitle = "[No Name]";
 		keymaps = {
 			silent = true;
 
