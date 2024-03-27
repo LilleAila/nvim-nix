@@ -52,18 +52,13 @@
           mkKeymapWithOpts = mode: key: action: options: {inherit mode key action options;};
 					# TODO: Make this an input or override or something, but idk how:
           colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
-          nix-colors-lib = inputs.nix-colors.lib.contrib {inherit pkgs;};
-          colorSchemePlugin = {
-            plugin = nix-colors-lib.vimThemeFromScheme {scheme = colorScheme;};
-            config = "colorscheme nix-${colorScheme.slug}";
-          };
         in {
           inherit pkgs;
           module = import ./config; # import the module directly
           extraSpecialArgs = {
             inherit mkKeymap mkKeymap' mkKeymapWithOpts;
-						inherit colorSchemePlugin;
-						# inherit colorScheme;
+						inherit colorScheme;
+						inherit inputs;
           };
         };
         nvim = nixvim'.makeNixvimWithModule nixvimModule;

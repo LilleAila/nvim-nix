@@ -1,8 +1,6 @@
 {
-  mkKeymap,
-  mkKeymapWithOpts,
-  colorSchemePlugin,
-	# colorScheme,
+	pkgs,
+	colorScheme,
 	lib,
   ...
 }: {
@@ -13,7 +11,10 @@
   ];
 
   extraPlugins = [
-    colorSchemePlugin # From nix-colors
+    {
+			plugin = (import ./colorscheme.nix { inherit pkgs; } { scheme = colorScheme; });
+      config = "colorscheme nix-${colorScheme.slug}";
+		}
   ];
 
 	# This works, but telescope looks VERY weird :(
