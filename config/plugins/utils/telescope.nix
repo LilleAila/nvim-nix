@@ -43,15 +43,15 @@
     defaults = {
     	mappings = {
     		i = {
-    			# "<C-k>" = "actions.move_selection_previous";
-    			# "<C-j>" = "actions.move_selection_next";
-					"<esc>" = {
-						__raw = ''
-							function(...)
-								return require("telescope.actions").close(...)
-							end
-						'';
-					};
+					"<esc>".__raw = ''
+						function(...) return require("telescope.actions").close(...) end
+					'';
+					"<C-k>".__raw = ''
+						function(...) return require("telescope.actions").move_selection_previous(...) end
+					'';
+					"<C-j>".__raw = ''
+						function(...) return require("telescope.actions").move_selection_next(...) end
+					'';
     		};
     	};
     };
