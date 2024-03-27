@@ -57,7 +57,7 @@ pkgs.writeTextDir "colors/nix-${slug}.vim" ''
   hi ColorColumn   guifg=NONE guibg=#${c.base01} gui=NONE guisp=NONE
   hi CursorColumn  guifg=NONE guibg=#${c.base01} gui=NONE guisp=NONE
   hi CursorLine    guifg=NONE guibg=#${c.base02} gui=NONE guisp=NONE
-  hi CursorLineNr  guifg=#${c.base0B} guibg=NONE gui=NONE guisp=NONE
+	hi CursorLineNr  guifg=#${c.base0B} guibg=#${c.base01} gui=NONE guisp=NONE
   hi QuickFixLine  guifg=NONE guibg=#${c.base01} gui=NONE guisp=NONE
   hi PMenu         guifg=#${c.base05} guibg=#${c.base01} gui=NONE guisp=NONE
   hi PMenuSel      guifg=#${c.base01} guibg=#${c.base05} gui=NONE guisp=NONE
@@ -75,7 +75,7 @@ pkgs.writeTextDir "colors/nix-${slug}.vim" ''
   hi Delimiter     guifg=#${c.base0F} guibg=NONE gui=NONE guisp=NONE
   hi Float         guifg=#${c.base09} guibg=NONE gui=NONE guisp=NONE
   hi Function      guifg=#${c.base0D} guibg=NONE gui=NONE guisp=NONE
-  hi Identifier    guifg=#${c.base0D} guibg=NONE gui=NONE guisp=NONE
+  hi Identifier    guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE
   hi Include       guifg=#${c.base0D} guibg=NONE gui=NONE guisp=NONE
   hi Keyword       guifg=#${c.base0E} guibg=NONE gui=NONE guisp=NONE
   hi Label         guifg=#${c.base0A} guibg=NONE gui=NONE guisp=NONE
@@ -282,14 +282,19 @@ pkgs.writeTextDir "colors/nix-${slug}.vim" ''
   let g:terminal_color_14 = "#${c.base0C}"
   let g:terminal_color_15 = "#${c.base07}"
 
-	" === ADDED ===
+	" === ADDED === ^ Everything above is unchanged ^
 	hi WinSeparator guifg=#${c.base05} guibg=NONE gui=NONE guisp=NONE
+	hi CursorLineNr  guifg=#${c.base0B} guibg=NONE gui=NONE guisp=NONE
 
 	" Most code colors are controlled by `Identifier`
-	"also applies to noice cmdline:
+  hi Identifier    guifg=#${c.base0D} guibg=NONE gui=NONE guisp=NONE
 	hi @lsp.type.property guifg=#${c.base0C} guibg=NONE gui=NONE guisp=NONE
 	hi @variable.member guifg=#${c.base09} guibg=NONE gui=NONE guisp=NONE
 	hi @boolean guifg=#${c.base08} guibg=NONE gui=italic guisp=NONE
+	hi Comment guifg=#${c.base05} guibg=NONE gui=italic,bold guisp=NONE
 
-	" CursorLineNr and Identifier have also been modified.
+	" Some of these values have been defined multiple times!
+	" TODO: This works as it should, but because only a few things were added,
+	" and nothing changed, I should probably use the builtin vimThemeFromScheme
+	" and then run the above commands after it is loaded, in the `config` of extraPlugins
 ''
