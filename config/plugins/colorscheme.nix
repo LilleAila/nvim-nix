@@ -287,12 +287,14 @@ pkgs.writeTextDir "colors/nix-${slug}.vim" ''
 	hi CursorLineNr  guifg=#${c.base0B} guibg=NONE gui=NONE guisp=NONE
 
 	" Most code colors are controlled by `Identifier`
-  hi Identifier            guifg=#${c.base0D} guibg=NONE gui=NONE        guisp=NONE
-	hi @lsp.type.property    guifg=#${c.base0C} guibg=NONE gui=NONE        guisp=NONE
-	hi @variable.member      guifg=#${c.base09} guibg=NONE gui=NONE        guisp=NONE
-	hi @boolean              guifg=#${c.base08} guibg=NONE gui=italic      guisp=NONE
-	hi Comment               guifg=#${c.base04} guibg=NONE gui=italic,bold guisp=NONE
-	hi DiagnosticUnnecessary guifg=#${c.base04} guibg=NONE gui=italic      guisp=NONE
+  hi Identifier            guifg=#${c.base0D} guibg=NONE         gui=NONE        guisp=NONE
+	hi @lsp.type.property    guifg=#${c.base0C} guibg=NONE         gui=NONE        guisp=NONE
+	hi @variable.member      guifg=#${c.base09} guibg=NONE         gui=NONE        guisp=NONE
+	hi @boolean              guifg=#${c.base08} guibg=NONE         gui=italic      guisp=NONE
+	hi Comment               guifg=#${c.base04} guibg=NONE         gui=italic,bold guisp=NONE
+	hi DiagnosticUnnecessary guifg=#${c.base04} guibg=NONE         gui=italic      guisp=NONE
+	hi WhichKeyFloat         guifg=#${c.base05} guibg=#${c.base01} gui=NONE        guisp=NONE
+	hi WhichKeyGroup         guifg=#${c.base0B} guibg=NONE         gui=italic,bold guisp=NONE
 	" hi @comment.todo.comment guifg=#${c.base02} guibg=#${c.base0A} gui=NONE guisp=NONE
 	" Neither the above nor the below two lines worked, possibly because this gets
 	" loaded before treesitter does. Maybe put it in `extraConfigLuaPost`?
