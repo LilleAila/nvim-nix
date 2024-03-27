@@ -13,8 +13,8 @@
   };
 
   keymaps = [
-    (mkKeymap "n" "<leader>sr" ":SessionRestore<cr>" "Restore Session")
-    (mkKeymap "n" "<leader>ss" ":SessionSave<cr>" "Save Session")
-    (mkKeymap "n" "<leader>sd" ":SessionDelete<cr>" "Delete Session")
+    (mkKeymap "n" "<leader>ss" ":SessionRestore<cr>" "Restore Session")
+    (mkKeymap "n" "<leader>sa" ":SessionSave<cr>" "Save Session")
+    (mkKeymap "n" "<leader>sr" ":SessionDelete<cr>" "Delete Session")
   ];
 }

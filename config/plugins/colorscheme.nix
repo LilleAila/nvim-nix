@@ -297,4 +297,5 @@ pkgs.writeTextDir "colors/nix-${slug}.vim" ''
 	" TODO: This works as it should, but because only a few things were added,
 	" and nothing changed, I should probably use the builtin vimThemeFromScheme
 	" and then run the above commands after it is loaded, in the `config` of extraPlugins
+	" Only downside is I will have to import more stuff, but that's ok
 ''
