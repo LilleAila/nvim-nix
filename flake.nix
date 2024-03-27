@@ -50,15 +50,15 @@
           # Make keymap without description:
           mkKeymap' = mode: key: action: mkKeymap mode key action null;
           mkKeymapWithOpts = mode: key: action: options: {inherit mode key action options;};
-					# TODO: Make this an input or override or something, but idk how:
+          # TODO: Make this an input or override or something, but idk how:
           colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
         in {
           inherit pkgs;
           module = import ./config; # import the module directly
           extraSpecialArgs = {
             inherit mkKeymap mkKeymap' mkKeymapWithOpts;
-						inherit colorScheme;
-						inherit inputs;
+            inherit colorScheme;
+            inherit inputs;
           };
         };
         nvim = nixvim'.makeNixvimWithModule nixvimModule;

@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   plugins.noice = {
     enable = true;
     presets = {

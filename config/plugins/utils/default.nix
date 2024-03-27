@@ -1,7 +1,7 @@
-{ ... }: {
-	imports = [
-		./oil.nix
-		./sessions.nix
-		./telescope.nix
-	];
+{...}: {
+  imports = [
+    ./oil.nix
+    ./sessions.nix
+    ./telescope.nix
+  ];
 }

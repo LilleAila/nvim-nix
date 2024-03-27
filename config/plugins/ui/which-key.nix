@@ -1,16 +1,16 @@
-{ ... }: {
+{...}: {
   plugins.which-key = {
-		enable = true;
-		registrations = {
-			"<leader>e".name = " Files";
-			"<leader>t".name = " Telescope";
-			"<leader>s".name = " Sessions";
-			"<leader>x".name = " LaTeX";
-			"<leader>l".name = " LSP";
-			"<leader>b".name = " Buffers";
+    enable = true;
+    registrations = {
+      "<leader>e".name = " Files";
+      "<leader>t".name = " Telescope";
+      "<leader>s".name = " Sessions";
+      "<leader>x".name = " LaTeX";
+      "<leader>l".name = " LSP";
+      "<leader>b".name = " Buffers";
       "<leader>tg".name = " Git";
-		};
-		icons = {
+    };
+    icons = {
       separator = "";
       group = "";
     };
@@ -18,5 +18,5 @@
       i = ["h" "j" "k" "l" "v"];
       v = ["h" "j" "k" "l"];
     };
-	};
+  };
 }

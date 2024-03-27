@@ -1,31 +1,31 @@
 {
-	pkgs,
-	colorScheme,
-	lib,
+  pkgs,
+  colorScheme,
+  lib,
   ...
 }: {
   imports = [
-		./ui
-		./lsp
-		./utils
+    ./ui
+    ./lsp
+    ./utils
   ];
 
   extraPlugins = [
     {
-			plugin = (import ./colorscheme.nix { inherit pkgs; } { scheme = colorScheme; });
+      plugin = import ./colorscheme.nix {inherit pkgs;} {scheme = colorScheme;};
       config = "colorscheme nix-${colorScheme.slug}";
-		}
+    }
   ];
 
-	# This works, but telescope looks VERY weird :(
-	# colorschemes.base16 = {
-	# 	enable = true;
-	# 	colorscheme = lib.concatMapAttrs (name: value: {
-	# 			${name} = "#${value}";
-	# 		}) colorScheme.palette;
-	# };
+  # This works, but telescope looks VERY weird :(
+  # colorschemes.base16 = {
+  # 	enable = true;
+  # 	colorscheme = lib.concatMapAttrs (name: value: {
+  # 			${name} = "#${value}";
+  # 		}) colorScheme.palette;
+  # };
 
-	# Other plugins
+  # Other plugins
   plugins = {
     luasnip.enable = true;
     nvim-autopairs.enable = true;
