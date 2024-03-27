@@ -46,8 +46,4 @@
     (mkKeymap "n" "<leader>xC" ":VimtexClean<cr>" "Clean")
     (mkKeymap "n" "<leader>xo" ":VimtexCompileSS<cr>" "Compile Once")
   ];
-
-  plugins.which-key.registrations = {
-    "<leader>x" = "LaTeX";
-  };
 }

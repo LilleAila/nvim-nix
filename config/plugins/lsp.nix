@@ -82,7 +82,6 @@
   # Add descriptions to which-key.
   # Items defined in keymaps will have their command as description by default
   plugins.which-key.registrations = {
-    "<leader>l" = "LSP";
     "<leader>k" = "Previous diagnostic";
     "<leader>j" = "Next diagnostic";
     "<leader>ll" = "Line diagnostics";

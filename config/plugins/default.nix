@@ -2,9 +2,13 @@
   mkKeymap,
   mkKeymapWithOpts,
   colorSchemePlugin,
+	# colorScheme,
+	lib,
   ...
 }: {
   imports = [
+		./ui
+
     ./treesitter.nix
     ./telescope.nix
     ./lsp.nix
@@ -15,11 +19,17 @@
     ./buffers.nix
   ];
 
-  # colorschemes.gruvbox.enable = true;
-
   extraPlugins = [
     colorSchemePlugin # From nix-colors
   ];
+
+	# This works, but telescope looks VERY weird :(
+	# colorschemes.base16 = {
+	# 	enable = true;
+	# 	colorscheme = lib.concatMapAttrs (name: value: {
+	# 			${name} = "#${value}";
+	# 		}) colorScheme.palette;
+	# };
 
   plugins = {
     # luasnip.enable = true;
@@ -64,19 +74,6 @@
         lualine_y = ["progress"];
         lualine_z = ["location"];
       };
-    };
-  };
-
-  plugins.which-key = {
-    enable = true;
-    registrations = {
-      "<leader>t" = "Telescope";
-      "<leader>tg" = "Git";
-      "<leader>s" = "Sessions";
-    };
-    triggersBlackList = {
-      i = ["h" "j" "k" "l" "v"];
-      v = ["h" "j" "k" "l"];
     };
   };
 

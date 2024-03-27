@@ -17,8 +17,4 @@
     (mkKeymap "n" "<leader>ss" ":SessionSave<cr>" "Save Session")
     (mkKeymap "n" "<leader>sd" ":SessionDelete<cr>" "Delete Session")
   ];
-
-  plugins.which-key.registrations = {
-    "<leader>s" = "Sessions";
-  };
 }

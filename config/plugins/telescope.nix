@@ -40,13 +40,20 @@
         desc = "Status";
       };
     };
-    # defaults = {
-    # 	mappings = {
-    # 		i = {
-    # 			"<C-k>" = "actions.move_selection_previous";
-    # 			"<C-j>" = "actions.move_selection_next";
-    # 		};
-    # 	};
-    # };
+    defaults = {
+    	mappings = {
+    		i = {
+    			# "<C-k>" = "actions.move_selection_previous";
+    			# "<C-j>" = "actions.move_selection_next";
+					"<esc>" = {
+						__raw = ''
+							function(...)
+								return require("telescope.actions").close(...)
+							end
+						'';
+					};
+    		};
+    	};
+    };
   };
 }

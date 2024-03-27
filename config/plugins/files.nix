@@ -75,8 +75,4 @@
 
     (mkKeymap "n" "<leader>ee" ":Oil<cr>" "Oil")
   ];
-
-  plugins.which-key.registrations = {
-    "<leader>e" = "Explorer";
-  };
 }
