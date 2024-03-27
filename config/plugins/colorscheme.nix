@@ -291,7 +291,7 @@ pkgs.writeTextDir "colors/nix-${slug}.vim" ''
 	hi @lsp.type.property    guifg=#${c.base0C} guibg=NONE gui=NONE        guisp=NONE
 	hi @variable.member      guifg=#${c.base09} guibg=NONE gui=NONE        guisp=NONE
 	hi @boolean              guifg=#${c.base08} guibg=NONE gui=italic      guisp=NONE
-	hi Comment               guifg=#${c.base05} guibg=NONE gui=italic,bold guisp=NONE
+	hi Comment               guifg=#${c.base04} guibg=NONE gui=italic,bold guisp=NONE
 	hi DiagnosticUnnecessary guifg=#${c.base04} guibg=NONE gui=italic      guisp=NONE
 	" hi @comment.todo.comment guifg=#${c.base02} guibg=#${c.base0A} gui=NONE guisp=NONE
 	" Neither the above nor the below two lines worked, possibly because this gets
