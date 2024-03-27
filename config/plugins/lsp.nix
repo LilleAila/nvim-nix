@@ -1,109 +1,120 @@
-{ mkKeymap, mkKeymapWithOpts, ... }:
-
 {
-	plugins.lsp = {
-		# NOTE: All packages, including LSPs and formatters should be installed through devshells!!
-		enable = true;
-		servers = {
-			tsserver = { enable = true; package = null; };
-			tailwindcss = { enable = true; package = null; };
-			emmet_ls = { enable = true; package = null; };
-			eslint = { enable = true; package = null; };
-			lua-ls = { enable = true; package = null; };
-			jsonls = { enable = true; package = null; };
-			nil_ls = { enable = true; package = null; };
-			rust-analyzer = {
-				enable = true;
-				package = null;
-				installCargo = false;
-				installRustc = false;
-				settings.check.command = "clippy";
-			};
-			hls = { enable = true; package = null; };
-			gopls = { enable = true; package = null; };
-		};
+  mkKeymap,
+  mkKeymapWithOpts,
+  ...
+}: {
+  plugins.lsp = {
+    # NOTE: All packages, including LSPs and formatters should be installed through devshells!!
+    enable = true;
+    servers = {
+      tsserver = {
+        enable = true;
+        package = null;
+      };
+      tailwindcss = {
+        enable = true;
+        package = null;
+      };
+      emmet_ls = {
+        enable = true;
+        package = null;
+      };
+      eslint = {
+        enable = true;
+        package = null;
+      };
+      lua-ls = {
+        enable = true;
+        package = null;
+      };
+      jsonls = {
+        enable = true;
+        package = null;
+      };
+      nil_ls = {
+        enable = true;
+        package = null;
+      };
+      rust-analyzer = {
+        enable = true;
+        package = null;
+        installCargo = false;
+        installRustc = false;
+        settings.check.command = "clippy";
+      };
+      hls = {
+        enable = true;
+        package = null;
+      };
+      gopls = {
+        enable = true;
+        package = null;
+      };
+    };
 
-		keymaps = {
-			silent = true;
-			diagnostic = {
-				"<leader>k" = "goto_prev";
-				"<leader>j" = "goto_next";
-				"<leader>ll" = "open_float";
-			};
-			lspBuf = {
-				"gd" = "definition";
-				"<leader>ld" = "definition";
-				"<C-leftmouse>" = "definition";
+    keymaps = {
+      silent = true;
+      diagnostic = {
+        "<leader>k" = "goto_prev";
+        "<leader>j" = "goto_next";
+        "<leader>ll" = "open_float";
+      };
+      lspBuf = {
+        "gd" = "definition";
+        "<leader>ld" = "definition";
+        "<C-leftmouse>" = "definition";
 
-				"gD" = "implementation";
-				"<leader>li" = "implementation";
+        "gD" = "implementation";
+        "<leader>li" = "implementation";
 
-				"<leader>lr" = "rename";
-				"<F2>" = "rename";
+        "<leader>lr" = "rename";
+        "<F2>" = "rename";
 
-				"<leader>la" = "code_action";
-				"ca" = "code_action";
+        "<leader>la" = "code_action";
+        "ca" = "code_action";
 
-				"K" = "hover";
-				"<leader>lk" = "hover";
-			};
-		};
-	};
+        "K" = "hover";
+        "<leader>lk" = "hover";
+      };
+    };
+  };
 
-	# Add descriptions to which-key.
-	# Items defined in keymaps will have their command as description by default
-	plugins.which-key.registrations = {
-		"<leader>l" = "LSP";
-		"<leader>k" = "Previous diagnostic";
-		"<leader>j" = "Next diagnostic";
-		"<leader>ll" = "Line diagnostics";
-		"<leader>ld" = "Definition";
-		"<leader>li" = "Implementation";
-		"<leader>lr" = "Rename";
-		"<leader>la" = "Code actions";
-		"<leader>lk" = "Hover";
-	};
+  # Add descriptions to which-key.
+  # Items defined in keymaps will have their command as description by default
+  plugins.which-key.registrations = {
+    "<leader>l" = "LSP";
+    "<leader>k" = "Previous diagnostic";
+    "<leader>j" = "Next diagnostic";
+    "<leader>ll" = "Line diagnostics";
+    "<leader>ld" = "Definition";
+    "<leader>li" = "Implementation";
+    "<leader>lr" = "Rename";
+    "<leader>la" = "Code actions";
+    "<leader>lk" = "Hover";
+  };
 
-	keymaps = [
-		(mkKeymap "n" "<leader>lR" ":LspRestart<cr>" "Restart")
-		(mkKeymap "n" "<leader>lI" ":LspInfo<cr>" "Info")
-	];
+  keymaps = [
+    (mkKeymap "n" "<leader>lR" ":LspRestart<cr>" "Restart")
+    (mkKeymap "n" "<leader>lI" ":LspInfo<cr>" "Info")
+  ];
 
-	plugins.conform-nvim = {
-		enable = true;
-		formatOnSave = {
-			lspFallback = true;
-			timeoutMs = 500;
-		};
-		formattersByFt = {
-			html = [[
-				"prettierd"
-				"prettier"
-			]];
-			css = [[
-				"prettierd"
-				"prettier"
-			]];
-			javascript = [[
-				"prettierd"
-				"prettier"
-			]];
-			javascriptreact = [[
-				"prettierd"
-				"prettier"
-			]];
-			typescript = [[
-				"prettierd"
-				"prettier"
-			]];
-			python = [ "black" ];
-			lua = [ "stylua" ];
-			nix = [ "nixfmt" ];
-			markdown = [[
-				"prettierd"
-				"prettier"
-			]];
-			rust = [ "rustfmt" ];
-		};
-	};
+  plugins.conform-nvim = {
+    enable = true;
+    formatOnSave = {
+      lspFallback = true;
+      timeoutMs = 500;
+    };
+    formattersByFt = {
+      html = [["prettierd" "prettier"]];
+      css = [["prettierd" "prettier"]];
+      javascript = [["prettierd" "prettier"]];
+      javascriptreact = [["prettierd" "prettier"]];
+      typescript = [["prettierd" "prettier"]];
+      python = ["black"];
+      lua = ["stylua"];
+      nix = ["alejandra"];
+      markdown = [["prettierd" "prettier"]];
+      rust = ["rustfmt"];
+    };
+  };
 }

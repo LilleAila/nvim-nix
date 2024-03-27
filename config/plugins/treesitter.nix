@@ -1,6 +1,6 @@
 {
-	plugins.treesitter = {
-		enable = true;
-		indent = true;
-	};
+  plugins.treesitter = {
+    enable = true;
+    indent = true;
+  };
 }
