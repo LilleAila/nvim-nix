@@ -6,7 +6,7 @@
 }: {
   extraPlugins = [
     (pkgs.vimUtils.buildVimPlugin {
-      name = "img-clip";
+      name = "img-clip.nvim";
       src = inputs.plugin-img-clip;
     })
   ];

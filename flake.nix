@@ -17,6 +17,11 @@
       url = "github:HakonHarnes/img-clip.nvim";
       flake = false;
     };
+
+    plugin-move = {
+      url = "github:fedepujol/move.nvim";
+      flake = false;
+    };
   };
 
   outputs = {

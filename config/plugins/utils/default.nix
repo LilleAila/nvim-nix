@@ -7,6 +7,7 @@
     ./hop.nix
     ./toggleterm.nix
     ./img-clip.nix
+    ./move.nix
   ];
 
   plugins = {
