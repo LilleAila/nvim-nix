@@ -13,6 +13,7 @@
 
     nix-colors.url = "github:misterio77/nix-colors";
 
+    # Plugins that are not in nixpkgs
     plugin-img-clip = {
       url = "github:HakonHarnes/img-clip.nvim";
       flake = false;
