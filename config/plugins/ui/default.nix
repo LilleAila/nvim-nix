@@ -11,5 +11,9 @@
   plugins = {
     rainbow-delimiters.enable = true;
     nvim-colorizer.enable = true;
+    gitsigns = {
+      enable = true;
+      currentLineBlame = true;
+    };
   };
 }

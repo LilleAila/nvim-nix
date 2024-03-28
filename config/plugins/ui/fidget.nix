@@ -4,7 +4,8 @@
     logger = {
       level = "warn";
       floatPrecision = 0.1;
-      path = "string.format('%s/fidget.nvim.log', vim.fn.stdpath('cache'))";
+      # Makes error:
+      # path = "string.format('%s/fidget.nvim.log', vim.fn.stdpath('cache'))";
     };
 
     progress = {
