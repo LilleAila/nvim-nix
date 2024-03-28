@@ -292,6 +292,7 @@ in
     hi @lsp.type.property    guifg=#${c.base0C} guibg=NONE         gui=NONE        guisp=NONE
     hi @variable.member      guifg=#${c.base09} guibg=NONE         gui=NONE        guisp=NONE
     hi @boolean              guifg=#${c.base08} guibg=NONE         gui=italic      guisp=NONE
+    hi @module               guifg=#${c.base08} guibg=NONE         gui=none        guisp=NONE
     hi Comment               guifg=#${c.base04} guibg=NONE         gui=italic      guisp=NONE
     hi DiagnosticUnnecessary guifg=#${c.base04} guibg=NONE         gui=italic      guisp=NONE
     hi WhichKeyFloat         guifg=#${c.base05} guibg=#${c.base01} gui=NONE        guisp=NONE
@@ -308,6 +309,7 @@ in
     hi @markup.link.label guifg=#${c.base0D} guibg=NONE gui=bold      guisp=NONE
     hi @markup.heading    guifg=#${c.base09} guibg=NONE gui=bold      guisp=NONE
     hi @markup.raw.block  guifg=#${c.base0C} guibg=NONE gui=italic    guisp=NONE
+    " hi @markup.math       guifg=#${c.base0C} guibg=NONE gui=italic    guisp=NONE
 
     " Some of these values have been defined multiple times!
     " TODO: This works as it should, but because only a few things were added,

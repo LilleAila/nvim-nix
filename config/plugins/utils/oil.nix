@@ -27,7 +27,7 @@
       buflisted = false;
     };
     viewOptions = {
-      showHidden = true;
+      showHidden = false;
       # Hide .git folders
       isAlwaysHidden =
         /*
