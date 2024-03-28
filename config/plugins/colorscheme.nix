@@ -284,11 +284,10 @@ in
     hi CursorLineNr  guifg=#${c.base0B} guibg=NONE gui=NONE guisp=NONE
 
     " Most code colors are controlled by `Identifier`
-     hi Identifier            guifg=#${c.base0D} guibg=NONE         gui=NONE        guisp=NONE
+    hi Identifier            guifg=#${c.base0D} guibg=NONE         gui=NONE        guisp=NONE
     hi @lsp.type.property    guifg=#${c.base0C} guibg=NONE         gui=NONE        guisp=NONE
     hi @variable.member      guifg=#${c.base09} guibg=NONE         gui=NONE        guisp=NONE
     hi @boolean              guifg=#${c.base08} guibg=NONE         gui=italic      guisp=NONE
-    hi @markup.link          guifg=#${c.base0E} guibg=NONE         gui=underline   guisp=NONE
     hi Comment               guifg=#${c.base04} guibg=NONE         gui=italic,bold guisp=NONE
     hi DiagnosticUnnecessary guifg=#${c.base04} guibg=NONE         gui=italic      guisp=NONE
     hi WhichKeyFloat         guifg=#${c.base05} guibg=#${c.base01} gui=NONE        guisp=NONE
@@ -298,6 +297,11 @@ in
     " loaded before treesitter does. Maybe put it in `extraConfigLuaPost`?
     " hi TodoComment guifg=#${c.base01} guibg=#${c.base0A} gui=NONE guisp=NONE
     " hi! link @comment.todo.comment TodoComment
+
+    " Markup
+    hi @markup.link      guifg=#${c.base0E} guibg=NONE gui=underline guisp=NONE
+    hi @markup.heading   guifg=#${c.base09} guibg=NONE gui=bold      guisp=NONE
+    hi @markup.raw.block guifg=#${c.base0C} guibg=NONE gui=italic    guisp=NONE
 
     " Some of these values have been defined multiple times!
     " TODO: This works as it should, but because only a few things were added,
