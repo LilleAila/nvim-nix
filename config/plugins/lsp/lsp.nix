@@ -11,10 +11,6 @@
         enable = true;
         package = null;
       };
-      tailwindcss = {
-        enable = true;
-        package = null;
-      };
       emmet_ls = {
         enable = true;
         package = null;
