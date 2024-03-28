@@ -9,9 +9,15 @@ At some point, i might move this into [LilleAila/dotfiles](https://github.com/Li
 
 ## Running
 You can run the following command to test the configuration:
-```
+```bash
 nix run github:LilleAila/nvim-nix
 ```
+
+## Inspiration
+- [BANana](https://banana.is-cool.dev/posts/configure-neovim-with-nix-meet-nixvim/)
+### Other peoples' configurations
+- [BANana](https://github.com/BANanaD3V/nixos-config/tree/master/home/shell/nixvim)
+- [iynaix](https://github.com/iynaix/dotfiles/tree/main/home-manager/shell/neovim)
 
 ## Notes
 This config was created using the nixvim flake template: `nix flake init --template github:nix-community/nixvim`, and following [vimjoyer's video](https://www.youtube.com/watch?v=b641h63lqy0)
