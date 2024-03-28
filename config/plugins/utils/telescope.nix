@@ -6,36 +6,36 @@
     };
     keymapsSilent = true;
     keymaps = {
-      "<leader>tt" = {
+      "<leader>ff" = {
         action = "find_files";
-        desc = "Files";
+        desc = "Telescope";
       };
-      "<leader>ts" = {
+      "<leader>fs" = {
         action = "live_grep";
         desc = "Grep";
       };
-      "<leader>tb" = {
+      "<leader>fb" = {
         action = "buffers";
         desc = "Buffers";
       };
-      "<leader>tr" = {
+      "<leader>fr" = {
         action = "oldfiles";
         desc = "Recent files";
       };
-      "<leader>tq" = {
-        action = "quickfix";
-        desc = "Quickfix";
-      };
+      # "<leader>fq" = {
+      #   action = "quickfix";
+      #   desc = "Quickfix";
+      # };
 
-      "<leader>tgb" = {
+      "<leader>fgb" = {
         action = "git_branches";
         desc = "Branches";
       };
-      "<leader>tgf" = {
+      "<leader>fgf" = {
         action = "git_files";
         desc = "Files";
       };
-      "<leader>tgs" = {
+      "<leader>fgs" = {
         action = "git_status";
         desc = "Status";
       };

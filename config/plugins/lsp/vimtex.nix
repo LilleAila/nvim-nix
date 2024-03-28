@@ -37,13 +37,13 @@
     '';
 
   keymaps = [
-    (mkKeymap "n" "<leader>xc" ":VimtexCompile<cr>" "Compile")
-    (mkKeymap "n" "<leader>xv" ":VimtexView<cr>" "View")
-    (mkKeymap "n" "<leader>xs" ":VimtexStop<cr>" "Stop")
-    (mkKeymap "n" "<leader>xe" ":VimtexErrors<cr>" "Errors")
-    (mkKeymap "n" "<leader>xS" ":VimtexStatus<cr>" "Status")
-    (mkKeymap "n" "<leader>xi" ":VimtexInfo<cr>" "Info")
-    (mkKeymap "n" "<leader>xC" ":VimtexClean<cr>" "Clean")
-    (mkKeymap "n" "<leader>xo" ":VimtexCompileSS<cr>" "Compile Once")
+    (mkKeymap "n" "<leader>lxc" ":VimtexCompile<cr>" "Compile")
+    (mkKeymap "n" "<leader>lxv" ":VimtexView<cr>" "View")
+    (mkKeymap "n" "<leader>lxs" ":VimtexStop<cr>" "Stop")
+    (mkKeymap "n" "<leader>lxe" ":VimtexErrors<cr>" "Errors")
+    (mkKeymap "n" "<leader>lxS" ":VimtexStatus<cr>" "Status")
+    (mkKeymap "n" "<leader>lxi" ":VimtexInfo<cr>" "Info")
+    (mkKeymap "n" "<leader>lxC" ":VimtexClean<cr>" "Clean")
+    (mkKeymap "n" "<leader>lxo" ":VimtexCompileSS<cr>" "Compile Once")
   ];
 }

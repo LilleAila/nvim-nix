@@ -63,6 +63,6 @@
   };
 
   keymaps = [
-    (mkKeymap "n" "<leader>ee" ":Oil<cr>" "Oil")
+    (mkKeymap "n" "<leader>fe" ":Oil<cr>" "Oil")
   ];
 }

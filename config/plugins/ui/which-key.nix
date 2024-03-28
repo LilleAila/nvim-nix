@@ -2,14 +2,13 @@
   plugins.which-key = {
     enable = true;
     registrations = {
-      "<leader>e".name = " Files";
-      "<leader>t".name = " Telescope";
-      "<leader>m".name = " Terminal";
-      "<leader>s".name = " Sessions";
-      "<leader>x".name = " LaTeX";
-      "<leader>l".name = " LSP";
+      "<leader>f".name = " Files";
+      "<leader>fg".name = " Git";
       "<leader>b".name = " Buffers";
-      "<leader>tg".name = " Git";
+      "<leader>t".name = " Terminal";
+      "<leader>s".name = " Sessions";
+      "<leader>l".name = " LSP";
+      "<leader>lx".name = " LaTeX";
     };
     icons = {
       separator = "";

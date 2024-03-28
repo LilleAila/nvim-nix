@@ -292,7 +292,7 @@ in
     hi @lsp.type.property    guifg=#${c.base0C} guibg=NONE         gui=NONE        guisp=NONE
     hi @variable.member      guifg=#${c.base09} guibg=NONE         gui=NONE        guisp=NONE
     hi @boolean              guifg=#${c.base08} guibg=NONE         gui=italic      guisp=NONE
-    hi Comment               guifg=#${c.base04} guibg=NONE         gui=italic,bold guisp=NONE
+    hi Comment               guifg=#${c.base04} guibg=NONE         gui=italic      guisp=NONE
     hi DiagnosticUnnecessary guifg=#${c.base04} guibg=NONE         gui=italic      guisp=NONE
     hi WhichKeyFloat         guifg=#${c.base05} guibg=#${c.base01} gui=NONE        guisp=NONE
     hi WhichKeyGroup         guifg=#${c.base0B} guibg=NONE         gui=italic,bold guisp=NONE
