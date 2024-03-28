@@ -6,7 +6,11 @@ https://github.com/Misterio77/nix-colors/commit/f84b4255d2c635c97378af20fa704561
   c = scheme.palette;
   slug = scheme.slug;
 in
-  pkgs.writeTextDir "colors/nix-${slug}.vim" ''
+  pkgs.writeTextDir "colors/nix-${slug}.vim"
+  /*
+  vim
+  */
+  ''
      let g:colors_name="nix-${slug}"
 
      set termguicolors
