@@ -299,9 +299,10 @@ in
     " hi! link @comment.todo.comment TodoComment
 
     " Markup
-    hi @markup.link      guifg=#${c.base0E} guibg=NONE gui=underline guisp=NONE
-    hi @markup.heading   guifg=#${c.base09} guibg=NONE gui=bold      guisp=NONE
-    hi @markup.raw.block guifg=#${c.base0C} guibg=NONE gui=italic    guisp=NONE
+    hi @markup.link       guifg=#${c.base0E} guibg=NONE gui=underline guisp=NONE
+    hi @markup.link.label guifg=#${c.base0D} guibg=NONE gui=bold      guisp=NONE
+    hi @markup.heading    guifg=#${c.base09} guibg=NONE gui=bold      guisp=NONE
+    hi @markup.raw.block  guifg=#${c.base0C} guibg=NONE gui=italic    guisp=NONE
 
     " Some of these values have been defined multiple times!
     " TODO: This works as it should, but because only a few things were added,

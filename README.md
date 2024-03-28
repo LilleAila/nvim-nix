@@ -15,6 +15,7 @@ nix run github:LilleAila/nvim-nix
 
 ## Inspiration
 - [BANana](https://banana.is-cool.dev/posts/configure-neovim-with-nix-meet-nixvim/)
+- [Vimjoyer](https://www.youtube.com/watch?v=b641h63lqy0)
 ### Other peoples' configurations
 - [BANana](https://github.com/BANanaD3V/nixos-config/tree/master/home/shell/nixvim)
 - [iynaix](https://github.com/iynaix/dotfiles/tree/main/home-manager/shell/neovim)
