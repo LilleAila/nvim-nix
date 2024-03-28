@@ -5,7 +5,7 @@
     ./lualine.nix
     ./noice.nix
     ./which-key.nix
-    ./fidget.nix
+    # ./fidget.nix
   ];
 
   plugins = {

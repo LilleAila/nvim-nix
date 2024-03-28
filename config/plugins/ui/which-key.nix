@@ -4,6 +4,7 @@
     registrations = {
       "<leader>e".name = " Files";
       "<leader>t".name = " Telescope";
+      "<leader>m".name = " Terminal";
       "<leader>s".name = " Sessions";
       "<leader>x".name = " LaTeX";
       "<leader>l".name = " LSP";

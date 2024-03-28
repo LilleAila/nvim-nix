@@ -296,6 +296,7 @@ in
     hi DiagnosticUnnecessary guifg=#${c.base04} guibg=NONE         gui=italic      guisp=NONE
     hi WhichKeyFloat         guifg=#${c.base05} guibg=#${c.base01} gui=NONE        guisp=NONE
     hi WhichKeyGroup         guifg=#${c.base0B} guibg=NONE         gui=italic,bold guisp=NONE
+    hi GitSignsCurrentLineBlame guifg=#${c.base05} guibg=NONE gui=italic guisp=NONE
     " hi @comment.todo.comment guifg=#${c.base02} guibg=#${c.base0A} gui=NONE guisp=NONE
     " Neither the above nor the below two lines worked, possibly because this gets
     " loaded before treesitter does. Maybe put it in `extraConfigLuaPost`?

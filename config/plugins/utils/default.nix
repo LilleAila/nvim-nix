@@ -5,6 +5,7 @@
     ./telescope.nix
     ./guess-indent.nix
     ./hop.nix
+    ./toggleterm.nix
   ];
 
   plugins = {

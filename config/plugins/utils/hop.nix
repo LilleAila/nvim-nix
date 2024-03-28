@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  mkKeymap,
+  ...
+}: {
   extraPlugins = with pkgs.vimPlugins; [
     hop-nvim
   ];
@@ -8,13 +12,6 @@
     }
   '';
   keymaps = [
-    {
-      action = "<cmd>HopWord<CR>";
-      key = "<leader><space>";
-      options = {
-        silent = true;
-        desc = "Hop for words";
-      };
-    }
+    (mkKeymap "n" "<leader><space>" ":HopWord<cr>" "Hop")
   ];
 }
