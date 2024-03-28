@@ -340,6 +340,22 @@
         "type": "github"
       }
     },
+    "plugin-img-clip": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1711374270,
+        "narHash": "sha256-fnNxPas48qLIgb0gxcHaVJkxIfVmm4rBlKprSXOB0Sw=",
+        "owner": "HakonHarnes",
+        "repo": "img-clip.nvim",
+        "rev": "ba847e55738979fcf54532a5b23bf0f040e5f968",
+        "type": "github"
+      },
+      "original": {
+        "owner": "HakonHarnes",
+        "repo": "img-clip.nvim",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -374,7 +390,8 @@
         "flake-parts": "flake-parts",
         "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs",
-        "nixvim": "nixvim"
+        "nixvim": "nixvim",
+        "plugin-img-clip": "plugin-img-clip"
       }
     },
     "systems": {

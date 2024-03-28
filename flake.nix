@@ -12,6 +12,11 @@
     devshell.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-colors.url = "github:misterio77/nix-colors";
+
+    plugin-img-clip = {
+      url = "github:HakonHarnes/img-clip.nvim";
+      flake = false;
+    };
   };
 
   outputs = {

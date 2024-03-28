@@ -6,6 +6,7 @@
     ./guess-indent.nix
     ./hop.nix
     ./toggleterm.nix
+    ./img-clip.nix
   ];
 
   plugins = {
