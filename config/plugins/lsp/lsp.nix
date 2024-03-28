@@ -11,6 +11,10 @@
         enable = true;
         package = null;
       };
+      cssls = {
+        enable = true;
+        package = null;
+      };
       emmet_ls = {
         enable = true;
         package = null;
