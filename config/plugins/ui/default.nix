@@ -13,7 +13,7 @@
     nvim-colorizer.enable = true;
     gitsigns = {
       enable = true;
-      currentLineBlame = true;
+      currentLineBlame = false;
     };
     nvim-tree = {
       enable = true;

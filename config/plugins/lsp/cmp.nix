@@ -29,7 +29,7 @@
           "<C-b>" = "cmp.mapping.scroll_docs(-4)";
           "<C-f>" = "cmp.mapping.scroll_docs(4)";
           "<C-c>" = "cmp.mapping.abort()";
-          "<Esc>" = "cmp.mapping.abort()";
+          # "<Esc>" = "cmp.mapping.abort()";
           "<CR>" = "cmp.mapping.confirm({ select = false })";
 
           "<C-p>" = "cmp.mapping.select_prev_item()";
