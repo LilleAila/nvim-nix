@@ -13,6 +13,8 @@
 
     nix-colors.url = "github:misterio77/nix-colors";
 
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
     # Plugins that are not in nixpkgs
     plugin-img-clip = {
       url = "github:HakonHarnes/img-clip.nvim";
@@ -74,6 +76,14 @@
         };
         nvim = nixvim'.makeNixvimWithModule nixvimModule;
       in {
+        _module.args.pkgs = import inputs.nixpkgs {
+          inherit system;
+          overlays = [
+            inputs.neovim-nightly-overlay.overlay
+          ];
+          config = {};
+        };
+
         checks = {
           # Run `nix flake check .` to verify that your config is not broken
           default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
