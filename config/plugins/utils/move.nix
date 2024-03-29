@@ -31,5 +31,7 @@
     (mkKeymap' "n" "<C-S-k>" ":MoveLine(-1)<cr>")
     (mkKeymap' "i" "<C-S-j>" ":MoveLine(1)<cr>")
     (mkKeymap' "i" "<C-S-k>" ":MoveLine(-1)<cr>")
+    (mkKeymap' "v" "<C-S-j>" ":MoveBlock(1)<cr>")
+    (mkKeymap' "v" "<C-S-k>" ":MoveBlock(-1)<cr>")
   ];
 }
