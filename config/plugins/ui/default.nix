@@ -1,4 +1,4 @@
-{...}: {
+{mkKeymap, ...}: {
   imports = [
     ./buffers.nix
     ./indent-blankline.nix
@@ -15,5 +15,16 @@
       enable = true;
       currentLineBlame = true;
     };
+    nvim-tree = {
+      enable = true;
+      hijackCursor = true;
+      syncRootWithCwd = true;
+    };
   };
+
+  keymaps = [
+    (mkKeymap "n" "<leader>ft" ":NvimTreeToggle<cr>" "Toggle nvim tree")
+    (mkKeymap "n" "<leader>fn" ":NvimTreeFocus<cr>" "Focus nvim tree")
+    (mkKeymap "n" "<leader>fr" ":NvimTreeRefresh<cr>" "Refresh nvim tree")
+  ];
 }
