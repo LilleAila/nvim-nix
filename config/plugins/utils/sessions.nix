@@ -8,7 +8,7 @@
       enabled = true;
       enableLastSession = true;
       createEnabled = true;
-      useGitBranch = true;
+      # useGitBranch = true; # Causes problems, see [#268](https://github.com/rmagatti/auto-session/issues/268)
     };
   };
 
