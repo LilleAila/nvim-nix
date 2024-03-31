@@ -8,6 +8,7 @@
     ./toggleterm.nix
     ./img-clip.nix
     ./move.nix
+    ./mini.nix
   ];
 
   plugins = {
