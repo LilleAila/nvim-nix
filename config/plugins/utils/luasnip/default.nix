@@ -6,8 +6,6 @@
 }: let
   inherit (lib) mkOption types;
 in {
-  # TODO: make this a list of { lang = "language"; snippets = [list of snippets] }
-  # Or instead, this is probably better: `snippets.<lang> = [list of snippets]`
   options.plugins.luasnip.snippets = lib.mkOption {
     type = types.attrsOf (types.submodule ({
       config,
@@ -84,7 +82,6 @@ in {
         ''
           -- LuaSnip Snippets
           local ls = require("luasnip")
-          -- some shorthands...
           local s = ls.snippet
           local sn = ls.snippet_node
           local t = ls.text_node
@@ -109,7 +106,7 @@ in {
       # Add snippets for each languages
       ++ lib.attrsets.mapAttrsToList (
         lang: snippets:
-          "ls.add_snippets(\"${lang}\", {"
+          "ls.add_snippets(\"${lang}\", {\n"
           + builtins.concatStringsSep "\n" (
             # Add each individual snippet
             map (snip:
@@ -142,7 +139,7 @@ in {
                     ]
                   )
                 }}, ${
-                  if (snip.nodes != null)
+                  if snip.nodes != null
                   then ''
                     fmta(
                       [[${snip.text}]],
@@ -150,8 +147,8 @@ in {
                     )
                   ''
                   else "{ t(\"${snip.text}\") }"
-                }${
-                  if (snip.condition != null)
+                } ${
+                  if snip.condition != null
                   then ", { condition = \"${snip.condition}\" }"
                   else ""
                 }),
