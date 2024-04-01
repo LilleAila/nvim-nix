@@ -20,27 +20,4 @@
     };
     direnv.enable = true;
   };
-
-  plugins.luasnip = {
-    enable = true;
-    extraConfig = {
-      update_events = "TextChanged,TextChangedI";
-      store_selection_keys = "<Tab>";
-      delete_check_events = "TextChanged";
-      enable_autosnippets = true;
-      history = false;
-    };
-    # fromLua = [
-    #   {
-    #     path = ./luasnip;
-    #     lazyLoad = true;
-    #   }
-    # ];
-    snippets.all.snippets = [
-      {
-        trig = "hi";
-        text = "Hello, World!";
-      }
-    ];
-  };
 }
