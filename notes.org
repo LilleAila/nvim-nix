@@ -1,6 +1,7 @@
 * 2024
 ** 2024-04 April
 *** 2024-04-02 Tuesday
+**** TODO Add and configure [[https://github.com/benlubas/molten-nvim/blob/main/docs/NixOS.md][benlubas/molten-nvim]]
 **** DONE Add more capture templates
 CLOSED: [2024-04-02 Tue 17:17]
 [2024-04-02 ti. 16:59]
