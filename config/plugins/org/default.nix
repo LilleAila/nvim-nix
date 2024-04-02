@@ -10,6 +10,10 @@
   #   enable = true;
   # };
 
+  imports = [
+    # ./molten.nix
+  ];
+
   extraPlugins = with pkgs.vimPlugins; [
     orgmode
     (pkgs.vimUtils.buildVimPlugin {
