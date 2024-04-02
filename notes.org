@@ -1,6 +1,8 @@
 * 2024
 ** 2024-04 April
 *** 2024-04-02 Tuesday
+**** TODO Fix molten.nvim kernels
+It can not recignize kernels installed normally, for example through =nix-shell -p python311Packages.ipykernel=. They have to be installed like that, then run =python3 -m ipykernel install --user=, which is not good for nixOS, where it should be declarative.
 **** TODO Add and configure [[https://github.com/benlubas/molten-nvim/blob/main/docs/NixOS.md][benlubas/molten-nvim]]
 **** DONE Add more capture templates
 CLOSED: [2024-04-02 Tue 17:17]
