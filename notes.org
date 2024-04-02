@@ -1,0 +1,7 @@
+* 2024
+** 2024-04 April
+*** 2024-04-02 Tuesday
+**** DONE Add more capture templates
+CLOSED: [2024-04-02 Tue 17:17]
+[2024-04-02 ti. 16:59]
+[[file:/home/olai/nvim/config/plugins/org/default.nix::52]]
