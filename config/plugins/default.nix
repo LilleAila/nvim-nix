@@ -7,6 +7,7 @@
     ./ui
     ./lsp
     ./utils
+    ./org
   ];
 
   extraPlugins = [

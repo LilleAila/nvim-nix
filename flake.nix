@@ -25,6 +25,11 @@
       url = "github:fedepujol/move.nvim";
       flake = false;
     };
+
+    plugin-org-bullets = {
+      url = "github:nvim-orgmode/org-bullets.nvim";
+      flake = false;
+    };
   };
 
   outputs = {

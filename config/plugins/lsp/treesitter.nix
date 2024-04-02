@@ -1,7 +1,7 @@
 {
   plugins.treesitter = {
     enable = true;
-    indent = true;
+    indent = false; # Breaks orgmore or something
     nixvimInjections = true;
     disabledLanguages = [
       "tex"

@@ -532,6 +532,22 @@
         "type": "github"
       }
     },
+    "plugin-org-bullets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1708554267,
+        "narHash": "sha256-aIEe1dgUmDzu9kl33JCNcgyfp8DymURltH0HcZfph0Y=",
+        "owner": "nvim-orgmode",
+        "repo": "org-bullets.nvim",
+        "rev": "3623e86e0fa6d07f45042f7207fc333c014bf167",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-orgmode",
+        "repo": "org-bullets.nvim",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_3",
@@ -569,7 +585,8 @@
         "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim",
         "plugin-img-clip": "plugin-img-clip",
-        "plugin-move": "plugin-move"
+        "plugin-move": "plugin-move",
+        "plugin-org-bullets": "plugin-org-bullets"
       }
     },
     "systems": {

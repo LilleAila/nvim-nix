@@ -1,0 +1,24 @@
+#+title: Test document
+#+author: LilleAila
+
+- Org Bullets
+- vim-table-mode
+
+* This is a heading
+Some content
+Some more content
+** This is a subheading
+This is some more content
+Lorem ipsum dolor sit
+* This is a third heading
+Never gonna give you up
+Never gonna let you down
+Never gonna run around and desert you
+
+* TODO This is a todo!!! :bar:baz:
+SCHEDULED: <2024-04-02 ti.>
+DEADLINE: <2024-04-10 on.>
+Dates and stuff can be inserted with =<leader>oi=
+** Some links:
+[[https://github.com/LilleAila/nvim-nix][My nixvim configuration]]
+[[./flake.nix][The nix flake file]]
