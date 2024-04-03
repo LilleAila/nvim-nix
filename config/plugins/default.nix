@@ -16,4 +16,12 @@
       config = "colorscheme nix-${colorScheme.slug}";
     }
   ];
+
+  extraConfigLuaPre =
+    /*
+    lua
+    */
+    ''
+      vim.loader.enable() -- Enable experimental lua loader: https://neovim.io/doc/user/lua.html#vim.loader
+    '';
 }
