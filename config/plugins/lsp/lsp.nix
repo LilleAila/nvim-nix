@@ -23,6 +23,10 @@
         enable = true;
         package = null;
       };
+      pyright = {
+        enable = true;
+        package = null;
+      };
       lua-ls = {
         enable = true;
         package = null;
