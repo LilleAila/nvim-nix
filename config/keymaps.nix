@@ -9,8 +9,8 @@
     (mkKeymap' "v" ">" ">gv")
 
     # jk or kj to exit insert mode
-    (mkKeymap' "i" "jk" "<Esc>")
-    (mkKeymap' "i" "kj" "<Esc>")
+    # (mkKeymap' "i" "jk" "<Esc>")
+    # (mkKeymap' "i" "kj" "<Esc>")
 
     # vv to enter visual block mode
     (mkKeymap' "n" "vv" "<C-V>")
