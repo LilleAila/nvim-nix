@@ -43,9 +43,9 @@
           "<Tab>" = ''
             cmp.mapping(
             	function(fallback)
-            		if cmp.visible() then
-            			cmp.select_next_item()
-            		elseif require("luasnip").expand_or_locally_jumpable() then
+            		-- if cmp.visible() then
+            		-- 	cmp.select_next_item()
+            		if require("luasnip").expand_or_locally_jumpable() then
             			require("luasnip").expand_or_jump()
             		elseif has_words_before() then
             			cmp.complete()
@@ -60,9 +60,9 @@
           "<S-Tab>" = ''
             cmp.mapping(
             function(fallback)
-            	if cmp.visible() then
-            		cmp.select_prev_item()
-            	elseif require("luasnip").jumpable(-1) then
+            	-- if cmp.visible() then
+            	--	cmp.select_prev_item()
+            	if require("luasnip").jumpable(-1) then
             		require("luasnip").jump(-1)
             	else
             		fallback()
