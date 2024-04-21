@@ -58,40 +58,34 @@
         },
         org_capture_templates = {
           -- Global
-          T = {
+          t = {
             description = "Task",
             template = "* TODO %?",
-            datetree = { reversed = true, tree_type = "day" },
           },
-          N = {
+          n = {
             description = "Note",
-            template = "* %?",
-            datetree = { reversed = true, tree_type = "day" },
+            template = "* %?\n %U",
           },
 
           -- Project-specific
-          t = {
+          T = {
             description = "Local task",
             template = "* TODO %?",
-            datetree = { reversed = true, tree_type = "day" },
             target = "./notes.org",
           },
-          n = {
+          N = {
             description = "Local note",
             template = "* %?",
-            datetree = { reversed = true, tree_type = "day" },
             target = "./notes.org",
           },
           P = {
             description = "Local project task",
             template = "* TODO %?\n %U\n %a\n",
-            datetree = { reversed = true, tree_type = "day" },
             target = "./notes.org",
           },
           p = {
             description = "Local project note",
             template = "* %?\n %U\n %a\n",
-            datetree = { reversed = true, tree_type = "day" },
             target = "./notes.org",
           },
         },

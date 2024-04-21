@@ -40,11 +40,35 @@
 
           "<C-Space>" = "cmp.mapping.complete({})";
 
+          "<C-j>" = ''
+            cmp.mapping(
+            	function(fallback)
+            		if cmp.visible() then
+            			cmp.select_next_item()
+            		else
+            			fallback()
+            		end
+            	end,
+            	{"n"}
+            )
+          '';
+
+          "<C-k>" = ''
+            cmp.mapping(
+            	function(fallback)
+            		if cmp.visible() then
+            			cmp.select_prev_item()
+            		else
+            			fallback()
+            		end
+            	end,
+            	{"i", "s"}
+            )
+          '';
+
           "<Tab>" = ''
             cmp.mapping(
             	function(fallback)
-            		-- if cmp.visible() then
-            		-- 	cmp.select_next_item()
             		if require("luasnip").expand_or_locally_jumpable() then
             			require("luasnip").expand_or_jump()
             		elseif has_words_before() then
@@ -60,8 +84,6 @@
           "<S-Tab>" = ''
             cmp.mapping(
             function(fallback)
-            	-- if cmp.visible() then
-            	--	cmp.select_prev_item()
             	if require("luasnip").jumpable(-1) then
             		require("luasnip").jump(-1)
             	else
