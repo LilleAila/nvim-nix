@@ -17,6 +17,14 @@
     };
   };
 
+  # Enable conceal in LaTeX files
+  files."ftplugin/tex.lua" = {
+    options = {
+      conceallevel = 2;
+      concealcursor = "nc";
+    };
+  };
+
   # Detect OS and choose PDF viewer accordingly
   extraConfigLua =
     /*
