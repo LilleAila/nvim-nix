@@ -15,7 +15,7 @@
         enable = true;
         package = null;
       };
-      emmet_ls = {
+      emmet-ls = {
         enable = true;
         package = null;
       };
@@ -35,7 +35,7 @@
         enable = true;
         package = null;
       };
-      nil_ls = {
+      nil-ls = {
         enable = true;
         package = null;
       };

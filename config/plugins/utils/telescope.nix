@@ -4,43 +4,42 @@
     extensions = {
       fzf-native.enable = true;
     };
-    keymapsSilent = true;
     keymaps = {
       "<leader>ff" = {
         action = "find_files";
-        desc = "Telescope";
+        options.desc = "Telescope";
       };
       "<leader>fs" = {
         action = "live_grep";
-        desc = "Grep";
+        options.desc = "Grep";
       };
-      "<leader>fb" = {
+      "<leader>bb" = {
         action = "buffers";
-        desc = "Buffers";
+        options.desc = "Buffers";
       };
       "<leader>fr" = {
         action = "oldfiles";
-        desc = "Recent files";
+        options.desc = "Recent files";
       };
       # "<leader>fq" = {
       #   action = "quickfix";
-      #   desc = "Quickfix";
+      #   options.desc = "Quickfix";
       # };
 
       "<leader>fgb" = {
         action = "git_branches";
-        desc = "Branches";
+        options.desc = "Branches";
       };
       "<leader>fgf" = {
         action = "git_files";
-        desc = "Files";
+        options.desc = "Files";
       };
       "<leader>fgs" = {
         action = "git_status";
-        desc = "Status";
+        options.desc = "Status";
       };
     };
-    defaults = {
+    settings.defaults = {
       mappings = {
         i = {
           "<esc>".__raw = ''

@@ -29,7 +29,7 @@
   # Set conceallevel locally
   # TODO: Change the "change tab" keybinding, because it conflicts with the toggle-fold keybind in org mode
   files."ftplugin/org.lua" = {
-    options = {
+    opts = {
       conceallevel = 2;
       concealcursor = "nc";
     };

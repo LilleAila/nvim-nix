@@ -1,37 +1,37 @@
 {
   plugins.barbar = {
     enable = true;
-    animation = false;
-    autoHide = false;
-    clickable = true;
-    focusOnClose = "left";
-    insertAtEnd = false;
-    insertAtStart = false;
-    maximumLength = 30;
-    maximumPadding = 2;
-    minimumPadding = 1;
-    noNameTitle = "[No Name]";
+    settings = {
+      animation = false;
+      auto_hide = false;
+      clickable = true;
+      focus_on_close = "left";
+      insert_at_end = false;
+      insert_at_start = false;
+      maximum_length = 30;
+      maximum_padding = 2;
+      minimum_padding = 1;
+      no_name_title = "[No Name]";
+    };
     keymaps = {
-      silent = true;
+      close.key = "<C-c>";
+      goTo1.key = "<C-1>";
+      goTo2.key = "<C-2>";
+      goTo3.key = "<C-3>";
+      goTo4.key = "<C-4>";
+      goTo5.key = "<C-5>";
+      goTo6.key = "<C-6>";
+      goTo7.key = "<C-7>";
+      goTo8.key = "<C-8>";
+      goTo9.key = "<C-9>";
+      last.key = "<C-0>";
+      previous.key = "<S-Tab>";
+      next.key = "<Tab>";
+      movePrevious.key = "<C-,>";
+      moveNext.key = "<C-.>";
 
-      close = "<C-c>";
-      goTo1 = "<C-1>";
-      goTo2 = "<C-2>";
-      goTo3 = "<C-3>";
-      goTo4 = "<C-4>";
-      goTo5 = "<C-5>";
-      goTo6 = "<C-6>";
-      goTo7 = "<C-7>";
-      goTo8 = "<C-8>";
-      goTo9 = "<C-9>";
-      last = "<C-0>";
-      previous = "<S-Tab>";
-      next = "<Tab>";
-      movePrevious = "<C-,>";
-      moveNext = "<C-.>";
-
-      pick = "<leader>bo";
-      pin = "<leader>bp";
+      pick.key = "<leader>bo";
+      pin.key = "<leader>bp";
     };
   };
 

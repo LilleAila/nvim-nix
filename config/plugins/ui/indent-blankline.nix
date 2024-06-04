@@ -1,7 +1,7 @@
 {...}: {
   plugins.indent-blankline = {
     enable = true;
-    extraOptions = {
+    settings = {
       indent = {
         # char = "▍";
         smart_indent_cap = true;

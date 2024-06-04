@@ -19,7 +19,7 @@
 
   # Enable conceal in LaTeX files
   files."ftplugin/tex.lua" = {
-    options = {
+    opts = {
       conceallevel = 2;
       concealcursor = "nc";
     };
