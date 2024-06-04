@@ -78,4 +78,8 @@
     register = "unnamedplus";
     providers.wl-copy.enable = true;
   };
+
+  extraConfigVim = ''
+    set iskeyword-=_
+  '';
 }
