@@ -6,6 +6,7 @@
     ./noice.nix
     ./which-key.nix
     # ./fidget.nix
+    ./colorscheme.nix
   ];
 
   plugins = {
