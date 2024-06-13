@@ -1,20 +1,14 @@
 {
   pkgs,
-  nixvim,
+  system,
   colorScheme,
   inputs,
   ...
-}: let
-  nixvim' = nixvim.legacyPackages.${pkgs.system};
-  nixvimModule = {
-    inherit pkgs;
-    module = import ./config; # import the module directly
-    extraSpecialArgs =
-      {
-        inherit colorScheme;
-        inherit inputs;
-      }
-      // import ./lib;
-  };
-in
-  nixvim'.makeNixvimWithModule nixvimModule
+}:
+inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
+  inherit pkgs;
+  module = import ./config; # The actual configuration
+  extraSpecialArgs =
+    {inherit colorScheme inputs;}
+    // import ./lib; # Util functions such as mkKeymap
+}
