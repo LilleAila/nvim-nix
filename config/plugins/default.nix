@@ -4,6 +4,7 @@
     ./lsp
     ./utils
     ./org
+    ./obsidian
   ];
 
   extraConfigLuaPre =
