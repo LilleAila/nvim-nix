@@ -26,7 +26,7 @@
     incsearch = true;
     ignorecase = true;
     smartcase = true;
-    scrolloff = 0;
+    scrolloff = 4; # Don't allow cursor within 4 lines of top / bottom (set to eg 999 to keep in center)
     sidescrolloff = 5;
     foldcolumn = "0";
     foldlevel = 99;
