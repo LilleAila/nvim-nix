@@ -37,6 +37,9 @@
       };
       nixd = {
         enable = true;
+        settings = {
+          diagnostic.suppress = [ "sema-escaping-with" ];
+        };
         package = null;
       };
       # nil-ls = {
@@ -124,7 +127,7 @@
       typescript = [["prettierd" "prettier"]];
       python = ["black"];
       lua = ["stylua"];
-      nix = ["nixfmt"]; # nixfmt-rfc-style
+      nix = [["nixfmt" "alejandra"]]; # nixfmt, use alejandra as backup
       markdown = [["prettierd" "prettier"]];
       rust = ["rustfmt"];
     };
