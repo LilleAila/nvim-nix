@@ -38,7 +38,7 @@
       nixd = {
         enable = true;
         settings = {
-          diagnostic.suppress = [ "sema-escaping-with" ];
+          diagnostic.suppress = ["sema-escaping-with" "var-bind-to-this"];
         };
         package = null;
       };
