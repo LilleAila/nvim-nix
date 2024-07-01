@@ -124,7 +124,7 @@
       end
     '';
     formattersByFt = {
-      astro = [["prettierd" "prettier"]];
+      astro = ["prettier"];
       html = [["prettierd" "prettier"]];
       css = [["prettierd" "prettier"]];
       javascript = [["prettierd" "prettier"]];
