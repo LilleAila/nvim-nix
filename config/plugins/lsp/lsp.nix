@@ -7,6 +7,10 @@
     # NOTE: All packages, including LSPs and formatters should be installed through devshells!!
     enable = true;
     servers = {
+      astro = {
+        enable = true;
+        package = null;
+      };
       tsserver = {
         enable = true;
         package = null;
@@ -120,6 +124,7 @@
       end
     '';
     formattersByFt = {
+      astro = [["prettierd" "prettier"]];
       html = [["prettierd" "prettier"]];
       css = [["prettierd" "prettier"]];
       javascript = [["prettierd" "prettier"]];
