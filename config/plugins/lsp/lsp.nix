@@ -124,6 +124,7 @@
       end
     '';
     formattersByFt = {
+      haskell = ["ormolu"];
       astro = ["prettier"];
       html = [["prettierd" "prettier"]];
       css = [["prettierd" "prettier"]];
