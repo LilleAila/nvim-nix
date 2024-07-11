@@ -131,7 +131,7 @@
       javascript = [["prettierd" "prettier"]];
       javascriptreact = [["prettierd" "prettier"]];
       typescript = [["prettierd" "prettier"]];
-      python = ["black"];
+      python = [["autopep8" "black"]];
       lua = ["stylua"];
       nix = [["nixfmt" "alejandra"]]; # nixfmt, use alejandra as backup
       markdown = [["prettierd" "prettier"]];
