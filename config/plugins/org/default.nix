@@ -42,7 +42,7 @@
     lua
     */
     ''
-      vim.cmd("language en_US.utf8")
+      -- vim.cmd("language en_US.utf8") -- doesn't work (sometimes)?? idk
       require("orgmode").setup({
         org_agenda_files = { "~/org/*", "./notes.org" }, -- Add both global and project-specific notes to the agenda
         -- Remember to refresh agenda with `r` when changing directories.
