@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     # TODO: at some point, implement it fully and port my snippets
     # ./snippet_parser.nix
@@ -29,7 +30,7 @@
 
   # Helper files for the snippets
   extraFiles = {
-    "lua/luasnip_helpers/tex.lua" = "${builtins.readFile ./helpers/tex.lua}";
-    "lua/luasnip_helpers/global.lua" = "${builtins.readFile ./helpers/global.lua}";
+    "lua/luasnip_helpers/tex.lua".source = ./helpers/tex.lua;
+    "lua/luasnip_helpers/global.lua".source = ./helpers/global.lua;
   };
 }

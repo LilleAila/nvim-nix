@@ -1,8 +1,5 @@
+{ mkKeymap, mkKeymap', ... }:
 {
-  mkKeymap,
-  mkKeymap',
-  ...
-}: {
   plugins.toggleterm = {
     enable = true;
     settings = {

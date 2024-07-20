@@ -3,7 +3,8 @@
   pkgs,
   mkKeymap',
   ...
-}: {
+}:
+{
   extraPlugins = [
     (pkgs.vimUtils.buildVimPlugin {
       name = "move.nvim";

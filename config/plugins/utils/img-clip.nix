@@ -3,7 +3,8 @@
   pkgs,
   mkKeymap',
   ...
-}: {
+}:
+{
   extraPlugins = [
     (pkgs.vimUtils.buildVimPlugin {
       name = "img-clip.nvim";
@@ -40,7 +41,5 @@
     })
   '';
 
-  keymaps = [
-    (mkKeymap' "n" "<C-p>" ":PasteImage<cr>")
-  ];
+  keymaps = [ (mkKeymap' "n" "<C-p>" ":PasteImage<cr>") ];
 }

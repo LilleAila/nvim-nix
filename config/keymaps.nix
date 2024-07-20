@@ -1,8 +1,5 @@
+{ mkKeymap', mkKeymapWithOpts, ... }:
 {
-  mkKeymap',
-  mkKeymapWithOpts,
-  ...
-}: {
   keymaps = [
     # Indent without exiting visual mode
     (mkKeymap' "v" "<" "<gv")

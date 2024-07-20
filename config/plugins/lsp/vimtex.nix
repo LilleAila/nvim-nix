@@ -1,8 +1,5 @@
+{ mkKeymap, mkKeymapWithOpts, ... }:
 {
-  mkKeymap,
-  mkKeymapWithOpts,
-  ...
-}: {
   plugins.vimtex = {
     enable = true;
     texlivePackage = null; # Install in nix shell
@@ -27,9 +24,7 @@
 
   # Detect OS and choose PDF viewer accordingly
   extraConfigLua =
-    /*
-    lua
-    */
+    # lua
     ''
       local g = vim.g
       local platform = vim.loop.os_uname().sysname

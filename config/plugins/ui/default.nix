@@ -1,7 +1,7 @@
-{mkKeymap, ...}: {
+{ mkKeymap, ... }:
+{
   imports = [
     ./buffers.nix
-    ./indent-blankline.nix
     ./lualine.nix
     ./noice.nix
     ./which-key.nix
@@ -12,12 +12,6 @@
   plugins = {
     rainbow-delimiters.enable = true;
     nvim-colorizer.enable = true;
-    gitsigns = {
-      enable = true;
-      settings = {
-        current_line_blame = false;
-      };
-    };
     nvim-tree = {
       enable = true;
       hijackCursor = true;

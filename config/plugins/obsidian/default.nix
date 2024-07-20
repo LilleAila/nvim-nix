@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   plugins.obsidian = {
     enable = true;
     settings = {

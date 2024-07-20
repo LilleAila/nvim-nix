@@ -1,7 +1,6 @@
-{pkgs, ...}: {
-  extraPlugins = with pkgs.vimPlugins; [
-    guess-indent-nvim
-  ];
+{ pkgs, ... }:
+{
+  extraPlugins = with pkgs.vimPlugins; [ guess-indent-nvim ];
   extraConfigLua = ''
     require("guess-indent").setup {
       auto_cmd = true,

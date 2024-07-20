@@ -1,11 +1,12 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   plugins.molten = {
     enable = true;
   };
 
   # === DEPENDENCIES ===
-  extraPython3Packages = p:
-    with p; [
+  extraPython3Packages =
+    p: with p; [
       pynvim
       jupyter-client
       cairosvg
@@ -14,23 +15,14 @@
       pyperclip
     ];
 
-  extraLuaPackages = ps:
-    with ps; [
-      magick
-    ];
+  extraLuaPackages = ps: with ps; [ magick ];
 
-  extraPackages = with pkgs; [
-    imagemagick
-  ];
+  extraPackages = with pkgs; [ imagemagick ];
 
-  extraPlugins = with pkgs.vimPlugins; [
-    image-nvim
-  ];
+  extraPlugins = with pkgs.vimPlugins; [ image-nvim ];
 
   extraConfigLua =
-    /*
-    lua
-    */
+    # lua
     ''
       require("image").setup({
         backend = "kitty",

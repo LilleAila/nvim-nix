@@ -4,7 +4,8 @@
   colorScheme,
   mkKeymap,
   ...
-}: {
+}:
+{
   # This does not work for some reason.. probably the luarocks dependency stuff mentioned in the readme.
   # plugins.neorg = {
   #   enable = true;
@@ -22,9 +23,7 @@
     })
   ];
 
-  plugins.cmp.settings.sources = [
-    {name = "orgmode";}
-  ];
+  plugins.cmp.settings.sources = [ { name = "orgmode"; } ];
 
   # Set conceallevel locally
   # TODO: Change the "change tab" keybinding, because it conflicts with the toggle-fold keybind in org mode
@@ -35,12 +34,11 @@
     };
   };
 
-  extraConfigLua = let
-    c = colorScheme.palette;
-  in
-    /*
-    lua
-    */
+  extraConfigLua =
+    let
+      c = colorScheme.palette;
+    in
+    # lua
     ''
       -- vim.cmd("language en_US.utf8") -- doesn't work (sometimes)?? idk
       require("orgmode").setup({

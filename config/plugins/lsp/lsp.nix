@@ -1,8 +1,5 @@
+{ mkKeymap, mkKeymapWithOpts, ... }:
 {
-  mkKeymap,
-  mkKeymapWithOpts,
-  ...
-}: {
   plugins.lsp = {
     # NOTE: All packages, including LSPs and formatters should be installed through devshells!!
     enable = true;
@@ -42,7 +39,10 @@
       nixd = {
         enable = true;
         settings = {
-          diagnostic.suppress = ["sema-escaping-with" "var-bind-to-this"];
+          diagnostic.suppress = [
+            "sema-escaping-with"
+            "var-bind-to-this"
+          ];
         };
         package = null;
       };
@@ -124,18 +124,58 @@
       end
     '';
     formattersByFt = {
-      haskell = ["ormolu"];
-      astro = ["prettier"];
-      html = [["prettierd" "prettier"]];
-      css = [["prettierd" "prettier"]];
-      javascript = [["prettierd" "prettier"]];
-      javascriptreact = [["prettierd" "prettier"]];
-      typescript = [["prettierd" "prettier"]];
-      python = [["autopep8" "black"]];
-      lua = ["stylua"];
-      nix = [["nixfmt" "alejandra"]]; # nixfmt, use alejandra as backup
-      markdown = [["prettierd" "prettier"]];
-      rust = ["rustfmt"];
+      haskell = [ "ormolu" ];
+      astro = [ "prettier" ];
+      html = [
+        [
+          "prettierd"
+          "prettier"
+        ]
+      ];
+      css = [
+        [
+          "prettierd"
+          "prettier"
+        ]
+      ];
+      javascript = [
+        [
+          "prettierd"
+          "prettier"
+        ]
+      ];
+      javascriptreact = [
+        [
+          "prettierd"
+          "prettier"
+        ]
+      ];
+      typescript = [
+        [
+          "prettierd"
+          "prettier"
+        ]
+      ];
+      python = [
+        [
+          "autopep8"
+          "black"
+        ]
+      ];
+      lua = [ "stylua" ];
+      nix = [
+        [
+          "nixfmt"
+          "alejandra"
+        ]
+      ]; # nixfmt, use alejandra as backup
+      markdown = [
+        [
+          "prettierd"
+          "prettier"
+        ]
+      ];
+      rust = [ "rustfmt" ];
     };
   };
 

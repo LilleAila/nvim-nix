@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ./ui
     ./lsp
@@ -8,9 +9,7 @@
   ];
 
   extraConfigLuaPre =
-    /*
-    lua
-    */
+    # lua
     ''
       vim.loader.enable() -- Enable experimental lua loader: https://neovim.io/doc/user/lua.html#vim.loader
     '';

@@ -1,6 +1,9 @@
-{...}: {
+{ ... }:
+{
   plugins.which-key = {
     enable = true;
+    window.position = "bottom";
+    layout.align = "right";
     registrations = {
       "<leader>f".name = " Files";
       "<leader>fg".name = " Git";
@@ -15,8 +18,19 @@
       group = "";
     };
     triggersBlackList = {
-      i = ["h" "j" "k" "l" "v"];
-      v = ["h" "j" "k" "l"];
+      i = [
+        "h"
+        "j"
+        "k"
+        "l"
+        "v"
+      ];
+      v = [
+        "h"
+        "j"
+        "k"
+        "l"
+      ];
     };
   };
 }

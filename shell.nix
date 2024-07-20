@@ -1,8 +1,11 @@
-{pkgs ? import <nixpkgs> {}}: {
+{
+  pkgs ? import <nixpkgs> { },
+}:
+{
   default = pkgs.mkShell {
     nativeBuildInputs = with pkgs; [
-      nil
-      alejandra
+      nixd
+      nixfmt-rfc-style
     ];
   };
 }

@@ -26,31 +26,29 @@
     };
   };
 
-  outputs = {nixpkgs, ...} @ inputs: let
-    lib = nixpkgs.lib;
-    systems = [
-      "x86_64-linux"
-      "aarch64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
-    ];
-    pkgsFor = lib.genAttrs systems (
-      system:
-        import nixpkgs {
-          inherit system;
-        }
-    );
-    forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
-  in {
-    packages = forEachSystem (pkgs: rec {
-      default = pkgs.callPackage ./package.nix {
-        inherit inputs;
-        colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
-      };
-      nvim = default;
-      nixvim = default;
-    });
+  outputs =
+    { nixpkgs, ... }@inputs:
+    let
+      lib = nixpkgs.lib;
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
+      pkgsFor = lib.genAttrs systems (system: import nixpkgs { inherit system; });
+      forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
+    in
+    {
+      packages = forEachSystem (pkgs: rec {
+        default = pkgs.callPackage ./package.nix {
+          inherit inputs;
+          colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
+        };
+        nvim = default;
+        nixvim = default;
+      });
 
-    devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});
-  };
+      devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
+    };
 }

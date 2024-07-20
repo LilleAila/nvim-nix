@@ -1,11 +1,6 @@
+{ pkgs, mkKeymap, ... }:
 {
-  pkgs,
-  mkKeymap,
-  ...
-}: {
-  extraPlugins = with pkgs.vimPlugins; [
-    hop-nvim
-  ];
+  extraPlugins = with pkgs.vimPlugins; [ hop-nvim ];
   extraConfigLua = ''
     require("hop").setup {
       keys = "asdfghjkløæqwertyuiopåzxcvbnm,.-",

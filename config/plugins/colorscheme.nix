@@ -1,15 +1,15 @@
 /*
-Slightly modified version of nix-colors' vim colorscheme, taken from `lib/contrib/vim-theme.nix` at this commit:
-https://github.com/Misterio77/nix-colors/commit/f84b4255d2c635c97378af20fa704561b9247435
+  Slightly modified version of nix-colors' vim colorscheme, taken from `lib/contrib/vim-theme.nix` at this commit:
+  https://github.com/Misterio77/nix-colors/commit/f84b4255d2c635c97378af20fa704561b9247435
 */
-{pkgs}: {scheme}: let
+{ pkgs }:
+{ scheme }:
+let
   c = scheme.palette;
   slug = scheme.slug;
 in
-  pkgs.writeTextDir "colors/nix-${slug}.vim"
-  /*
-  vim
-  */
+pkgs.writeTextDir "colors/nix-${slug}.vim"
+  # vim
   ''
      let g:colors_name="nix-${slug}"
 

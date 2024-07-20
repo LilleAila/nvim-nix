@@ -8,6 +8,15 @@ rec {
     };
   };
   # Make keymap without description:
-  mkKeymap' = mode: key: action: mkKeymap mode key action null;
-  mkKeymapWithOpts = mode: key: action: options: {inherit mode key action options;};
+  mkKeymap' =
+    mode: key: action:
+    mkKeymap mode key action null;
+  mkKeymapWithOpts = mode: key: action: options: {
+    inherit
+      mode
+      key
+      action
+      options
+      ;
+  };
 }

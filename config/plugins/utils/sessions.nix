@@ -1,4 +1,5 @@
-{mkKeymap, ...}: {
+{ mkKeymap, ... }:
+{
   plugins.auto-session = {
     enable = true;
     # :SessionRestore, :SessionSave

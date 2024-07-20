@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   plugins.fidget = {
     enable = true;
     logger = {
@@ -22,7 +23,7 @@
       notificationGroup = ''
         function(msg) return msg.lsp_client.name end
       '';
-      ignore = [];
+      ignore = [ ];
       lsp.progressRingbufSize = 0;
       display = {
         renderLimit = 16;

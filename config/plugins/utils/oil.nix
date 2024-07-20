@@ -1,4 +1,5 @@
-{mkKeymap, ...}: {
+{ mkKeymap, ... }:
+{
   plugins.oil = {
     enable = true;
     settings = {
@@ -32,9 +33,7 @@
         show_hidden = false;
         # Hide .git folders
         is_always_hidden =
-          /*
-          lua
-          */
+          # lua
           ''
             function(name, bufnr)
             	if name == ".git" then
@@ -58,7 +57,5 @@
     };
   };
 
-  keymaps = [
-    (mkKeymap "n" "<leader>fe" ":Oil<cr>" "Oil")
-  ];
+  keymaps = [ (mkKeymap "n" "<leader>fe" ":Oil<cr>" "Oil") ];
 }
