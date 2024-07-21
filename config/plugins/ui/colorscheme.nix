@@ -18,7 +18,6 @@ in
 
   highlight = {
     winSeparator.fg = c.base05;
-    CursorLineNr.bg = c.base0A;
 
     # Treesitter and LSP
     Identifier.fg = c.base0D;
