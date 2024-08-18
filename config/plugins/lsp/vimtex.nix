@@ -7,7 +7,9 @@
       compiler_method = "latexmk";
       compiler_latexmk_engines = {
         "_" = "-pdf";
-        "pdf_escaped" = "-pdf -pdflatex=\"pdflatex -shell-escape %O %S\"";
+        "pdf_escaped" = ''-pdf -pdflatex="pdflatex -shell-escape %O %S"'';
+        "lualatex" = ''-pdf -lualatex'';
+        "lualatex_escaped" = ''-pdf -lualatex -lualatex="lualatex %O --shell-escape %S"'';
       };
       view_enabled = 1;
       syntax_conceal_enable = 1;
@@ -15,12 +17,12 @@
   };
 
   # Enable conceal in LaTeX files
-  files."ftplugin/tex.lua" = {
-    opts = {
-      conceallevel = 2;
-      concealcursor = "nc";
-    };
-  };
+  # files."ftplugin/tex.lua" = {
+  #   opts = {
+  #     conceallevel = 2;
+  #     concealcursor = "nc";
+  #   };
+  # };
 
   # Detect OS and choose PDF viewer accordingly
   extraConfigLua =
