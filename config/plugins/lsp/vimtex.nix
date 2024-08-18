@@ -8,8 +8,8 @@
       compiler_latexmk_engines = {
         "_" = "-pdf";
         "pdf_escaped" = ''-pdf -pdflatex="pdflatex -shell-escape %O %S"'';
-        "lualatex" = ''-pdf -lualatex'';
-        "lualatex_escaped" = ''-pdf -lualatex -lualatex="lualatex %O --shell-escape %S"'';
+        "lualatex" = ''-pdf -lualatex --synctex=1'';
+        "lualatex_escaped" = ''-pdf -lualatex -lualatex="lualatex %O --shell-escape --synctex=1 %S"'';
       };
       view_enabled = 1;
       syntax_conceal_enable = 1;
@@ -34,7 +34,7 @@
       	g.vimtex_view_method = "skim"
       	g.vimtex_view_skim_activate = 1
       elseif platform == "Linux" then
-      	g.vimtex_view_method = "zathura"
+      	g.vimtex_view_method = "zathura_simple" -- without xdotool because wayland
       	g.vimtex_view_zathura_activate = 1
       else
       	g.vimtex_view_method = "generic"
