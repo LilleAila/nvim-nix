@@ -65,7 +65,7 @@ M = {
       i(0)
     }),
   { condition = tex.in_math, show_condition = tex.in_math }),
-  parse({ trig = "ff", name = "fraction", condition = tex.in_math, show_condition = tex.in_math }, [[\frac{$1}{$2}]])
+  parse({ trig = "ff", name = "fraction", snippetType = "autosnippet", condition = tex.in_math, show_condition = tex.in_math }, [[\frac{$1}{$2}]])
 }
 
 return M

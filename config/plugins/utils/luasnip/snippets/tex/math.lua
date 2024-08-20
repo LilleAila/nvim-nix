@@ -1,159 +1,49 @@
 local ls = require("luasnip")
 local s = ls.snippet
 local sn = ls.snippet_node
+local isn = ls.indent_snippet_node
 local t = ls.text_node
 local i = ls.insert_node
 local f = ls.function_node
+local c = ls.choice_node
 local d = ls.dynamic_node
+local r = ls.restore_node
+local events = require("luasnip.util.events")
+local ai = require("luasnip.nodes.absolute_indexer")
+local extras = require("luasnip.extras")
+local l = extras.lambda
+local rep = extras.rep
+local p = extras.partial
+local m = extras.match
+local n = extras.nonempty
+local dl = extras.dynamic_lambda
 local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
-local rep = require("luasnip.extras").rep
+local conds = require("luasnip.extras.expand_conditions")
+local postfix = require("luasnip.extras.postfix").postfix
+local types = require("luasnip.util.types")
+local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
+local autosnippet = ls.extend_decorator.apply(s, { snippetType = "autosnippet" })
 
-local helpers = require('luasnip_helpers.global')
-local get_visual = helpers.get_visual
-local nl_whitespace = helpers.nl_whitespace
-local line_begin = require("luasnip.extras.expand_conditions").line_begin
+-- other imports
+local tex = require("luasnip_helpers.latex.conditions")
+local scaffolding = require("luasnip_helpers.latex.scaffolding")
 
-local tex_utils = require("luasnip_helpers.tex")
+local snip = ls.extend_decorator.apply(parse, {
+  snippetType = "autosnippet",
+  condition = tex.in_math,
+  show_condition = tex.in_math
+})
+local tsnip = ls.extend_decorator.apply(parse, {
+  snippetType = "autosnippet",
+  condition = tex.in_text,
+  show_condition = tex.in_text
+})
 
-return {
-		s({ trig = "mm", descr = "Inline Math", snippetType = "autosnippet", wordTrig = false },
-		fmta(
-			[[<>$ <> $]],
-			{ f( function(_, snip) return snip.captures[1] end ), i(1) }
-		), { condition = tex_utils.in_text_wsnl }),
-	s({ trig = "mf", descr = "Flalign Math", snippetType = "autosnippet", wordTrig = false },
-		fmta(
-			[[
-				\begin{flalign*}
-					& <> & <>
-				\end{flalign*}
-			]],
-			{ i(1), i(0) }
-		), { condition = tex_utils.in_text_lnstart }),
-	s({ trig = "ma", descr = "Align Math", snippetType = "autosnippet", wordTrig = false },
-		fmta(
-			[[
-				\begin{align*}
-					& <> & <>
-				\end{align*}
-			]],
-			{ i(1), i(0) }
-		), { condition = tex_utils.in_text_lnstart }),
-
-	s({ trig = "(%s)nn", descr = "Newline", snippetType = "autosnippet", wordTrig = false, regTrig = true },
-		fmta(
-			[[
-				<>\\
-				& <> &
-			]],
-			{ f( function(_, snip) return snip.captures[1] end ), i(1) }
-		), { condition = tex_utils.in_flalign }),
-	s({ trig = "(%s)nl", descr = "Newline with aligned =", snippetType = "autosnippet", wordTrig = false, regTrig = true },
-		fmta(
-			[[
-				<>\\
-				<> &= <> &
-			]],
-			{ f( function(_, snip) return snip.captures[1] end ), i(1), i(2) }
-		), { condition = tex_utils.in_flalign }),
-	s({ trig = "(%s)na", descr = "Newline with underlined aligned =", snippetType = "autosnippet", wordTrig = false, regTrig = true },
-		fmta(
-			[[
-				<>\\
-				\ans{<> &= <>} &
-			]],
-			{ f( function(_, snip) return snip.captures[1] end ), i(1), i(2) }
-		), { condition = tex_utils.in_flalign }),
-	--------------------
-	s({ trig = "^", descr = "Exponent", snippetType = "autosnippet", wordTrig = false },
-		fmta(
-			[[^{<>}]],
-			{ i(1) }
-		), { condition = tex_utils.in_mathzone }),
-	s({ trig = "*", descr = "Multiplication sign", snippetType = "autosnippet", wordTrig = true },
-		{ t([[\cdot]]) },
-	{ condition = tex_utils.in_mathzone }),
-	s({ trig = "ff", descr = "Fraction", snippetType = "autosnippet", wordTrig = true },
-		fmta(
-			[[\frac{<>}{<>}]],
-			{ i(1), i(2) }
-		), { condition = tex_utils.in_mathzone }),
-	s({ trig = "aa", descr = "Answer (Double underline)", snippetType = "autosnippet", wordTrig = true },
-		fmta(
-			[[
-				\underline{\underline{<>}}
-			]],
-			{ d(1, get_visual) }
-		), { condition = tex_utils.in_mathzone }),
-	s({ trig = "und", descr = "Underset text (below other text)", wordTrig = false },
-		fmta(
-			[[\underset{<>}{<>}]],
-			{ i(1, "Under"), d(2, get_visual) }
-		), { condition = tex_utils.in_mathzone }),
-	s({ trig = "ss", descr = "Square root", wordTrig = true, snippetType="autosnippet" },
-		fmta(
-			[[\sqrt{<>}]],
-			{ i(1) }
-		), { condition = tex_utils.in_mathzone }),
-	s({ trig = "rr", descr = "Nth root", wordTrig = true, snippetType="autosnippet" },
-		fmta(
-			[[\sqrt[<>]{<>}]],
-			{ i(1), i(2) }
-		), { condition = tex_utils.in_mathzone }),
-	----------
-	-- List --
-	----------
-	s({ trig = "ls", descr = "List a) b) c)", wordTrig = false, snippetType = "autosnippet" },
-		fmta(
-			[[
-				\begin{enumerate}
-					<>
-				\end{enumerate}
-			]],
-			{ i(1) }
-		), { condition = tex_utils.in_text_lnstart }),
-	s({ trig = "lr", descr = "Resume list", wordTrig = false, snippetType = "autosnippet" },
-		fmta(
-			[[
-				\begin{enumerate}[resume]
-					<>
-				\end{enumerate}
-			]],
-			{ i(1) }
-		), { condition = tex_utils.in_text_lnstart }),
-	s({ trig = "li", descr = "List item", snippetType = "autosnippet", wordTrig = false },
-		fmta(
-			[[<>\item <>]],
-			{ f( function(_, snip) return snip.captures[1] end ), i(1) }
-		), { condition = tex_utils.in_list_lnstart }),
-	s({ trig = "(%s)lm", descr = "List multiline math", snippetType = "autosnippet", wordTrig = false, regTrig = true },
-		fmta(
-			[[
-				<>
-					\begin{flalign*}
-						& <> & <>
-					\end{flalign*}
-			]],
-			{ f( function(_, snip) return snip.captures[1] end ), i(1), i(2) }
-		), { condition = tex_utils.in_list_nlnstart }),
-	s({ trig = "(%s)ll", descr = "List math line", snippetType = "autosnippet", wordTrig = false, regTrig = true },
-		fmta(
-			[[
-				<>\\[5pt]
-				& <> &
-			]],
-			{ f( function(_, snip) return snip.captures[1] end ), i(1) }
-		), { condition = tex_utils.in_list_nlnstart_math }),
-
-
-	-- s({ trig = "yy", descr = "Symbol", snippetType = "autosnippet", wordTrig = false },
-	-- 	{ t([[\]]), i(1) }, { condition = tex_utils.in_mathzone }),
-	-- s({ trig = "lor", descr = "Logical or", snippetType = "autosnippet", wordTrig = true },
-	-- 	{ t([[\lor]]) }, { condition = tex_utils.in_mathzone }),
-	-- s({ trig = "land", descr = "Logical and", snippetType = "autosnippet", wordTrig = true },
-	-- 	{ t([[\land]]) }, { condition = tex_utils.in_mathzone }),
-	-- s({ trig = "pi", descr = "pi", snippetType = "autosnippet", wordTrig = true },
-	-- 	{ t([[\pi]]) }, { condition = tex_utils.in_mathzone }),
+M = {
+  tsnip({ trig = "mm", name = "inline math" }, [[$ $1 $]])
+  -- TODO: resten av snipetene
 }
+
+return M

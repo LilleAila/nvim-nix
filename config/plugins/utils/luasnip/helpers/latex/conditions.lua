@@ -30,8 +30,10 @@ function M.in_preamble()
 	return not env("document")
 end
 
+-- FIXME use the document thing? idk how it plays with imports
 function M.in_text()
-	return env("document") and not M.in_math()
+	-- return env("document") and not M.in_math()
+	return not M.in_math()
 end
 
 function M.in_tikz()
