@@ -1,10 +1,10 @@
+# https://evesdropper.dev/files/luasnip/
+# https://github.com/evesdropper/luasnip-latex-snippets.nvim/blob/main/lua/luasnip-latex-snippets/luasnippets/tex/delimiters.lua
+# https://github.com/iurimateus/luasnip-latex-snippets.nvim/blob/main/lua/luasnip-latex-snippets/math_iA.lua
+# TODO: use this syntax for simple snippets: https://github.com/iurimateus/luasnip-latex-snippets.nvim/blob/4b91f28d91979f61a3e8aef1cee5b7c7f2c7beb8/lua/luasnip-latex-snippets/math_iA.lua#L125 but with auto and word trig
+
 { ... }:
 {
-  imports = [
-    # TODO: at some point, implement it fully and port my snippets
-    # ./snippet_parser.nix
-  ];
-
   plugins.luasnip = {
     enable = true;
     extraConfig = {
@@ -20,12 +20,6 @@
         lazyLoad = true;
       }
     ];
-    # snippets.all.snippets = [
-    #   {
-    #     trig = "hi";
-    #     text = "Hello, World!";
-    #   }
-    # ];
   };
 
   # Helper files for the snippets

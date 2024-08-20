@@ -1,6 +1,3 @@
--- https://github.com/evesdropper/luasnip-latex-snippets.nvim/blob/main/lua/luasnip-latex-snippets/luasnippets/tex/delimiters.lua
--- https://github.com/iurimateus/luasnip-latex-snippets.nvim/blob/main/lua/luasnip-latex-snippets/math_iA.lua
-
 local ls = require("luasnip")
 local s = ls.snippet
 local sn = ls.snippet_node
