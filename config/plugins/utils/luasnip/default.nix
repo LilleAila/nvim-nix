@@ -32,5 +32,8 @@
   extraFiles = {
     "lua/luasnip_helpers/tex.lua".source = ./helpers/tex.lua;
     "lua/luasnip_helpers/global.lua".source = ./helpers/global.lua;
+    "lua/luasnip_helpers/latex/init.lua".source = ./helpers/latex/init.lua;
+    "lua/luasnip_helpers/latex/conditions.lua".source = ./helpers/latex/conditions.lua;
+    "lua/luasnip_helpers/latex/scaffolding.lua".source = ./helpers/latex/scaffolding.lua;
   };
 }

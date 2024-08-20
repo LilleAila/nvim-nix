@@ -27,8 +27,8 @@ local ms = ls.multi_snippet
 local autosnippet = ls.extend_decorator.apply(s, { snippetType = "autosnippet" })
 
 -- other imports
-local tex = require("luasnip-latex-snippets.luasnippets.tex.utils.conditions")
-local scaffolding = require("luasnip-latex-snippets.luasnippets.tex.utils.scaffolding")
+local tex = require("luasnip_helpers.latex.conditions")
+local scaffolding = require("luasnip_helpers.latex.scaffolding")
 
 -- brackets
 -- maybe rename to use characters instead of symbols?
@@ -44,19 +44,47 @@ local brackets = {
 }
 
 M = {
-  autosnippet({ trig = "lr([dcf])", name = "left right", dscr = "left right delimiters", regTrig = true, hidden = true },
+  autosnippet({ trig = "lr([%(%[{<|dcf])", name = "left right", dscr = "left right delimiters", regTrig = true, hidden = true },
     fmta(
     [[
       \left<> <> \right<><>
     ]],
     {
       f(function(_, snip)
-        cap = snip.captures[1] or 'p'
+        cap = snip.captures[1] or '('
         return brackets[cap][1]
       end),
       d(1, scaffolding.get_visual),
       f(function(_, snip)
-        cap = snip.captures[1] or 'p'
+        cap = snip.captures[1] or '('
+        return brackets[cap][2]
+      end),
+      i(0)
+    }),
+  { condition = tex.in_math, show_condition = tex.in_math }),
+  autosnippet({ trig = "l([%(%[{<|dcf])", name = "left right", dscr = "left right delimiters", regTrig = true, hidden = true },
+    fmta(
+    [[
+      \left<> <> \right.<>
+    ]],
+    {
+      f(function(_, snip)
+        cap = snip.captures[1] or '('
+        return brackets[cap][1]
+      end),
+      d(1, scaffolding.get_visual),
+      i(0)
+    }),
+  { condition = tex.in_math, show_condition = tex.in_math }),
+  autosnippet({ trig = "r([%(%[{<|dcf])", name = "left right", dscr = "left right delimiters", regTrig = true, hidden = true },
+    fmta(
+    [[
+      \left. <> \right<><>
+    ]],
+    {
+      d(1, scaffolding.get_visual),
+      f(function(_, snip)
+        cap = snip.captures[1] or '('
         return brackets[cap][2]
       end),
       i(0)
