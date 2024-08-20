@@ -31,7 +31,7 @@ local tex = require("luasnip_helpers.latex.conditions")
 local scaffolding = require("luasnip_helpers.latex.scaffolding")
 
 M = {
-  autosnippet({ trig = "(%s)(.-)/", name = "fraction", dscr = "fractions", regTrig = true, wordTrig = false, hidden = true },
+  autosnippet({ trig = "(%s)(.-)/", name = "fraction", regTrig = true, wordTrig = false, hidden = true },
     fmta(
     [[
       <>\frac{<>}{<>}<>
@@ -43,6 +43,29 @@ M = {
       i(0)
     }),
   { condition = tex.in_math, show_condition = tex.in_math }),
+  autosnippet({ trig = "ft", name = "fraction teller" },
+    fmta(
+    [[
+      \frac{<>}{<>}<>
+    ]],
+    {
+      d(2, scaffolding.get_visual),
+      i(1),
+      i(0)
+    }),
+  { condition = tex.in_math, show_condition = tex.in_math }),
+  autosnippet({ trig = "fn", name = "fraction nevner" },
+    fmta(
+    [[
+      \frac{<>}{<>}<>
+    ]],
+    {
+      i(1),
+      d(2, scaffolding.get_visual),
+      i(0)
+    }),
+  { condition = tex.in_math, show_condition = tex.in_math }),
+  parse({ trig = "ff", name = "fraction", condition = tex.in_math, show_condition = tex.in_math }, [[\frac{$1}{$2}]])
 }
 
 return M
