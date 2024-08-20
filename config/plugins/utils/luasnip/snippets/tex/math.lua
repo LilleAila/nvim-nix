@@ -69,48 +69,6 @@ return {
 			]],
 			{ f( function(_, snip) return snip.captures[1] end ), i(1), i(2) }
 		), { condition = tex_utils.in_flalign }),
-	---------------------
-	s({ trig = "lr(", descr = "Parentheses", snippetType = "autosnippet", wordTrig = true },
-		fmta(
-			[[\left(<>\right)]],
-			{ i(1) }
-		), { condition = tex_utils.in_mathzone }),
-	s({ trig = "lr[", descr = "Brackets", snippetType = "autosnippet", wordTrig = true },
-		-- https://stackoverflow.com/a/66383531
-		fmta(
-			[=[\left[<>\right]]=],
-			{ i(1) }
-		), { condition = tex_utils.in_mathzone }),
-	s({ trig = "lr{", descr = "Braces", snippetType = "autosnippet", wordTrig = true },
-		fmta(
-			[[\left\{<>\right\}]],
-			{ i(1) }
-		), { condition = tex_utils.in_mathzone }),
-	s({ trig = "lr<", descr = "Angle brackets", snippetType = "autosnippet", wordTrig = true },
-		fmta(
-			[[\left\langle<>\right\rangle]],
-			{ i(1) }
-		), { condition = tex_utils.in_mathzone }),
-	s({ trig = "lr|", descr = "Pipes", snippetType = "autosnippet", wordTrig = true },
-		fmta(
-			[[\left|<>\right|]],
-			{ i(1) }
-		), { condition = tex_utils.in_mathzone }),
-	s({ trig = "lrd|", descr = "Double pipes", snippetType = "autosnippet", wordTrig = true },
-		fmta(
-			[[\left\|<>\right\|]],
-			{ i(1) }
-		), { condition = tex_utils.in_mathzone }),
-	s({ trig = "lrc", descr = "Ceil", snippetType = "autosnippet", wordTrig = true },
-		fmta(
-			[[\left\lceil<>\right\rceil]],
-			{ i(1) }
-		), { condition = tex_utils.in_mathzone }),
-	s({ trig = "lrf", descr = "Floor", snippetType = "autosnippet", wordTrig = true },
-		fmta(
-			[[\left\lfloor<>\right\rfloor]],
-			{ i(1) }
-		), { condition = tex_utils.in_mathzone }),
 	--------------------
 	s({ trig = "l(", descr = "Left parenthesis", snippetType = "autosnippet", wordTrig = true },
 		fmta(
@@ -141,11 +99,6 @@ return {
 	s({ trig = "ld|", descr = "Left double pipe", snippetType = "autosnippet", wordTrig = true },
 		fmta(
 			[[\left\|<>\right.]],
-			{ i(1) }
-		), { condition = tex_utils.in_mathzone }),
-	s({ trig = "lc", descr = "Left ceil", snippetType = "autosnippet", wordTrig = true },
-		fmta(
-			[[\left\lceil<>\right.]],
 			{ i(1) }
 		), { condition = tex_utils.in_mathzone }),
 	s({ trig = "lf", descr = "Left floor", snippetType = "autosnippet", wordTrig = true },
