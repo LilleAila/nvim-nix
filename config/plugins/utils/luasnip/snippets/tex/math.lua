@@ -1,3 +1,6 @@
+-- https://github.com/evesdropper/luasnip-latex-snippets.nvim/blob/main/lua/luasnip-latex-snippets/luasnippets/tex/delimiters.lua
+-- https://github.com/iurimateus/luasnip-latex-snippets.nvim/blob/main/lua/luasnip-latex-snippets/math_iA.lua
+
 local ls = require("luasnip")
 local s = ls.snippet
 local sn = ls.snippet_node
@@ -23,7 +26,7 @@ return {
 			[[<>$ <> $]],
 			{ f( function(_, snip) return snip.captures[1] end ), i(1) }
 		), { condition = tex_utils.in_text_wsnl }),
-	s({ trig = "ml", descr = "Multiline Math", snippetType = "autosnippet", wordTrig = false },
+	s({ trig = "mf", descr = "Flalign Math", snippetType = "autosnippet", wordTrig = false },
 		fmta(
 			[[
 				\begin{flalign*}
@@ -32,52 +35,186 @@ return {
 			]],
 			{ i(1), i(0) }
 		), { condition = tex_utils.in_text_lnstart }),
-	s({ trig = "(%s)ll", descr = "Left-aligned newline", snippetType = "autosnippet", wordTrig = false, regTrig = true },
+	s({ trig = "ma", descr = "Align Math", snippetType = "autosnippet", wordTrig = false },
 		fmta(
 			[[
-				<> \\[5pt]
+				\begin{align*}
+					& <> & <>
+				\end{align*}
+			]],
+			{ i(1), i(0) }
+		), { condition = tex_utils.in_text_lnstart }),
+
+	s({ trig = "(%s)nn", descr = "Newline", snippetType = "autosnippet", wordTrig = false, regTrig = true },
+		fmta(
+			[[
+				<>\\
 				& <> &
 			]],
 			{ f( function(_, snip) return snip.captures[1] end ), i(1) }
 		), { condition = tex_utils.in_flalign }),
-	s({ trig = "me", descr = "Unnumbered equation" },
+	s({ trig = "(%s)nl", descr = "Newline with aligned =", snippetType = "autosnippet", wordTrig = false, regTrig = true },
 		fmta(
 			[[
-				\begin{equation*}
-					<>
-				\end{equation*}
+				<>\\
+				<> &= <> &
 			]],
-			{ i(1) }
-		), { condition = tex_utils.in_text_lnstart }),
-	---------------------
-	s({ trig = "^", descr = "Exponent", snippetType = "autosnippet", wordTrig = false},
+			{ f( function(_, snip) return snip.captures[1] end ), i(1), i(2) }
+		), { condition = tex_utils.in_flalign }),
+	s({ trig = "(%s)na", descr = "Newline with underlined aligned =", snippetType = "autosnippet", wordTrig = false, regTrig = true },
 		fmta(
-			[[^{<>}]],
-			{ i(1) }
-		), { condition = tex_utils.in_mathzone }),
-	s({ trig = "pp", descr = "Parenthesis", snippetType = "autosnippet", wordTrig = true, regTrig = false },
+			[[
+				<>\\
+				\ans{<> &= <>} &
+			]],
+			{ f( function(_, snip) return snip.captures[1] end ), i(1), i(2) }
+		), { condition = tex_utils.in_flalign }),
+	---------------------
+	s({ trig = "lr(", descr = "Parentheses", snippetType = "autosnippet", wordTrig = true },
 		fmta(
 			[[\left(<>\right)]],
 			{ i(1) }
 		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "lr[", descr = "Brackets", snippetType = "autosnippet", wordTrig = true },
+		-- https://stackoverflow.com/a/66383531
+		fmta(
+			[=[\left[<>\right]]=],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "lr{", descr = "Braces", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left\{<>\right\}]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "lr<", descr = "Angle brackets", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left\langle<>\right\rangle]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "lr|", descr = "Pipes", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left|<>\right|]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "lrd|", descr = "Double pipes", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left\|<>\right\|]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "lrc", descr = "Ceil", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left\lceil<>\right\rceil]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "lrf", descr = "Floor", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left\lfloor<>\right\rfloor]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	--------------------
+	s({ trig = "l(", descr = "Left parenthesis", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left(<>\right.]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "l[", descr = "Left bracket", snippetType = "autosnippet", wordTrig = true },
+		-- https://stackoverflow.com/a/66383531
+		fmta(
+			[=[\left[<>\right.]=],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "l{", descr = "Left brace", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left\{<>\right.]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "l<", descr = "Left angle bracket", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left\langle<>\right.]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "l|", descr = "Left pipe", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left|<>\right.]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "ld|", descr = "Left double pipe", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left\|<>\right.]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "lc", descr = "Left ceil", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left\lceil<>\right.]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "lf", descr = "Left floor", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left\lfloor<>\right.]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	--------------------
+	s({ trig = "r(", descr = "Right parenthesis", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left.<>\right)]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "r[", descr = "Right bracket", snippetType = "autosnippet", wordTrig = true },
+		-- https://stackoverflow.com/a/66383531
+		fmta(
+			[=[\left.<>\right]]=],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "r{", descr = "Right brace", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left.<>\right\}]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "r<", descr = "Right angle bracket", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left.<>\right\rangle]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "r|", descr = "Right pipe", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left.<>\right|]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "rd|", descr = "Right double pipe", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left.<>\right\|]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "rc", descr = "Right ceil", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left.<>\right\rceil]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "rf", descr = "Right floor", snippetType = "autosnippet", wordTrig = true },
+		fmta(
+			[[\left.<>\right\rfloor]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	--------------------
+	s({ trig = "^", descr = "Exponent", snippetType = "autosnippet", wordTrig = false },
+		fmta(
+			[[^{<>}]],
+			{ i(1) }
+		), { condition = tex_utils.in_mathzone }),
+	s({ trig = "*", descr = "Multiplication sign", snippetType = "autosnippet", wordTrig = true },
+		{ t([[\cdot]]) },
+	{ condition = tex_utils.in_mathzone }),
 	s({ trig = "ff", descr = "Fraction", snippetType = "autosnippet", wordTrig = true },
 		fmta(
 			[[\frac{<>}{<>}]],
 			{ i(1), i(2) }
 		), { condition = tex_utils.in_mathzone }),
-	s({ trig = "([%s])*", descr = "Multiplication sign", snippetType = "autosnippet", regTrig = true, wordTrig = false },
-		fmta(
-			[[<>\cdot]],
-			{ f( function(_, snip) return snip.captures[1] end ) }
-		),
-		-- { t([[\cdot]]) },
-		{ condition = tex_utils.in_mathzone }),
-	s({ trig = "([%s])aa", descr = "Answer (Double underline)", snippetType = "autosnippet", wordTrig = false, regTrig = true },
+	s({ trig = "aa", descr = "Answer (Double underline)", snippetType = "autosnippet", wordTrig = true },
 		fmta(
 			[[
-				<>\underline{\underline{<>}}
+				\underline{\underline{<>}}
 			]],
-			{ f( function(_, snip) return snip.captures[1] end ), d(1, get_visual) }
+			{ d(1, get_visual) }
 		), { condition = tex_utils.in_mathzone }),
 	s({ trig = "und", descr = "Underset text (below other text)", wordTrig = false },
 		fmta(
