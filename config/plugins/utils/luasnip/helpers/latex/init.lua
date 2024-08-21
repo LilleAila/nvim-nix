@@ -1,6 +1,6 @@
 local M = {}
 
-M.conditions = require("luasnip_helpers.latex.conditions")
-M.scaffolding = require("luasnip_helpers.latex.scaffolding")
+M.tex = require("luasnip_helpers.latex.tex")
+M.utils = require("luasnip_helpers.latex.utils")
 
 return M

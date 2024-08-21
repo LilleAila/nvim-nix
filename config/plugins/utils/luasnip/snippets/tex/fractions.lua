@@ -27,8 +27,10 @@ local ms = ls.multi_snippet
 local autosnippet = ls.extend_decorator.apply(s, { snippetType = "autosnippet" })
 
 -- other imports
-local tex = require("luasnip_helpers.latex.conditions")
-local scaffolding = require("luasnip_helpers.latex.scaffolding")
+local tex = require("luasnip_helpers.latex.tex")
+local utils = require("luasnip_helpers.latex.utils")
+local tsnip = tex.tsnip
+local msnip = tex.msnip
 
 M = {
   autosnippet({ trig = "(%s)(.-)/", name = "fraction", regTrig = true, wordTrig = false, hidden = true },
@@ -49,7 +51,7 @@ M = {
       \frac{<>}{<>}<>
     ]],
     {
-      d(2, scaffolding.get_visual),
+      d(2, utils.get_visual),
       i(1),
       i(0)
     }),
@@ -61,11 +63,11 @@ M = {
     ]],
     {
       i(1),
-      d(2, scaffolding.get_visual),
+      d(2, utils.get_visual),
       i(0)
     }),
   { condition = tex.in_math, show_condition = tex.in_math }),
-  parse({ trig = "ff", name = "fraction", snippetType = "autosnippet", condition = tex.in_math, show_condition = tex.in_math }, [[\frac{$1}{$2}]])
+  msnip({ trig = "ff", name = "fraction" }, [[\frac{$1}{$2}]])
 }
 
 return M

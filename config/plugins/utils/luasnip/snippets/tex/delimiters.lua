@@ -27,8 +27,8 @@ local ms = ls.multi_snippet
 local autosnippet = ls.extend_decorator.apply(s, { snippetType = "autosnippet" })
 
 -- other imports
-local tex = require("luasnip_helpers.latex.conditions")
-local scaffolding = require("luasnip_helpers.latex.scaffolding")
+local tex = require("luasnip_helpers.latex.tex")
+local utils = require("luasnip_helpers.latex.utils")
 
 -- brackets
 -- maybe rename to use characters instead of symbols?
@@ -54,7 +54,7 @@ M = {
         cap = snip.captures[1] or '('
         return brackets[cap][1]
       end),
-      d(1, scaffolding.get_visual),
+      d(1, utils.get_visual),
       f(function(_, snip)
         cap = snip.captures[1] or '('
         return brackets[cap][2]
@@ -72,7 +72,7 @@ M = {
         cap = snip.captures[1] or '('
         return brackets[cap][1]
       end),
-      d(1, scaffolding.get_visual),
+      d(1, utils.get_visual),
       i(0)
     }),
   { condition = tex.in_math, show_condition = tex.in_math }),
@@ -82,7 +82,7 @@ M = {
       \left. <> \right<><>
     ]],
     {
-      d(1, scaffolding.get_visual),
+      d(1, utils.get_visual),
       f(function(_, snip)
         cap = snip.captures[1] or '('
         return brackets[cap][2]
