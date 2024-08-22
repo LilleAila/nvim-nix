@@ -2,9 +2,11 @@
 # Using FTP and HTTPS as the protocol both result in the same file, so i don't know which is faster to use
 { pkgs, mkKeymap, ... }:
 {
+  # Dir has to exist for this to work. should be synced with syncthing
   opts = {
     spell = true;
-    spelllang = "en_us";
+    spl = "en_us";
+    spf = "$HOME/.spell/en_us.utf-8.add";
   };
 
   plugins.which-key.registrations = {
@@ -12,18 +14,25 @@
     "<leader>pl".name = "󰗊 Language";
   };
 
-  keymaps = [
-    # Switch between langs. Always have english as secondary. Could probably declare in a better way.
-    # The first language of `spelllang` (or `spl`) is used for the personal spell file
-    (mkKeymap "n" "<leader>plb" ":set spl=nb,en_us<cr>" "Norsk bokmål")
-    (mkKeymap "n" "<leader>pln" ":set spl=nn,en_us<cr>" "Norsk nynorsk")
-    (mkKeymap "n" "<leader>ple" ":set spl=en_us<cr>" "US english")
-    (mkKeymap "n" "<leader>plf" ":set spl=fr,en_us<cr>" "Français")
-    (mkKeymap "n" "<leader>plt" ":set spl=de,en_us<cr>" "Deutsch")
-    (mkKeymap "n" "<leader>pld" ":set spl=da,en_us<cr>" "Dansk")
-    (mkKeymap "n" "<leader>pls" ":set spl=sv,en_us<cr>" "Svenska")
-  ];
+  keymaps =
+    let
+      # :h spellfile, :h spelllang
+      mkSpell = lang: ":set spl=${lang},en_us spf=$HOME/.spell/${lang}.utf-8.add<cr>";
+    in
+    [
+      # Switch between langs. Always have english as secondary. Could probably declare in a better way.
+      # The first language of `spelllang` (or `spl`) is used for the personal spell file
+      (mkKeymap "n" "<leader>plb" (mkSpell "nb") "Norsk bokmål")
+      (mkKeymap "n" "<leader>pln" (mkSpell "nn") "Norsk nynorsk")
+      (mkKeymap "n" "<leader>ple" (mkSpell "en_us") "US english")
+      (mkKeymap "n" "<leader>plf" (mkSpell "fr") "Français")
+      (mkKeymap "n" "<leader>plt" (mkSpell "de") "Deutsch")
+      (mkKeymap "n" "<leader>pld" (mkSpell "da") "Dansk")
+      (mkKeymap "n" "<leader>pls" (mkSpell "sv") "Svenska")
+    ];
 
+  # I probably don't actually need any other files than the utf-8 versions
+  # utf-8 is hard-coded in `spellfile` anyways, so i think it'd throw an error with a non-utf-8 file
   extraFiles = {
     # https://ftp.nluug.nl/pub/vim/runtime/spell/README_nb.txt
     "spell/nb.utf-8.spl".source = pkgs.fetchurl {
