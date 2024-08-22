@@ -1,3 +1,4 @@
+# TODO: create a derivation that builds languages from [this](https://github.com/vim/vim/tree/master/runtime/spell), because of [this](https://ftp.nluug.nl/pub/vim/runtime/), which means that none of the files will get any updates
 { pkgs, mkKeymap, ... }:
 let
   # `globpath(&rtp, "spell/*.spell")` from `spell/cleanadd.vim` expects there to be a subdir called `spell` in the runtimepath.
@@ -41,7 +42,7 @@ in
       # Switch between langs. Always have english as secondary.
       (mkKeymap "n" "<leader>plb" (mkSpell "nb") "Norsk bokmål")
       (mkKeymap "n" "<leader>pln" (mkSpell "nn") "Norsk nynorsk")
-      (mkKeymap "n" "<leader>ple" (mkSpell "en_us") "US english")
+      (mkKeymap "n" "<leader>ple" (mkSpell "en_us") "English US")
       (mkKeymap "n" "<leader>plf" (mkSpell "fr") "Français")
       (mkKeymap "n" "<leader>plt" (mkSpell "de") "Deutsch")
       (mkKeymap "n" "<leader>pld" (mkSpell "da") "Dansk")
