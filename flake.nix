@@ -24,6 +24,16 @@
       url = "github:nvim-orgmode/org-bullets.nvim";
       flake = false;
     };
+
+    plugin-cmp-vimtex = {
+      url = "github:micangl/cmp-vimtex";
+      flake = false;
+    };
+
+    plugin-cmp-nerdfont = {
+      url = "github:chrisgrieser/cmp-nerdfont";
+      flake = false;
+    };
   };
 
   outputs =

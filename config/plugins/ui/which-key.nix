@@ -28,6 +28,7 @@
     };
   };
 
+  # TODO: move some of these to the correct places
   plugins.which-key.settings.spec = [
     (mkRegistration "<leader>f" " Files")
     (mkRegistration "<leader>fg" " Git")

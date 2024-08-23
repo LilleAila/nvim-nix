@@ -284,6 +284,38 @@
         "type": "github"
       }
     },
+    "plugin-cmp-nerdfont": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1700663605,
+        "narHash": "sha256-alHMwjzYZO5rCgQUUUEcGNkW3PuYJFfGyo531wNw7p4=",
+        "owner": "chrisgrieser",
+        "repo": "cmp-nerdfont",
+        "rev": "a3b7c0cadb7bd389f513eecda376d4c6bec90003",
+        "type": "github"
+      },
+      "original": {
+        "owner": "chrisgrieser",
+        "repo": "cmp-nerdfont",
+        "type": "github"
+      }
+    },
+    "plugin-cmp-vimtex": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1722941837,
+        "narHash": "sha256-pD2dPdpyn5A/uwonDdAxCX138yBeDqbXDdlG/IKjVTU=",
+        "owner": "micangl",
+        "repo": "cmp-vimtex",
+        "rev": "5283bf9108ef33d41e704027b9ef22437ce7a15b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "micangl",
+        "repo": "cmp-vimtex",
+        "type": "github"
+      }
+    },
     "plugin-img-clip": {
       "flake": false,
       "locked": {
@@ -337,6 +369,8 @@
         "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
+        "plugin-cmp-nerdfont": "plugin-cmp-nerdfont",
+        "plugin-cmp-vimtex": "plugin-cmp-vimtex",
         "plugin-img-clip": "plugin-img-clip",
         "plugin-move": "plugin-move",
         "plugin-org-bullets": "plugin-org-bullets"

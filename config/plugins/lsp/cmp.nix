@@ -2,6 +2,7 @@
   colorScheme,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -40,12 +41,17 @@ in
       enable = true;
       settings = {
         sources = [
+          # TODO: move some of these to the correct places
           { name = "nvim_lsp"; }
           { name = "nvim_lsp_document_symbol"; }
           { name = "nvim_lsp_signature_help"; }
           { name = "luasnip"; }
           { name = "path"; }
           { name = "calc"; }
+          { name = "emoji"; }
+          { name = "latex_symbols"; }
+          { name = "nerdfont"; }
+          { name = "vimtex"; }
         ];
 
         window = {
@@ -120,5 +126,17 @@ in
     cmp_luasnip.enable = true;
   };
 
-  extraPlugins = with pkgs.vimPlugins; [ cmp-calc ];
+  extraPlugins = with pkgs.vimPlugins; [
+    cmp-calc
+    cmp-emoji
+    cmp-latex-symbols
+    (pkgs.vimUtils.buildVimPlugin {
+      name = "cmp-nerdfont";
+      src = inputs.plugin-cmp-nerdfont;
+    })
+    (pkgs.vimUtils.buildVimPlugin {
+      name = "cmp-vimtex";
+      src = inputs.plugin-cmp-vimtex;
+    })
+  ];
 }
