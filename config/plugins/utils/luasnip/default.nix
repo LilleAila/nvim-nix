@@ -7,7 +7,7 @@
 {
   plugins.luasnip = {
     enable = true;
-    extraConfig = {
+    settings = {
       update_events = "TextChanged,TextChangedI";
       store_selection_keys = "<Tab>";
       delete_check_events = "TextChanged";

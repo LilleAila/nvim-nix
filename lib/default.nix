@@ -19,4 +19,5 @@ rec {
       options
       ;
   };
+  mkRegistration = __unkeyed-1: desc: { inherit __unkeyed-1 desc; };
 }

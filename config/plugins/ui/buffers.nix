@@ -1,3 +1,4 @@
+{ mkRegistration, ... }:
 {
   plugins.barbar = {
     enable = true;
@@ -35,8 +36,8 @@
     };
   };
 
-  plugins.which-key.registrations = {
-    "<leader>bo" = "Open";
-    "<leader>bp" = "Pin";
-  };
+  plugins.which-key.settings.spec = [
+    (mkRegistration "<leader>bo" "Open")
+    (mkRegistration "<leader>bp" "Pin")
+  ];
 }

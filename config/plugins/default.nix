@@ -4,7 +4,7 @@
     ./ui
     ./lsp
     ./utils
-    ./org
+    # ./org
     ./obsidian
   ];
 

@@ -2,9 +2,9 @@
 {
   imports = [
     ./oil.nix
-    ./sessions.nix
+    # ./sessions.nix
     ./telescope.nix
-    ./guess-indent.nix
+    # ./guess-indent.nix
     ./hop.nix
     ./toggleterm.nix
     ./img-clip.nix

@@ -1,5 +1,10 @@
 # TODO: create a derivation that builds languages from [this](https://github.com/vim/vim/tree/master/runtime/spell), because of [this](https://ftp.nluug.nl/pub/vim/runtime/), which means that none of the files will get any updates
-{ pkgs, mkKeymap, ... }:
+{
+  pkgs,
+  mkKeymap,
+  mkRegistration,
+  ...
+}:
 let
   # `globpath(&rtp, "spell/*.spell")` from `spell/cleanadd.vim` expects there to be a subdir called `spell` in the runtimepath.
   # This means that i have to use a subdir of a dir in the runtimepath, thus `.spell/spell`
@@ -22,12 +27,12 @@ in
     vim.opt.runtimepath:append("${spellDir}")
   '';
 
-  plugins.which-key.registrations = {
-    # p because sPell-check
-    "<leader>p".name = " Spellcheck";
-    "<leader>pl".name = "󰗊 Language";
-    "<leader>pL".name = "󰗊 Buffer language";
-  };
+  plugins.which-key.settings.spec = [
+    # c because spellCheck
+    (mkRegistration "<leader>c" " Spellcheck")
+    (mkRegistration "<leader>cl" "󰗊 Language")
+    (mkRegistration "<leader>cL" "󰗊 Buffer language")
+  ];
 
   keymaps =
     let
@@ -40,34 +45,38 @@ in
     in
     [
       # Switch between langs. Always have english as secondary.
-      (mkKeymap "n" "<leader>plb" (mkSpell "nb") "Norsk bokmål")
-      (mkKeymap "n" "<leader>pln" (mkSpell "nn") "Norsk nynorsk")
-      (mkKeymap "n" "<leader>ple" (mkSpell "en_us") "English US")
-      (mkKeymap "n" "<leader>plf" (mkSpell "fr") "Français")
-      (mkKeymap "n" "<leader>plt" (mkSpell "de") "Deutsch")
-      (mkKeymap "n" "<leader>pld" (mkSpell "da") "Dansk")
-      (mkKeymap "n" "<leader>pls" (mkSpell "sv") "Svenska")
+      (mkKeymap "n" "<leader>clb" (mkSpell "nb") "Norsk bokmål")
+      (mkKeymap "n" "<leader>cln" (mkSpell "nn") "Norsk nynorsk")
+      (mkKeymap "n" "<leader>cle" (mkSpell "en_us") "English US")
+      (mkKeymap "n" "<leader>clf" (mkSpell "fr") "Français")
+      (mkKeymap "n" "<leader>clt" (mkSpell "de") "Deutsch")
+      (mkKeymap "n" "<leader>cld" (mkSpell "da") "Dansk")
+      (mkKeymap "n" "<leader>cls" (mkSpell "sv") "Svenska")
       # Switch between langs in local buffer
-      (mkKeymap "n" "<leader>pLb" (mkSpell' "nb") "Norsk bokmål")
-      (mkKeymap "n" "<leader>pLn" (mkSpell' "nn") "Norsk nynorsk")
-      (mkKeymap "n" "<leader>pLe" (mkSpell' "en_us") "US english")
-      (mkKeymap "n" "<leader>pLf" (mkSpell' "fr") "Français")
-      (mkKeymap "n" "<leader>pLt" (mkSpell' "de") "Deutsch")
-      (mkKeymap "n" "<leader>pLd" (mkSpell' "da") "Dansk")
-      (mkKeymap "n" "<leader>pLs" (mkSpell' "sv") "Svenska")
+      (mkKeymap "n" "<leader>cLb" (mkSpell' "nb") "Norsk bokmål")
+      (mkKeymap "n" "<leader>cLn" (mkSpell' "nn") "Norsk nynorsk")
+      (mkKeymap "n" "<leader>cLe" (mkSpell' "en_us") "US english")
+      (mkKeymap "n" "<leader>cLf" (mkSpell' "fr") "Français")
+      (mkKeymap "n" "<leader>cLt" (mkSpell' "de") "Deutsch")
+      (mkKeymap "n" "<leader>cLd" (mkSpell' "da") "Dansk")
+      (mkKeymap "n" "<leader>cLs" (mkSpell' "sv") "Svenska")
       # Other spell-related keymaps (these are actually longer to type than just using the z prefix)
       # but i prefer having them all under <leader>, and it makes them easier to remember
-      (mkKeymap "n" "<leader>pg" "zg" "Mark as correct")
-      (mkKeymap "n" "<leader>pw" "zw" "Mark as wrong")
-      (mkKeymap "n" "<leader>pr" "zr" "Mark as rare") # Correct but rarely used
-      (mkKeymap "n" "<leader>pu" "zuw" "Undo mark")
-      (mkKeymap "n" "<leader>pp" ":WhichKey z=<cr>" "See suggestions")
-      (mkKeymap "n" "<leader>pn" "]s" "Next misspelled word")
-      (mkKeymap "n" "<leader>pN" "]s" "Previous misspelled word")
-      (mkKeymap "n" "<leader>pc" ":runtime spell/cleanadd.vim | noh<cr>" "Clean spell file")
-      (mkKeymap "n" "<leader>ps" ":mkspell! %<cr>" "Save .add file")
-      (mkKeymap "n" "<leader>pt" ":setlocal spell!<cr>" "Toggle spellcheck")
+      (mkKeymap "n" "<leader>cg" "zg" "Mark as correct")
+      (mkKeymap "n" "<leader>cw" "zw" "Mark as wrong")
+      (mkKeymap "n" "<leader>cr" "zr" "Mark as rare") # Correct but rarely used
+      (mkKeymap "n" "<leader>cu" "zuw" "Undo mark")
+      (mkKeymap "n" "<leader>cc" ":WhichKey z=<cr>" "See suggestions")
+      (mkKeymap "n" "<leader>cn" "]s" "Next misspelled word")
+      (mkKeymap "n" "<leader>cN" "]s" "Previous misspelled word")
+      (mkKeymap "n" "<leader>ca" ":runtime spell/cleanadd.vim | noh<cr>" "Clean spell file")
+      (mkKeymap "n" "<leader>cs" ":mkspell! %<cr>" "Save .add file")
+      (mkKeymap "n" "<leader>ct" ":setlocal spell!<cr>" "Toggle spellcheck")
     ];
+
+  # Add the source for nvim-cmp. For some reason plugins.cmp-spell.enable didn't work
+  extraPlugins = [ pkgs.vimPlugins.cmp-spell ];
+  plugins.cmp.settings.sources = [ { name = "spell"; } ];
 
   # I probably don't actually need any other files than the utf-8 versions
   # utf-8 is hard-coded in `spellfile` anyways, so i think it'd throw an error with a non-utf-8 file

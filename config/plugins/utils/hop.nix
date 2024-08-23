@@ -1,4 +1,9 @@
-{ pkgs, mkKeymap, ... }:
+{
+  pkgs,
+  mkKeymap,
+  mkRegistration,
+  ...
+}:
 {
   extraPlugins = with pkgs.vimPlugins; [ hop-nvim ];
   extraConfigLua = ''
@@ -17,8 +22,8 @@
     (mkKeymap "n" "<leader>hv" ":HopVertical<cr>" "Vertical")
     (mkKeymap "n" "<leader>hw" ":HopWord<cr>" "Word")
   ];
-  plugins.which-key.registrations = {
-    # "<leader>h".name = "󰆾 Hop";
-    "<leader>h".name = " Hop";
-  };
+  plugins.which-key.settings.spec = [
+    # (mkRegistration "<leader>h" "󰆾 Hop")
+    (mkRegistration "<leader>h" " Hop")
+  ];
 }

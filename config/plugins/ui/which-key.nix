@@ -1,36 +1,40 @@
-{ ... }:
+{ pkgs, mkRegistration, ... }:
 {
   plugins.which-key = {
     enable = true;
-    window.position = "bottom";
-    layout.align = "right";
-    registrations = {
-      "<leader>f".name = " Files";
-      "<leader>fg".name = " Git";
-      "<leader>b".name = " Buffers";
-      "<leader>t".name = " Terminal";
-      "<leader>s".name = " Sessions";
-      "<leader>l".name = " LSP";
-      "<leader>lx".name = " LaTeX";
-    };
-    icons = {
-      separator = "";
-      group = "";
-    };
-    triggersBlackList = {
-      i = [
-        "h"
-        "j"
-        "k"
-        "l"
-        "v"
-      ];
-      v = [
-        "h"
-        "j"
-        "k"
-        "l"
+    settings = {
+      delay = 0;
+      preset = "helix";
+      icons = {
+        mappings = false;
+        separator = "";
+        group = "";
+      };
+      keys = {
+        scroll_down = "<C-d>";
+        scroll_up = "<C-u>";
+      };
+      layout = {
+        spacing = 3;
+        width.min = 25;
+      };
+      # Only react to <leader>, and only in normal mode
+      triggers = [
+        {
+          __unkeyed-1 = "<leader>";
+          mode = "n";
+        }
       ];
     };
   };
+
+  plugins.which-key.settings.spec = [
+    (mkRegistration "<leader>f" " Files")
+    (mkRegistration "<leader>fg" " Git")
+    (mkRegistration "<leader>b" " Buffers")
+    (mkRegistration "<leader>t" " Terminal")
+    (mkRegistration "<leader>s" " Sessions")
+    (mkRegistration "<leader>l" " LSP")
+    (mkRegistration "<leader>lx" " LaTeX")
+  ];
 }

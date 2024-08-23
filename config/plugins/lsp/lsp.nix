@@ -1,4 +1,4 @@
-{ mkKeymap, mkKeymapWithOpts, ... }:
+{ mkKeymap, mkRegistration, ... }:
 {
   plugins.lsp = {
     # NOTE: All packages, including LSPs and formatters should be installed through devshells!!
@@ -96,16 +96,16 @@
 
   # Add descriptions to which-key.
   # Items defined in keymaps will have their command as description by default
-  plugins.which-key.registrations = {
-    "<leader>k" = "Previous diagnostic";
-    "<leader>j" = "Next diagnostic";
-    "<leader>ll" = "Line diagnostics";
-    "<leader>ld" = "Definition";
-    "<leader>li" = "Implementation";
-    "<leader>lr" = "Rename";
-    "<leader>la" = "Code actions";
-    "<leader>lk" = "Hover";
-  };
+  plugins.which-key.settings.spec = [
+    (mkRegistration "<leader>k" "Previous diagnostic")
+    (mkRegistration "<leader>j" "Next diagnostic")
+    (mkRegistration "<leader>ll" "Line diagnostics")
+    (mkRegistration "<leader>ld" "Definition")
+    (mkRegistration "<leader>li" "Implementation")
+    (mkRegistration "<leader>lr" "Rename")
+    (mkRegistration "<leader>la" "Code actions")
+    (mkRegistration "<leader>lk" "Hover")
+  ];
 
   keymaps = [
     (mkKeymap "n" "<leader>lR" ":LspRestart<cr>" "Restart")

@@ -8,6 +8,20 @@
   '';
 
   plugins = {
+    lspkind = {
+      enable = true;
+      cmp = {
+        enable = true;
+        menu = {
+          buffer = "[Buffer]";
+          nvim_lsp = "[LSP]";
+          luasnip = "[LuaSnip]";
+          path = "[Path]";
+          spell = "[Spell]";
+        };
+      };
+    };
+
     cmp = {
       enable = true;
       settings = {
@@ -19,80 +33,60 @@
           { name = "path"; }
         ];
 
-        snippet.expand = ''
-          function(args)
-          	require("luasnip").lsp_expand(args.body)
-          end
-        '';
+        snippet.expand = # lua
+          ''
+            function(args)
+              require("luasnip").lsp_expand(args.body)
+            end
+          '';
 
         mapping = {
           "<C-b>" = "cmp.mapping.scroll_docs(-4)";
           "<C-f>" = "cmp.mapping.scroll_docs(4)";
           "<C-c>" = "cmp.mapping.abort()";
-          # "<Esc>" = "cmp.mapping.abort()";
-          "<C-cr>" = "cmp.mapping.confirm({ select = false })";
 
-          "<C-p>" = "cmp.mapping.select_prev_item()";
-          "<C-n>" = "cmp.mapping.select_next_item()";
-
-          "<Up>" = "cmp.mapping.select_prev_item()";
-          "<Down>" = "cmp.mapping.select_next_item()";
-
-          "<C-Space>" = "cmp.mapping.complete({})";
-
-          "<C-j>" = ''
-            cmp.mapping(
-            	function(fallback)
-            		if cmp.visible() then
-            			cmp.select_next_item()
-            		else
-            			fallback()
-            		end
-            	end,
-            	{"n"}
-            )
-          '';
-
-          "<C-k>" = ''
-            cmp.mapping(
-            	function(fallback)
-            		if cmp.visible() then
-            			cmp.select_prev_item()
-            		else
-            			fallback()
-            		end
-            	end,
-            	{"i", "s"}
-            )
-          '';
-
-          "<Tab>" = ''
-            cmp.mapping(
-            	function(fallback)
-            		if require("luasnip").expand_or_locally_jumpable() then
-            			require("luasnip").expand_or_jump()
-            		elseif has_words_before() then
-            			cmp.complete()
-            		else
-            			fallback()
-            		end
-            	end,
-            	{"i", "s"}
-            )
-          '';
-
-          "<S-Tab>" = ''
-            cmp.mapping(
+          "<C-Up>" = "cmp.mapping.select_prev_item()";
+          "<C-Down>" = "cmp.mapping.select_next_item()";
+          "<C-k>" = "cmp.mapping.select_prev_item()";
+          "<C-j>" = "cmp.mapping.select_next_item()";
+          "<cr>" = # lua
+            "cmp.mapping(
             function(fallback)
-            	if require("luasnip").jumpable(-1) then
-            		require("luasnip").jump(-1)
-            	else
-            		fallback()
-            	end
-            end,
-            {"i", "s"}
-            )
-          '';
+              if cmp.visible() then
+                cmp.confirm({ select = true })
+              else
+                fallback()
+              end
+            end
+          )";
+
+          "<Tab>" = # lua
+            ''
+              cmp.mapping(
+                function(fallback)
+                  if require("luasnip").expand_or_locally_jumpable() then
+                    require("luasnip").expand_or_jump()
+                  else
+                    fallback()
+                  end
+                end,
+                {"i", "s"}
+              )
+            '';
+
+          "<S-Tab>" = # lua
+            ''
+              cmp.mapping(
+              function(fallback)
+                if require("luasnip").jumpable(-1) then
+                  require("luasnip").jump(-1)
+                else
+                  fallback()
+                end
+              end,
+              {"i", "s"}
+              )
+            '';
         };
       };
     };

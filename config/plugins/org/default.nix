@@ -3,6 +3,7 @@
   inputs,
   colorScheme,
   mkKeymap,
+  mkRegistration,
   ...
 }:
 {
@@ -115,9 +116,7 @@
       require("org-bullets").setup()
     '';
 
-  plugins.which-key.registrations = {
-    "<leader>o".name = " Org";
-  };
+  plugins.which-key.settings.spec = [ (mkRegistration "<leader>o" " Org") ];
 
   keymaps = [
     (mkKeymap "n" "<leader>on" ":e ./notes.org<cr>" "Edit local notes")
