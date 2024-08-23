@@ -17,7 +17,7 @@ in
   ];
 
   highlight = {
-    winSeparator.fg = c.base05;
+    winSeparator.fg = c.base03;
 
     # Treesitter and LSP
     Identifier.fg = c.base0D;
@@ -32,6 +32,8 @@ in
     "@markup.heading".fg = c.base09;
     "@markup.raw.block".fg = c.base0C;
     "@markup.math".fg = c.base0C;
+    "NvimTreeNormal".bg = c.base00;
+    "BufferTabpageFill".bg = c.base00;
 
     WhichKeyFloat.fg = c.base05;
     WhichKeyFloat.bg = c.base01;

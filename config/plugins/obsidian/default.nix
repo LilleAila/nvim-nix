@@ -1,4 +1,4 @@
-{ ... }:
+{ colorScheme, ... }:
 {
   plugins.obsidian = {
     enable = true;

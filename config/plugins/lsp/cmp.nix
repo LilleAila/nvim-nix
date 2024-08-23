@@ -1,4 +1,13 @@
 {
+  colorScheme,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  c = lib.attrsets.mapAttrs (_: value: "#${value}") colorScheme.palette;
+in
+{
   extraConfigLuaPre = ''
     local has_words_before = function()
     	unpack = unpack or table.unpack
@@ -6,6 +15,11 @@
     	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
     end
   '';
+
+  highlight = {
+    "CmpItemMenu".fg = c.base04; # [Source name]
+    "PmenuSel".bg = c.base02; # Selected item (also applies to some other items such as NORMAL in lualine)
+  };
 
   plugins = {
     lspkind = {
@@ -31,7 +45,15 @@
           { name = "nvim_lsp_signature_help"; }
           { name = "luasnip"; }
           { name = "path"; }
+          { name = "calc"; }
         ];
+
+        window = {
+          completion = {
+            border = "rounded";
+            winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None";
+          };
+        };
 
         snippet.expand = # lua
           ''
@@ -97,4 +119,6 @@
     cmp-nvim-lua.enable = true;
     cmp_luasnip.enable = true;
   };
+
+  extraPlugins = with pkgs.vimPlugins; [ cmp-calc ];
 }
