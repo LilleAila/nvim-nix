@@ -31,7 +31,7 @@
         ''
           function(title)
             local name = ""
-            if title ~= nil then
+            if title ~= nil and title ~= "" then
               name = title
             else
               -- Ask the user for a name
