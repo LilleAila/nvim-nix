@@ -6,5 +6,6 @@
     ./cmp.nix
     ./vimtex.nix
     ./spellcheck.nix
+    ./formatter.nix
   ];
 }
