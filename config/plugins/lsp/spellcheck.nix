@@ -68,7 +68,7 @@ in
       (mkKeymap "n" "<leader>cu" "zuw" "Undo mark")
       (mkKeymap "n" "<leader>cc" ":WhichKey z=<cr>" "See suggestions")
       (mkKeymap "n" "<leader>cn" "]s" "Next misspelled word")
-      (mkKeymap "n" "<leader>cN" "]s" "Previous misspelled word")
+      (mkKeymap "n" "<leader>cN" "[s" "Previous misspelled word")
       (mkKeymap "n" "<leader>ca" ":runtime spell/cleanadd.vim | noh<cr>" "Clean spell file")
       (mkKeymap "n" "<leader>cs" ":mkspell! %<cr>" "Save .add file")
       (mkKeymap "n" "<leader>ct" ":setlocal spell!<cr>" "Toggle spellcheck")
