@@ -31,8 +31,7 @@
         ''
           function(title)
             local name = ""
-            -- "userinput" is a placeholder value, because :ObsidianNew requires a value in order to bypass the builtin user input
-            if title ~= nil and title ~= "userinput" then
+            if title ~= nil then
               name = title
             else
               -- Ask the user for a name
@@ -45,7 +44,7 @@
               end
             end
             -- transform the name into a valid file name and append the date in ISO 8601 format
-            local prefix = name:gsub(" ", "_"):lower():gsub("[^a-z0-9]", "")
+            local prefix = name:gsub(" ", "-"):lower():gsub("[^a-z0-9-]", "")
             return prefix .. "-" .. tostring(os.date("!%Y%m%dT%H%M"))
           end
         '';
@@ -55,9 +54,9 @@
   plugins.which-key.settings.spec = [ (mkRegistration "<leader>o" "󱓧 Obsidian") ];
   keymaps = [
     # Note management
-    (mkKeymap "n" "<leader>on" ":ObsidianNew userinput<cr>" "New note")
+    (mkKeymap "n" "<leader>on" ":ObsidianNew<cr>" "New note")
     (mkKeymap "n" "<leader>od" ":ObsidianToday<cr>" "Daily note")
-    (mkKeymap "n" "<leader>oN" ":ObsidianNewFromTemplate userinput<cr>" "New from template")
+    (mkKeymap "n" "<leader>oN" ":ObsidianNewFromTemplate<cr>" "New from template")
 
     (mkKeymap "n" "<leader>oo" ":ObsidianQuickSwitch<cr>" "Open note")
     (mkKeymap "n" "<leader>os" ":ObsidianSearch<cr>" "Search notes")
@@ -67,10 +66,10 @@
     # Links
     (mkKeymap "n" "<leader>ol" ":ObsidianLinks<cr>" "Links")
     (mkKeymap "n" "<leader>o<cr>" ":ObsidianFollowLink<cr>" "Follow link")
-    (mkKeymap "x" "<leader>oe" ":ObsidianExtractNote userinput<cr>" "Extract note")
+    (mkKeymap "x" "<leader>oe" ":ObsidianExtractNote<cr>" "Extract note")
     (mkKeymap "x" "<leader>ol" ":ObsidianLink<cr>" "Link selection to note")
     (mkKeymap "n" "<leader>or" ":ObsidianRename<cr>" "Rename note")
-    (mkKeymap "x" "<leader>on" ":ObsidianLinkNew userinput<cr>" "Create new note from selection") # This generates random names :(
+    (mkKeymap "x" "<leader>on" ":ObsidianLinkNew<cr>" "Create new note from selection") # This generates random names :(
 
     (mkKeymap "n" "<leader>ob" ":ObsidianBacklinks<cr>" "Backlinks")
     (mkKeymap "n" "<leader>ot" ":ObsidianTags<cr>" "Tags")
