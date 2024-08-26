@@ -10,7 +10,6 @@
     settings = {
       picker.name = "telescope.nvim";
       templates.subdir = "Templates";
-      attachments.img_folder = "Assets";
       notes_subdir = "Notes";
       new_notes_location = "notes_subdir";
       workspaces = [
@@ -49,8 +48,17 @@
               end
             end
             -- transform the name into a valid file name and append the date in ISO 8601 format
-            local prefix = name:gsub(" ", "-"):lower():gsub("[^a-z0-9-]", "")
-            return prefix .. "-" .. tostring(os.date("!%Y%m%dT%H%M"))
+            local suffix = name:gsub(" ", "-"):lower():gsub("[^a-z0-9-æøå]", "")
+            return tostring(os.date("!%Y%m%dT%H%M")) .. "-" .. suffix
+          end
+        '';
+
+      attachments.img_folder = "Assets";
+      # This is only for the prefix of the name, not the entire name. afaik, there is no way to set a suffix
+      image_name_func = # lua
+        ''
+          function()
+            return tostring(os.date("!%Y%m%dT%H%M")) .. "-"
           end
         '';
     };
