@@ -93,26 +93,6 @@
     };
   };
 
-  /*
-    plugins.image = {
-      enable = true;
-      backend = "kitty";
-      integrations.markdown = {
-        enabled = true;
-        resolve_image_path = # lua
-          ''
-            function(document_path, image_path, fallback)
-              if string.find(document_path, "obsidian vault") then
-                return "$home/documents/obsidian vault/" + image_path
-              else
-                return fallback(document_path, image_path)
-              end
-            end
-          '';
-      };
-    };
-  */
-
   # The nixvim module doesn't have all the required options
   extraPlugins = [ pkgs.vimPlugins.image-nvim ];
 
