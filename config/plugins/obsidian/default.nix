@@ -1,4 +1,9 @@
-{ mkRegistration, mkKeymap, ... }:
+{
+  pkgs,
+  mkRegistration,
+  mkKeymap,
+  ...
+}:
 {
   plugins.obsidian = {
     enable = true;
@@ -88,11 +93,53 @@
     };
   };
 
-  plugins.image = {
-    enable = true;
-    backend = "kitty";
-    integrations.markdown.enabled = true;
-  };
+  /*
+    plugins.image = {
+      enable = true;
+      backend = "kitty";
+      integrations.markdown = {
+        enabled = true;
+        resolve_image_path = # lua
+          ''
+            function(document_path, image_path, fallback)
+              if string.find(document_path, "obsidian vault") then
+                return "$home/documents/obsidian vault/" + image_path
+              else
+                return fallback(document_path, image_path)
+              end
+            end
+          '';
+      };
+    };
+  */
+
+  # The nixvim module doesn't have all the required options
+  extraPlugins = [ pkgs.vimPlugins.image-nvim ];
+
+  extraConfigLua = # lua
+    ''
+      require("image").setup({
+        backend = "kitty",
+        integrations = {
+          markdown = {
+            enabled = true,
+            resolve_image_path = function(_, image_path, fallback)
+              -- The document_path provided to the function doesn't work with obsidian for some reason
+              -- local document_path = vim.fn.expand("%:p")
+              local document_path = vim.api.nvim_buf_get_name(0)
+                -- change this to whatever is your obsidian vault path
+              if string.find(document_path, "Obsidian Vault") then
+                -- maybe it'd be better to somehow use an absolute path, but it doesn't look like there's an easy way to do it `:h fnamemodify()` does not support that.
+                -- this too
+                return "~/Documents/Obsidian Vault/" .. image_path
+              else
+                return fallback(document_path, image_path)
+              end
+            end,
+          },
+        },
+      })
+    '';
 
   plugins.markview = {
     enable = true;
