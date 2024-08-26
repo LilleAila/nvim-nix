@@ -23,3 +23,4 @@ nix run github:LilleAila/nvim-nix
 
 ## Notes
 This config was created using the nixvim flake template: `nix flake init --template github:nix-community/nixvim`, and following [vimjoyer's video](https://www.youtube.com/watch?v=b641h63lqy0)
+Also it is important to note that it is important to note that is important to note.
