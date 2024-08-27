@@ -111,4 +111,12 @@
     (mkKeymap "n" "<leader>lR" ":LspRestart<cr>" "Restart")
     (mkKeymap "n" "<leader>lI" ":LspInfo<cr>" "Info")
   ];
+
+  plugins.otter = {
+    enable = true;
+    settings = {
+      handle_leading_whitespace = true;
+      buffers.set_filetype = true;
+    };
+  };
 }
