@@ -34,6 +34,11 @@
       url = "github:chrisgrieser/cmp-nerdfont";
       flake = false;
     };
+
+    # plugin-texmagic = {
+    #   url = "github:jakewvincent/texmagic.nvim";
+    #   flake = false;
+    # };
   };
 
   outputs =

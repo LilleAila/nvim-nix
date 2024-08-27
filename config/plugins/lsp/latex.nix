@@ -1,0 +1,83 @@
+{
+  pkgs,
+  inputs,
+  mkKeymap,
+  ...
+}:
+{
+  plugins.lsp.servers.texlab = {
+    enable = true;
+    package = null;
+    settings.texlab = {
+      # build = "_G.TeXMagicBuildConfig";
+      build = {
+        executable = "latexmk";
+        args = [
+          "-pdflua"
+          "-synctex=1"
+          "-shell-escape"
+          "%f"
+        ];
+        forwardSearchAfter = true;
+        onSave = true;
+      };
+
+      # TODO: maybe this can be used directly with nvim-lint instead of through texlab?
+      chktex = {
+        onOpenAndSave = true;
+        onEdit = false;
+      };
+
+      latexFormatter = "latexindent";
+
+      forwardSearch = {
+        executable = "sioyek";
+        args = [
+          "--reuse-window"
+          "--execute-command"
+          "toggle_synctex"
+          "--inverse-search"
+          "texlab inverse-search -i \"%%1\" -l %%2"
+          "--forward-search-file"
+          "%f" # tex file
+          "--forward-search-line"
+          "%l" # line number
+          "%p" # pdf file
+        ];
+      };
+    };
+  };
+
+  keymaps = [
+    (mkKeymap "n" "<leader>lxb" ":TexlabBuild<cr>" "Build")
+    (mkKeymap "n" "<leader>lxs" ":TexlabCancelBuild<cr>" "Stop build")
+    (mkKeymap "n" "<leader>lxc" ":TexlabCleanArtifacts<cr>" "Clean artifacts")
+    (mkKeymap "n" "<leader>lxC" ":TexlabCleanAuxilary<cr>" "Clean auxilary")
+    (mkKeymap "n" "<leader>lxf" ":TexlabForward<cr>" "Forward search")
+    (mkKeymap "n" "<leader>lxr" ":TexlabChangeEnvironment<cr>" "Rename environment")
+  ];
+
+  /*
+    extraPlugins = [
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "texmagic.nvim";
+        src = inputs.plugin-texmagic;
+      })
+    ];
+
+    extraConfigLuaPre = # lua
+      ''
+        require("texmagic").setup({
+          engines = {
+            lualatex = {
+              executable = "latexmk",
+              args = {
+
+              },
+              isContinuous = true,
+            },
+          },
+        })
+      '';
+  */
+}
