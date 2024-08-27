@@ -31,18 +31,29 @@
       latexFormatter = "latexindent";
 
       forwardSearch = {
-        executable = "sioyek";
+        # Sioyek crashes for some reason. First launch after removing one of ~/.local/sharea/sioyek/{local,shared}.db works, next time it crashes /shrug
+        /*
+          executable = "sioyek";
+          args = [
+            "--reuse-window"
+            "--execute-command"
+            "toggle_synctex"
+            "--inverse-search"
+            "texlab inverse-search -i \"%%1\" -l %%2"
+            "--forward-search-file"
+            "%f" # tex file
+            "--forward-search-line"
+            "%l" # line number
+            "%p" # pdf file
+          ];
+        */
+        executable = "zathura";
         args = [
-          "--reuse-window"
-          "--execute-command"
-          "toggle_synctex"
-          "--inverse-search"
-          "texlab inverse-search -i \"%%1\" -l %%2"
-          "--forward-search-file"
-          "%f" # tex file
-          "--forward-search-line"
-          "%l" # line number
-          "%p" # pdf file
+          "--synctex-forward"
+          "%l:1:%f"
+          "%p"
+          "--synctex-editor-command"
+          "texlab inverse-search -i %%{input} -l %%{line}"
         ];
       };
     };
