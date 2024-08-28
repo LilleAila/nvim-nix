@@ -45,24 +45,6 @@ M = {
       $1&$2 & $0
     \end{align*}
   ]]),
-  -- align-environments
-  -- for some reason \\ expands to \ even when it's inside [[]] /shrug
-  msnip({ trig = "nn", name = "newline" }, [[
-    \\\\
-    $1&$2 & $0
-  ]]),
-  msnip({ trig = "na", name = "newline with answer" }, [[
-    \\\\
-    \ans{$1&$2} & $0
-  ]]),
-  msnip({ trig = "^", name = "exponent", wordTrig = false }, [[^{$1}]]),
-  msnip({ trig = "*", name = "multiplication" }, [[*]]),
-  -- TODO: skrive disse om til å bruke get_visual? det er potensielt mulig med extend_decorator, eller i hvertfall en mellomfunksjon
-  msnip({ trig = "und", name = "underset" }, [[\underset{$1}{$2}]]),
-  msnip({ trig = "aa", name = "answer" }, [[\ans{$1}]]),
-  msnip({ trig = "ss", name = "square root" }, [[\sqrt{$1}]]),
-  msnip({ trig = "sr", name = "nth root"}, [=[\sqrt[$1]{$2}]=]),
-  -- TODO: de list-relaterte snippetene i https://github.com/LilleAila/nvim-nix/blob/ff3c6efdd0ddc178a9dab31747d7cfbc76f970b8/config/plugins/utils/luasnip/snippets/tex/math.lua (commiten før jeg startet med dette)
 }
 
 return M

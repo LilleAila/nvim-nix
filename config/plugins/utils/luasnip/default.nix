@@ -20,7 +20,21 @@
         lazyLoad = true;
       }
     ];
+    # Shared math snippets between markdown and tex to be used in embedded math blocks
+    # This for some reason generates invalid syntax: it does
+    # `require("luasnip").extend_filetypes("markdown", { "tex_math" })`
+    # instead of
+    # `require("luasnip").extend_filetypes("markdown", { "tex_math" })`
+    # filetypeExtend = {
+    #   markdown = [ "tex_math" ];
+    #   tex = [ "tex_math" ];
+    # };
   };
+
+  extraConfigLua = ''
+    require("luasnip").filetype_extend("markdown", {"tex_math"})
+    require("luasnip").filetype_extend("tex", {"tex_math"})
+  '';
 
   # Helper files for the snippets
   extraFiles = {
