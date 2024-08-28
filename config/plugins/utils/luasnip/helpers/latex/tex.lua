@@ -26,53 +26,39 @@ local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local autosnippet = ls.extend_decorator.apply(s, { snippetType = "autosnippet" })
 
+local ts_utils = require("nvim-treesitter.ts_utils")
 
 local M = {}
 
--- math / not math zones
+local function in_nodes(node_types)
+  local node = ts_utils.get_node_at_cursor()
+  -- Traverse the node tree
+  while node do
+    local node_type = node:type()
+    -- Lua has no `in` operator. Could use a "set" where { a = true, b = true } etc. instead?
+    for _, t in ipairs(node_types) do
+      if node_type == t then
+        return true
+      end
+    end
+    node = node:parent()
+  end
+  return false
+end
+
+local math_nodes = {
+  "math_environment", -- \begin{equation} \end{equation}
+  "inline_formula", -- $ $
+  "displayed_equation" -- $$ $$
+}
 
 function M.in_math()
-    return vim.api.nvim_eval("vimtex#syntax#in_mathzone()") == 1
+  return in_nodes(math_nodes)
 end
 
--- comment detection
-function M.in_comment()
-	return vim.fn["vimtex#syntax#in_comment"]() == 1
-end
-
--- document class
-function M.in_beamer()
-	return vim.b.vimtex["documentclass"] == "beamer"
-end
-
--- general env function
-local function env(name)
-	local is_inside = vim.fn["vimtex#env#is_inside"](name)
-	return (is_inside[1] > 0 and is_inside[2] > 0)
-end
-
-function M.in_preamble()
-	return not env("document")
-end
-
--- FIXME use the document thing? idk how it plays with imports
 function M.in_text()
-	-- return env("document") and not M.in_math()
 	return not M.in_math()
 end
-
-function M.in_tikz()
-	return env("tikzpicture")
-end
-
-function M.in_bullets()
-	return env("itemize") or env("enumerate")
-end
-
-function M.in_align()
-	return env("align") or env("align*") or env("aligned") or env("flalign") or env("flalign*")
-end
-
 
 -- math snippet
 M.msnip = ls.extend_decorator.apply(parse, {
