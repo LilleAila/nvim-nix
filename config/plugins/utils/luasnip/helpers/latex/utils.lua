@@ -53,7 +53,8 @@ function M.or_condition(functions)
   end
 end
 
--- visual util to add insert node - thanks ejmastnak!
+-- Get text from pressing <tab>
+-- Something like this would also work: https://github.com/iurimateus/luasnip-latex-snippets.nvim/blob/4b91f28d91979f61a3e8aef1cee5b7c7f2c7beb8/lua/luasnip-latex-snippets/math_i.lua#L43
 function M.get_visual(args, parent)
   if #parent.snippet.env.SELECT_RAW > 0 then
     return sn(nil, i(1, parent.snippet.env.SELECT_RAW))

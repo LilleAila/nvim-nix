@@ -2,8 +2,13 @@
   pkgs,
   mkRegistration,
   mkKeymap,
+  lib,
+  colorScheme,
   ...
 }:
+let
+  c = lib.attrsets.mapAttrs (_: value: "#${value}") colorScheme.palette;
+in
 {
   plugins.obsidian = {
     enable = true;
@@ -26,10 +31,27 @@
         min_chars = 0;
         nvim_cmp = true;
       };
-      # Unbind the default ones. Maybe add to <leader>o in the future
-      # https://nix-community.github.io/nixvim/plugins/obsidian/settings/mappings/index.html
       mappings = { };
-      ui.enable = true;
+
+      ui = {
+        enable = true;
+        bullets.char = "";
+        # external_link_icon.char = "";
+        hl_groups = {
+          ObsidianTodo.fg = c.base0A;
+          ObsidianDone.fg = c.base0B;
+          ObsidianRightArrow.fg = c.base09;
+          ObsidianTilde.fg = c.base0F;
+          ObsidianImpoerant.fg = c.base08;
+          ObsidianBullet.fg = c.base0D;
+          ObsidianRefText.fg = c.base0E;
+          ObsidianExtLinkIcon.fg = c.base0E;
+          ObsidianTag.fg = c.base0C;
+          ObsidianBlockID.fg = c.base0C;
+          ObsidianHighlightText.bg = c.base0A;
+          ObsidianHighlightText.fg = c.base01;
+        };
+      };
 
       note_id_func = # lua
         ''
@@ -94,12 +116,13 @@
     (mkKeymap "n" "<leader>oc" ":ObsidianToggleCheckbox<cr>" "Toggle checkbox")
   ];
 
-  files."ftplugin/md.lua" = {
-    opts = {
-      conceallevel = 2;
-      concealcursor = "nc";
-    };
-  };
+  # Currently sets for all md files, but maybe do something like vault/**/*.md, but vim doesn't like the space in my current name :(
+  extraConfigVim = ''
+    augroup obsidian_markdown
+      autocmd!
+      autocmd BufRead,BufNewFile *.md setlocal conceallevel=2 linebreak
+    augroup END
+  '';
 
   # The nixvim module doesn't have all the required options
   extraPlugins = [ pkgs.vimPlugins.image-nvim ];
@@ -129,18 +152,62 @@
       })
     '';
 
-  plugins.markview = {
+  plugins.headlines = {
     enable = true;
-    settings = {
-      hybrid_modes = [
-        "i"
-        "r"
+    settings.markdown = {
+      headline_highlights = [
+        "Headline1"
+        "Headline2"
+        "Headline3"
+        "Headline4"
+        "Headline5"
+        "Headline6"
       ];
-      mode = [
-        "n"
-        "x"
+
+      bullets = [
+        "󰲡"
+        "󰲣"
+        "󰲥"
+        "󰲧"
+        "󰲩"
+        "󰲫"
       ];
-      buf_ignore = [ "nofile" ];
+
+      dash_string = "";
     };
   };
+
+  highlight = {
+    # Provided by headlines.nvim
+    Headline1.fg = c.base0B;
+    Headline1.bg = c.base01;
+    Headline2.fg = c.base0D;
+    Headline2.bg = c.base01;
+    Headline3.fg = c.base0E;
+    Headline3.bg = c.base01;
+    Headline4.fg = c.base09;
+    Headline4.bg = c.base01;
+    Headline5.fg = c.base0C;
+    Headline5.bg = c.base01;
+    Headline6.fg = c.base08;
+    Headline6.bg = c.base01;
+    Quote.fg = c.base0A;
+  };
+
+  /*
+    plugins.markview = {
+      enable = true;
+      settings = {
+        hybrid_modes = [
+          "i"
+          "r"
+        ];
+        mode = [
+          "n"
+          "x"
+        ];
+        buf_ignore = [ "nofile" ];
+      };
+    };
+  */
 }

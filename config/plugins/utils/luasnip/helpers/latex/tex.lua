@@ -61,16 +61,20 @@ function M.in_text()
 end
 
 -- math snippet
-M.msnip = ls.extend_decorator.apply(parse, {
+local math_conditions = {
   snippetType = "autosnippet",
   condition = M.in_math,
   show_condition = M.in_math
-})
+}
+M.msnip = ls.extend_decorator.apply(parse, math_conditions)
+M._msnip = ls.extend_decorator.apply(s, math_conditions)
 -- text snippet
-M.tsnip = ls.extend_decorator.apply(parse, {
+local text_conditions = {
   snippetType = "autosnippet",
   condition = M.in_text,
   show_condition = M.in_text
-})
+}
+M.tsnip = ls.extend_decorator.apply(parse, text_conditions)
+M._tsnip = ls.extend_decorator.apply(s, text_conditions)
 
 return M

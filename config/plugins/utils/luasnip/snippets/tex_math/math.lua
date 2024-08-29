@@ -30,9 +30,13 @@ local autosnippet = ls.extend_decorator.apply(s, { snippetType = "autosnippet" }
 local tex = require("luasnip_helpers.latex.tex")
 local utils = require("luasnip_helpers.latex.utils")
 local tsnip = tex.tsnip
+local _tsnip = tex._tsnip
 local msnip = tex.msnip
+local _msnip = tex._msnip
 
 M = {
+  -- _msnip({ trig = "^", name = "exponent", wordTrig = false }, fmta([[^{<>}]], {i(1)}))
+  _msnip({ trig = "^", name = "exponent", wordTrig = false }, {t("^{"), i(1), t("}")})
   -- align-environments
   -- for some reason \\ expands to \ even when it's inside [[]] /shrug
   msnip({ trig = "nn", name = "newline" }, [[
@@ -43,10 +47,10 @@ M = {
     \\\\
     \ans{$1&$2} & $0
   ]]),
-  msnip({ trig = "^", name = "exponent", wordTrig = false }, [[^{$1}]]),
-  msnip({ trig = "*", name = "multiplication" }, [[*]]),
+  -- msnip({ trig = "^", name = "exponent", wordTrig = false }, [[^{$1}]]),
+  msnip({ trig = "*", name = "multiplication" }, [[\cdot]]),
   -- TODO: skrive disse om til å bruke get_visual? det er potensielt mulig med extend_decorator, eller i hvertfall en mellomfunksjon
-  msnip({ trig = "und", name = "underset" }, [[\underset{$1}{$2}]]),
+  msnip({ trig = "uu", name = "underset" }, [[\underset{$1}{$2}]]),
   msnip({ trig = "aa", name = "answer" }, [[\ans{$1}]]),
   msnip({ trig = "ss", name = "square root" }, [[\sqrt{$1}]]),
   msnip({ trig = "sr", name = "nth root"}, [=[\sqrt[$1]{$2}]=]),
