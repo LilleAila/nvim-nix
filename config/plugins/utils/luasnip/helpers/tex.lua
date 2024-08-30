@@ -64,7 +64,8 @@ end
 local math_conditions = {
   snippetType = "autosnippet",
   condition = M.in_math,
-  show_condition = M.in_math
+  show_condition = M.in_math,
+  hidden = true
 }
 M.msnip = ls.extend_decorator.apply(parse, math_conditions)
 M._msnip = ls.extend_decorator.apply(s, math_conditions)

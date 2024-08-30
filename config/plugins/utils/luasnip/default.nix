@@ -24,7 +24,7 @@
     # This for some reason generates invalid syntax: it does
     # `require("luasnip").extend_filetypes("markdown", { "tex_math" })`
     # instead of
-    # `require("luasnip").extend_filetypes("markdown", { "tex_math" })`
+    # `require("luasnip").filetype_extend("markdown", { "tex_math" })`
     # filetypeExtend = {
     #   markdown = [ "tex_math" ];
     #   tex = [ "tex_math" ];
@@ -38,8 +38,8 @@
 
   # Helper files for the snippets
   extraFiles = {
-    "lua/luasnip_helpers/latex/init.lua".source = ./helpers/latex/init.lua;
-    "lua/luasnip_helpers/latex/tex.lua".source = ./helpers/latex/tex.lua;
-    "lua/luasnip_helpers/latex/utils.lua".source = ./helpers/latex/utils.lua;
+    "lua/luasnip_helpers/init.lua".source = ./helpers/init.lua;
+    "lua/luasnip_helpers/tex.lua".source = ./helpers/tex.lua;
+    "lua/luasnip_helpers/utils.lua".source = ./helpers/utils.lua;
   };
 }

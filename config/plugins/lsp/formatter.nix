@@ -5,37 +5,36 @@
 
   plugins.conform-nvim = {
     enable = true;
-    formatOnSave = ''
-      function(bufnr)
-        -- Disable with a global or buffer-local variable
-        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-          return
+    settings = {
+      format_on_save = ''
+        function(bufnr)
+          -- Disable with a global or buffer-local variable
+          if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+            return
+          end
+          return { timeout_ms = 500, lsp_format = "fallback" }
         end
-        return { timeout_ms = 500, lsp_format = "fallback" }
-      end
-    '';
-    formattersByFt = {
-      haskell = [ "ormolu" ];
-      html = [ [ "prettierd" ] ];
-      css = [ [ "prettierd" ] ];
-      javascript = [ [ "prettierd" ] ];
-      javascriptreact = [ [ "prettierd" ] ];
-      typescript = [ [ "prettierd" ] ];
-      python = [
-        [
-          "autopep8"
-          "black"
-        ]
-      ];
-      lua = [ "stylua" ];
-      nix = [
-        [
-          "nixfmt"
-          "alejandra"
-        ]
-      ]; # nixfmt, use alejandra as backup
-      markdown = [ [ "prettierd" ] ];
-      rust = [ "rustfmt" ];
+      '';
+      formatters_by_ft =
+        let
+          mkFormatter = __unkeyed-1: __unkeyed-2: {
+            inherit __unkeyed-1 __unkeyed-2;
+            stop_after-first = true;
+          };
+        in
+        {
+          haskell = [ "ormolu" ];
+          html = mkFormatter "prettierd" "prettier";
+          css = mkFormatter "prettierd" "prettier";
+          javascript = mkFormatter "prettierd" "prettier";
+          javascriptreact = mkFormatter "prettierd" "prettier";
+          typescript = mkFormatter "prettierd" "prettier";
+          python = [ "black" ];
+          lua = [ "stylua" ];
+          nix = mkFormatter "nixfmt" "alejandra";
+          markdown = mkFormatter "prettierd" "prettier";
+          rust = [ "rustfmt" ];
+        };
     };
   };
 
