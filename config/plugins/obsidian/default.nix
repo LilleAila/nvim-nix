@@ -231,6 +231,10 @@ in
           foldcolumn = "0";
         };
       };
+      plugins.kitty = {
+        enabled = true;
+        font = "+4";
+      };
       plugins.options = {
         enabled = true;
         ruler = false;
