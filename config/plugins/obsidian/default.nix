@@ -114,6 +114,8 @@ in
     (mkKeymap "n" "<leader>oT" ":ObsidianTemplate<cr>" "Insert template")
     (mkKeymap "n" "<leader>op" ":ObsidianPasteImg<cr>" "Paste image")
     (mkKeymap "n" "<leader>oc" ":ObsidianToggleCheckbox<cr>" "Toggle checkbox")
+
+    (mkKeymap "n" "<leader>oz" ":ZenMode<cr>" "Zen mode")
   ];
 
   # Currently sets for all md files, but maybe do something like vault/**/*.md, but vim doesn't like the space in my current name :(
@@ -133,7 +135,7 @@ in
         backend = "kitty",
         integrations = {
           markdown = {
-            enabled = true,
+            enabled = false, -- It overlaps with the text above for some reason
             resolve_image_path = function(_, image_path, fallback)
               -- The document_path provided to the function doesn't work with obsidian for some reason
               -- local document_path = vim.fn.expand("%:p")
@@ -163,6 +165,7 @@ in
         "Headline5"
         "Headline6"
       ];
+      fat_headlines = true;
 
       bullets = [
         "󰲡"
@@ -210,4 +213,30 @@ in
       };
     };
   */
+
+  plugins.zen-mode = {
+    enable = true;
+    settings = {
+      window = {
+        backdrop = 1;
+        height = 1;
+        width = 120;
+        options = {
+          signcolumn = "no";
+          number = false;
+          relativenumber = false;
+          list = false;
+          cursorline = false;
+          cursorcolumn = false;
+          foldcolumn = "0";
+        };
+      };
+      plugins.options = {
+        enabled = true;
+        ruler = false;
+        showcmd = false;
+        laststatus = 0; # Hide status line
+      };
+    };
+  };
 }

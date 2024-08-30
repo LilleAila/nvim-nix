@@ -62,16 +62,19 @@
       command = "silent! %s/\\s\\+$//e";
     }
     # absolute line numbers in insert mode, relative otherwise
-    {
-      event = "InsertEnter";
-      pattern = "*";
-      command = "set number norelativenumber";
-    }
-    {
-      event = "InsertLeave";
-      pattern = "*";
-      command = "set number relativenumber";
-    }
+    /*
+      conflicts with zen mode, i can just do <lineno>gg anyways
+      {
+        event = "InsertEnter";
+        pattern = "*";
+        command = "set norelativenumber";
+      }
+      {
+        event = "InsertLeave";
+        pattern = "*";
+        command = "set relativenumber";
+      }
+    */
   ];
 
   clipboard = {
