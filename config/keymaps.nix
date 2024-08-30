@@ -18,5 +18,8 @@
     # Buffer navigation (Configured through barbar keymap instead)
     # (mkKeymap' "n" "<Tab>" ":bnext<CR>")
     # (mkKeymap' "n" "<S-Tab>" ":bprevious<CR>")
+
+    (mkKeymap' "n" "j" "gj")
+    (mkKeymap' "n" "k" "gk")
   ];
 }
