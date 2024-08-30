@@ -37,12 +37,26 @@ in
         enable = true;
         bullets.char = "";
         # external_link_icon.char = "";
+        checkboxes = {
+          " " = {
+            char = "󰄱";
+            hl_group = "ObsidianTodo";
+          };
+          "x" = {
+            char = "󰄲";
+            hl_group = "ObsidianDone";
+          };
+          ">" = {
+            char = "󰛂";
+            hl_group = "ObsidianRightArrow";
+          };
+        };
         hl_groups = {
           ObsidianTodo.fg = c.base0A;
           ObsidianDone.fg = c.base0B;
           ObsidianRightArrow.fg = c.base09;
-          ObsidianTilde.fg = c.base0F;
-          ObsidianImpoerant.fg = c.base08;
+          # ObsidianTilde.fg = c.base0F;
+          # ObsidianImportant.fg = c.base08;
           ObsidianBullet.fg = c.base0D;
           ObsidianRefText.fg = c.base0E;
           ObsidianExtLinkIcon.fg = c.base0E;

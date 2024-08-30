@@ -16,12 +16,12 @@ return {
       [[\left(<>-<>\right)^{2} = <>^{2} - 2 \cdot <> \cdot <> + <>^{2}]],
       { i(1), i(2), rep(1), rep(1), rep(2), rep(2) }
     )),
-  s({ trig = "kv3", descr = "Tredje kvadratsetning / konjugatsetningen" },
+  _msnip({ trig = "kv3", descr = "Tredje kvadratsetning / konjugatsetningen" },
     fmta(
       [[\left(<>+<>\right) \left(<>-<>\right) = <>^{2} - <>^{2}]],
       { i(1), i(2), rep(1), rep(2), rep(1), rep(2) }
     ), { condition = tex.in_math }),
-  s({ trig = "abc", descr = "ABC-formelen" },
+  _msnip({ trig = "abc", descr = "ABC-formelen" },
     fmta(
       [[x = \frac{-<> \pm \sqrt{<>^{2} - 4 \cdot <> \cdot <>}}{2 \cdot <>} ]],
       {i(2, "b"), rep(2), rep(1), i(3, "c"), i(1, "a")}
