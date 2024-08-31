@@ -4,6 +4,7 @@
   mkKeymap,
   lib,
   colorScheme,
+  inputs,
   ...
 }:
 let
@@ -109,13 +110,14 @@ in
       follow_img_func = # lua
         {
           # This is not defined as an option, so has to be declared manually: https://github.com/nix-community/nixvim/blob/ee6ee48bbe1ffa88fd4b2af7d68ab0315bc817f0/lib/utils.nix#L112
-          __raw = ''
-            function(img)
-              -- For some reason this is the only thing that works /shrug
-              local full_path = "$HOME/Documents/Obsidian\\\\ Vault/" .. img
-              vim.cmd([[silent exec "!xdg-open ]] .. full_path .. [["]])
-            end
-          '';
+          __raw = # lua
+            ''
+              function(img)
+                -- For some reason this is the only thing that works /shrug
+                local full_path = "$HOME/Documents/Obsidian\\\\ Vault/" .. img
+                vim.cmd([[silent exec "!xdg-open ]] .. full_path .. [["]])
+              end
+            '';
         };
     };
   };
@@ -160,33 +162,36 @@ in
     augroup END
   '';
 
-  # The nixvim module doesn't have all the required options
-  extraPlugins = [ pkgs.vimPlugins.image-nvim ];
-
-  extraConfigLua = # lua
-    ''
-      require("image").setup({
-        backend = "kitty",
-        integrations = {
-          markdown = {
-            enabled = false, -- It overlaps with the text above for some reason
-            resolve_image_path = function(_, image_path, fallback)
-              -- The document_path provided to the function doesn't work with obsidian for some reason
-              -- local document_path = vim.fn.expand("%:p")
-              local document_path = vim.api.nvim_buf_get_name(0)
-                -- change this to whatever is your obsidian vault path
-              if string.find(document_path, "Obsidian Vault") then
-                -- maybe it'd be better to somehow use an absolute path, but it doesn't look like there's an easy way to do it `:h fnamemodify()` does not support that.
-                -- this too
-                return "~/Documents/Obsidian Vault/" .. image_path
-              else
-                return fallback(document_path, image_path)
-              end
-            end,
-          },
-        },
-      })
-    '';
+  plugins.image = {
+    enable = false; # images render incorrectly (too high up sometimes), config doesn't get applied
+    backend = "kitty";
+    windowOverlapClearEnabled = true;
+    windowOverlapClearFtIgnore = [ ];
+    integrations.markdown = {
+      enabled = true;
+      # onlyRenderImageAtCursor = true;
+      downloadRemoteImages = true;
+      clearInInsertMode = true;
+    };
+    extraOptions.integrations.markdown.resolve_image_path = {
+      __raw = # lua
+        ''
+          function(_, image_path, fallback)
+            -- The document_path provided to the function doesn't work with obsidian for some reason
+            -- local document_path = vim.fn.expand("%:p")
+            local document_path = vim.api.nvim_buf_get_name(0)
+              -- change this to whatever is your obsidian vault path
+            if string.find(document_path, "Obsidian Vault") then
+              -- maybe it'd be better to somehow use an absolute path, but it doesn't look like there's an easy way to do it `:h fnamemodify()` does not support that.
+              -- this too
+              return "~/Documents/Obsidian Vault/" .. image_path
+            else
+              return fallback(document_path, image_path)
+            end
+          end
+        '';
+    };
+  };
 
   plugins.headlines = {
     enable = true;
@@ -277,4 +282,20 @@ in
       };
     };
   };
+
+  /*
+    # doesn't work at all
+    extraPlugins = [
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "hologram.nvim";
+        src = inputs.plugin-hologram;
+      })
+    ];
+
+    extraConfigLua = ''
+      require("hologram").setup({
+        auto_display = true
+      })
+    '';
+  */
 }

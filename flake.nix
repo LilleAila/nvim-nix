@@ -39,6 +39,11 @@
     #   url = "github:jakewvincent/texmagic.nvim";
     #   flake = false;
     # };
+
+    # plugin-hologram = {
+    #   url = "github:edluffy/hologram.nvim";
+    #   flake = false;
+    # };
   };
 
   outputs =
