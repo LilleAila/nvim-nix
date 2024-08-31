@@ -1,5 +1,6 @@
 # TODO: create a derivation that builds languages from [this](https://github.com/vim/vim/tree/master/runtime/spell), because of [this](https://ftp.nluug.nl/pub/vim/runtime/), which means that none of the files will get any updates
 {
+  lib,
   pkgs,
   mkKeymap,
   mkRegistration,
@@ -9,7 +10,9 @@ let
   # `globpath(&rtp, "spell/*.spell")` from `spell/cleanadd.vim` expects there to be a subdir called `spell` in the runtimepath.
   # This means that i have to use a subdir of a dir in the runtimepath, thus `.spell/spell`
   spellDir = "$HOME/.spell";
-  mkSpellFile = lang: "${spellDir}/spell/${lang}.utf-8.add";
+  # vim has very strict rules for naming the spellfile
+  mkSpellFile =
+    lang: "${spellDir}/spell/${lib.lists.head (lib.strings.splitString "_" lang)}.utf-8.add";
   global_lang = "en_us";
   global_file = mkSpellFile "en_us";
 in
