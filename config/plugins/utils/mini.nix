@@ -40,7 +40,7 @@ in
       # move = { }; # TODO: configure as alternative to move.nvim
       notify = { };
       operators = { }; # g= to evaluate text
-      pairs = { }; # TODO: maybe configure (for nix double single quote)
+      # pairs = { }; # TODO: maybe configure (for nix double single quote)
       # sessions = { }; # TODO: configure as alternative to auto-session.nvim
       starter = { };
       # statusline = { }; # TODO: configure as alternative to lualine.nvim

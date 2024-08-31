@@ -24,7 +24,6 @@ local postfix = require("luasnip.extras.postfix").postfix
 local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
-local autosnippet = ls.extend_decorator.apply(s, { snippetType = "autosnippet" })
 
 M = {}
 
@@ -62,5 +61,14 @@ function M.get_visual(args, parent)
     return sn(nil, i(1))
   end
 end
+
+function M.get_cap(index)
+  return f(function(_, snip)
+    return snip.captures[index]
+  end)
+end
+
+-- autosnippet
+M.asnip = ls.extend_decorator.apply(s, { snippetType = "autosnippet" })
 
 return M
