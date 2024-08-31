@@ -97,6 +97,26 @@ in
             return tostring(os.date("!%Y%m%dT%H%M")) .. "-"
           end
         '';
+
+      follow_url_func = # lua
+        ''
+          function(url)
+            -- vim.fn.jobstart({"xdg-open", url})
+            vim.ui.open(url)
+          end
+        '';
+
+      follow_img_func = # lua
+        {
+          # This is not defined as an option, so has to be declared manually: https://github.com/nix-community/nixvim/blob/ee6ee48bbe1ffa88fd4b2af7d68ab0315bc817f0/lib/utils.nix#L112
+          __raw = ''
+            function(img)
+              -- For some reason this is the only thing that works /shrug
+              local full_path = "$HOME/Documents/Obsidian\\\\ Vault/" .. img
+              vim.cmd([[silent exec "!xdg-open ]] .. full_path .. [["]])
+            end
+          '';
+        };
     };
   };
 
