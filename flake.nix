@@ -44,6 +44,11 @@
     #   url = "github:edluffy/hologram.nvim";
     #   flake = false;
     # };
+
+    plugin-obsidian-bridge = {
+      url = "github:oflisback/obsidian-bridge.nvim";
+      flake = false;
+    };
   };
 
   outputs =

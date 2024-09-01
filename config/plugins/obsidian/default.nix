@@ -162,6 +162,21 @@ in
     augroup END
   '';
 
+  extraPlugins = [
+    (pkgs.vimUtils.buildVimPlugin {
+      name = "obsidian-bridge.nvim";
+      src = inputs.plugin-obsidian-bridge;
+    })
+  ];
+
+  extraConfigLua = # lua
+    ''
+      -- Token is defined in the environment variable $OBSIDIAN_REST_API_KEY
+      require("obsidian-bridge").setup({
+        scroll_sync = true;
+      })
+    '';
+
   plugins.image = {
     enable = false; # images render incorrectly (too high up sometimes), config doesn't get applied
     backend = "kitty";

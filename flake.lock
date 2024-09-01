@@ -348,6 +348,22 @@
         "type": "github"
       }
     },
+    "plugin-obsidian-bridge": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1718297529,
+        "narHash": "sha256-Phm4/Qjl7ebga7ViBz1K9In/favCBJPjsa/XU5U0J84=",
+        "owner": "oflisback",
+        "repo": "obsidian-bridge.nvim",
+        "rev": "ad05b2ecdf0d22a3a9387ae4684acd208695d466",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oflisback",
+        "repo": "obsidian-bridge.nvim",
+        "type": "github"
+      }
+    },
     "plugin-org-bullets": {
       "flake": false,
       "locked": {
@@ -373,6 +389,7 @@
         "plugin-cmp-vimtex": "plugin-cmp-vimtex",
         "plugin-img-clip": "plugin-img-clip",
         "plugin-move": "plugin-move",
+        "plugin-obsidian-bridge": "plugin-obsidian-bridge",
         "plugin-org-bullets": "plugin-org-bullets"
       }
     },
