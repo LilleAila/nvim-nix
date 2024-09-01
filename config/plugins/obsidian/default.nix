@@ -7,10 +7,14 @@
   inputs,
   ...
 }:
-let
-  c = lib.attrsets.mapAttrs (_: value: "#${value}") colorScheme.palette;
-in
 {
+  imports = [
+    ./obsidian-bridge.nix
+    ./image.nix
+    ./markdown.nix
+    ./zen-mode.nix
+  ];
+
   plugins.obsidian = {
     enable = true;
     settings = {
@@ -52,20 +56,24 @@ in
             hl_group = "ObsidianRightArrow";
           };
         };
-        hl_groups = {
-          ObsidianTodo.fg = c.base0A;
-          ObsidianDone.fg = c.base0B;
-          ObsidianRightArrow.fg = c.base09;
-          # ObsidianTilde.fg = c.base0F;
-          # ObsidianImportant.fg = c.base08;
-          ObsidianBullet.fg = c.base0D;
-          ObsidianRefText.fg = c.base0E;
-          ObsidianExtLinkIcon.fg = c.base0E;
-          ObsidianTag.fg = c.base0C;
-          ObsidianBlockID.fg = c.base0C;
-          ObsidianHighlightText.bg = c.base0A;
-          ObsidianHighlightText.fg = c.base01;
-        };
+        hl_groups =
+          let
+            c = lib.attrsets.mapAttrs (_: value: "#${value}") colorScheme.palette;
+          in
+          {
+            ObsidianTodo.fg = c.base0A;
+            ObsidianDone.fg = c.base0B;
+            ObsidianRightArrow.fg = c.base09;
+            # ObsidianTilde.fg = c.base0F;
+            # ObsidianImportant.fg = c.base08;
+            ObsidianBullet.fg = c.base0D;
+            ObsidianRefText.fg = c.base0E;
+            ObsidianExtLinkIcon.fg = c.base0E;
+            ObsidianTag.fg = c.base0C;
+            ObsidianBlockID.fg = c.base0C;
+            ObsidianHighlightText.bg = c.base0A;
+            ObsidianHighlightText.fg = c.base01;
+          };
       };
 
       note_id_func = # lua
@@ -153,164 +161,4 @@ in
 
     (mkKeymap "n" "<leader>oz" ":ZenMode<cr>" "Zen mode")
   ];
-
-  # Currently sets for all md files, but maybe do something like vault/**/*.md, but vim doesn't like the space in my current name :(
-  extraConfigVim = ''
-    augroup obsidian_markdown
-      autocmd!
-      autocmd BufRead,BufNewFile *.md setlocal conceallevel=2 linebreak
-    augroup END
-  '';
-
-  extraPlugins = [
-    (pkgs.vimUtils.buildVimPlugin {
-      name = "obsidian-bridge.nvim";
-      src = inputs.plugin-obsidian-bridge;
-    })
-  ];
-
-  extraConfigLua = # lua
-    ''
-      -- Token is defined in the environment variable $OBSIDIAN_REST_API_KEY
-      require("obsidian-bridge").setup({
-        scroll_sync = true;
-      })
-    '';
-
-  plugins.image = {
-    enable = false; # images render incorrectly (too high up sometimes), config doesn't get applied
-    backend = "kitty";
-    windowOverlapClearEnabled = true;
-    windowOverlapClearFtIgnore = [ ];
-    integrations.markdown = {
-      enabled = true;
-      # onlyRenderImageAtCursor = true;
-      downloadRemoteImages = true;
-      clearInInsertMode = true;
-    };
-    extraOptions.integrations.markdown.resolve_image_path = {
-      __raw = # lua
-        ''
-          function(_, image_path, fallback)
-            -- The document_path provided to the function doesn't work with obsidian for some reason
-            -- local document_path = vim.fn.expand("%:p")
-            local document_path = vim.api.nvim_buf_get_name(0)
-              -- change this to whatever is your obsidian vault path
-            if string.find(document_path, "Obsidian Vault") then
-              -- maybe it'd be better to somehow use an absolute path, but it doesn't look like there's an easy way to do it `:h fnamemodify()` does not support that.
-              -- this too
-              return "~/Documents/Obsidian Vault/" .. image_path
-            else
-              return fallback(document_path, image_path)
-            end
-          end
-        '';
-    };
-  };
-
-  plugins.headlines = {
-    enable = true;
-    settings.markdown = {
-      headline_highlights = [
-        "Headline1"
-        "Headline2"
-        "Headline3"
-        "Headline4"
-        "Headline5"
-        "Headline6"
-      ];
-      fat_headlines = true;
-
-      bullets = [
-        "󰲡"
-        "󰲣"
-        "󰲥"
-        "󰲧"
-        "󰲩"
-        "󰲫"
-      ];
-
-      dash_string = "";
-    };
-  };
-
-  highlight = {
-    # Provided by headlines.nvim
-    Headline1.fg = c.base0B;
-    Headline1.bg = c.base01;
-    Headline2.fg = c.base0D;
-    Headline2.bg = c.base01;
-    Headline3.fg = c.base0E;
-    Headline3.bg = c.base01;
-    Headline4.fg = c.base09;
-    Headline4.bg = c.base01;
-    Headline5.fg = c.base0C;
-    Headline5.bg = c.base01;
-    Headline6.fg = c.base08;
-    Headline6.bg = c.base01;
-    Quote.fg = c.base0A;
-  };
-
-  /*
-    plugins.markview = {
-      enable = true;
-      settings = {
-        hybrid_modes = [
-          "i"
-          "r"
-        ];
-        mode = [
-          "n"
-          "x"
-        ];
-        buf_ignore = [ "nofile" ];
-      };
-    };
-  */
-
-  plugins.zen-mode = {
-    enable = true;
-    settings = {
-      window = {
-        backdrop = 1;
-        height = 1;
-        width = 120;
-        options = {
-          signcolumn = "no";
-          number = false;
-          relativenumber = false;
-          list = false;
-          cursorline = false;
-          cursorcolumn = false;
-          foldcolumn = "0";
-        };
-      };
-      plugins.kitty = {
-        enabled = true;
-        font = "+4";
-      };
-      plugins.options = {
-        enabled = true;
-        ruler = false;
-        showcmd = false;
-        laststatus = 0; # Hide status line
-      };
-    };
-  };
-
-  /*
-    # doesn't work at all
-    extraPlugins = [
-      (pkgs.vimUtils.buildVimPlugin {
-        name = "hologram.nvim";
-        src = inputs.plugin-hologram;
-      })
-    ];
-
-    extraConfigLua = ''
-      require("hologram").setup({
-        auto_display = true
-      })
-    '';
-  */
 }
