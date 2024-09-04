@@ -37,7 +37,7 @@ M = {
       end),
       i(0)
     })),
-  _msnip({ trig = "l([%(%[{<|dcf])", name = "left right", dscr = "left right delimiters", regTrig = true  },
+  _msnip({ trig = "l([%(%[{<|dcf])", name = "left", dscr = "left delimiters", regTrig = true  },
     fmta(
     [[
       \left<> <> \right.<>
@@ -50,7 +50,7 @@ M = {
       d(1, utils.get_visual),
       i(0)
     })),
-  _msnip({ trig = "r([%(%[{<|dcf])", name = "left right", dscr = "left right delimiters", regTrig = true },
+  _msnip({ trig = "r([%(%[{<|dcf])", name = "right", dscr = "right delimiters", regTrig = true },
     fmta(
     [[
       \left. <> \right<><>

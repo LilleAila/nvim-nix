@@ -7,7 +7,7 @@ local _msnip = tex._msnip
 
 
 M = {
-  _msnip({ trig = "(%s)(.-)/", name = "fraction", regTrig = true, wordTrig = false  },
+  _msnip({ trig = "(%s)([^%s]-)/", name = "fraction", regTrig = true, wordTrig = false  },
     fmta(
     [[
       <>\frac{<>}{<>}<>
