@@ -4,7 +4,7 @@
   extraConfigVim = ''
     augroup obsidian_markdown
       autocmd!
-      autocmd BufRead,BufNewFile *.md setlocal conceallevel=2 linebreak
+      autocmd BufRead,BufNewFile *.md setlocal conceallevel=2 linebreak shiftwidth=2 spell
     augroup END
   '';
 
