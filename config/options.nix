@@ -21,7 +21,7 @@
     ruler = false;
     writebackup = false;
     updatetime = 250;
-    timeoutlen = 100;
+    timeoutlen = 1000;
     hlsearch = true;
     incsearch = true;
     ignorecase = true;

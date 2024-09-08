@@ -13,6 +13,7 @@
     ./luasnip
     ./autopairs.nix
     ./autotag.nix
+    ./comment.nix
   ];
 
   plugins = {
