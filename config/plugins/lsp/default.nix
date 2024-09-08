@@ -8,5 +8,6 @@
     ./latex.nix
     ./spellcheck.nix
     ./formatter.nix
+    ./lint.nix
   ];
 }

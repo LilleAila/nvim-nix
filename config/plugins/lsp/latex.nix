@@ -22,9 +22,9 @@
         onSave = true;
       };
 
-      # TODO: maybe this can be used directly with nvim-lint instead of through texlab?
+      # Done through nvim-lint instead of through texlab
       chktex = {
-        onOpenAndSave = true;
+        onOpenAndSave = false;
         onEdit = false;
       };
 

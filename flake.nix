@@ -74,6 +74,14 @@
         nixvim = default;
       });
 
-      devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
+      devShells = forEachSystem (pkgs: {
+        default = pkgs.mkShell {
+          packages = with pkgs; [
+            nixfmt-rfc-style
+            nixd
+            statix
+          ];
+        };
+      });
     };
 }
