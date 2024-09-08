@@ -3,7 +3,7 @@
 # https://github.com/iurimateus/luasnip-latex-snippets.nvim/blob/main/lua/luasnip-latex-snippets/math_iA.lua
 # TODO: use this syntax for simple snippets: https://github.com/iurimateus/luasnip-latex-snippets.nvim/blob/4b91f28d91979f61a3e8aef1cee5b7c7f2c7beb8/lua/luasnip-latex-snippets/math_iA.lua#L125 but with auto and word trig
 
-{ ... }:
+_:
 {
   plugins.luasnip = {
     enable = true;

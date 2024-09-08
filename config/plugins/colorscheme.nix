@@ -6,7 +6,7 @@
 { scheme }:
 let
   c = scheme.palette;
-  slug = scheme.slug;
+  inherit (scheme) slug;
 in
 pkgs.writeTextDir "colors/nix-${slug}.vim"
   # vim

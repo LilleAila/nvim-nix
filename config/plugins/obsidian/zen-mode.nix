@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   plugins.zen-mode = {
     enable = true;
