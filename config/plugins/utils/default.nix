@@ -11,6 +11,8 @@
     ./move.nix
     ./mini.nix
     ./luasnip
+    ./autopairs.nix
+    ./autotag.nix
   ];
 
   plugins = {
