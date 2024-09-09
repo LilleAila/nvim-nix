@@ -75,6 +75,11 @@
         command = "set relativenumber";
       }
     */
+    {
+      event = "BufNewFile";
+      pattern = "*";
+      command = "silent! !git add % —intent-to-add";
+    }
   ];
 
   clipboard = {
