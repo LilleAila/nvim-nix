@@ -49,6 +49,11 @@
       url = "github:oflisback/obsidian-bridge.nvim";
       flake = false;
     };
+
+    plugin-obsidian-todo = {
+      url = "github:LilleAila/obsidian-todo.nvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

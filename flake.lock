@@ -364,6 +364,26 @@
         "type": "github"
       }
     },
+    "plugin-obsidian-todo": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1725897620,
+        "narHash": "sha256-rWasbxmfp3l+SzPrbU2lureDcs+P2mak7XUtD5Lz6js=",
+        "owner": "LilleAila",
+        "repo": "obsidian-todo.nvim",
+        "rev": "204f7c4fa659bc8c2ab2218a56c82b4768abd7f7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LilleAila",
+        "repo": "obsidian-todo.nvim",
+        "type": "github"
+      }
+    },
     "plugin-org-bullets": {
       "flake": false,
       "locked": {
@@ -390,6 +410,7 @@
         "plugin-img-clip": "plugin-img-clip",
         "plugin-move": "plugin-move",
         "plugin-obsidian-bridge": "plugin-obsidian-bridge",
+        "plugin-obsidian-todo": "plugin-obsidian-todo",
         "plugin-org-bullets": "plugin-org-bullets"
       }
     },

@@ -68,6 +68,7 @@
     (mkKeymap "n" "<leader>lxr" ":TexlabChangeEnvironment<cr>" "Rename environment")
   ];
 
+  # works but not needed
   /*
     extraPlugins = [
       (pkgs.vimUtils.buildVimPlugin {

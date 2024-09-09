@@ -13,6 +13,7 @@
     ./image.nix
     ./markdown.nix
     ./zen-mode.nix
+    ./todos.nix
   ];
 
   plugins.obsidian = {
@@ -151,11 +152,11 @@
     (mkKeymap "x" "<leader>on" ":ObsidianLinkNew<cr>" "Create new note from selection") # This generates random names :(
 
     (mkKeymap "n" "<leader>ob" ":ObsidianBacklinks<cr>" "Backlinks")
-    (mkKeymap "n" "<leader>ot" ":ObsidianTags<cr>" "Tags")
+    (mkKeymap "n" "<leader>oT" ":ObsidianTags<cr>" "Tags")
     (mkKeymap "n" "<leader>oC" ":ObsidianTOC<cr>" "Table of contents")
 
     # Editing
-    (mkKeymap "n" "<leader>oT" ":ObsidianTemplate<cr>" "Insert template")
+    (mkKeymap "n" "<leader>oi" ":ObsidianTemplate<cr>" "Insert template")
     (mkKeymap "n" "<leader>op" ":ObsidianPasteImg<cr>" "Paste image")
     (mkKeymap "n" "<leader>oc" ":ObsidianToggleCheckbox<cr>" "Toggle checkbox")
 
