@@ -77,7 +77,7 @@
     */
     {
       event = "BufNewFile";
-      pattern = "*";
+      pattern = "*.nix";
       command = "silent! !git add % —intent-to-add";
     }
   ];
