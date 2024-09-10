@@ -9,7 +9,7 @@
 
   autoCmd = [
     {
-      command = ''require("lint").try_lint()'';
+      command = ''lua require("lint").try_lint()'';
       event = [
         "BufWritePost"
       ];
