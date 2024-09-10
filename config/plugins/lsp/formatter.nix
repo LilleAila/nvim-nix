@@ -6,6 +6,7 @@
   plugins.conform-nvim = {
     enable = true;
     settings = {
+      default_format_opts.timeout_ms = 2500;
       format_on_save = ''
         function(bufnr)
           -- Disable with a global or buffer-local variable
