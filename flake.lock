@@ -371,11 +371,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1725897620,
-        "narHash": "sha256-rWasbxmfp3l+SzPrbU2lureDcs+P2mak7XUtD5Lz6js=",
+        "lastModified": 1726215540,
+        "narHash": "sha256-9a1HlwKx7zBpaKJJFJgZ2BLSsbKtmbB/hnRrOUIdwlA=",
         "owner": "LilleAila",
         "repo": "obsidian-todo.nvim",
-        "rev": "204f7c4fa659bc8c2ab2218a56c82b4768abd7f7",
+        "rev": "3fb0e42dbc3907069ac9fd6f5f5c83a03c9edb25",
         "type": "github"
       },
       "original": {
