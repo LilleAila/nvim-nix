@@ -40,17 +40,17 @@
     in
     {
       # Provided by headlines.nvim
-      Headline1.fg = c.base0B;
+      Headline1.fg = c.base08;
       Headline1.bg = c.base01;
-      Headline2.fg = c.base0D;
+      Headline2.fg = c.base0A;
       Headline2.bg = c.base01;
-      Headline3.fg = c.base0E;
+      Headline3.fg = c.base0B;
       Headline3.bg = c.base01;
-      Headline4.fg = c.base09;
+      Headline4.fg = c.base0C;
       Headline4.bg = c.base01;
-      Headline5.fg = c.base0C;
+      Headline5.fg = c.base0D;
       Headline5.bg = c.base01;
-      Headline6.fg = c.base08;
+      Headline6.fg = c.base0E;
       Headline6.bg = c.base01;
       Quote.fg = c.base0A;
     };
