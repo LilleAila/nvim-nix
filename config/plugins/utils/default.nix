@@ -18,5 +18,6 @@
 
   plugins = {
     direnv.enable = true;
+    plantuml-syntax.enable = true;
   };
 }
