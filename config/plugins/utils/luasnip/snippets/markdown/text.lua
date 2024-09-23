@@ -5,7 +5,6 @@ local _tsnip = tex._tsnip
 local msnip = tex.msnip
 local _msnip = tex._msnip
 
-
 local M = {
   tsnip({ trig = "cc", name = "code block" }, [[
     ```$1
@@ -22,12 +21,6 @@ local M = {
     > "$1"
 
     \- $2
-  ]]),
-  tsnip({ trig = "ll", name = "external link" }, [[
-    [$1]($2)
-  ]]),
-  tsnip({ trig = "tt", name = "todo item" }, [[
-    - [ ] $1
   ]]),
 }
 

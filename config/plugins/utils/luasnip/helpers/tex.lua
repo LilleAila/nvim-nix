@@ -73,7 +73,8 @@ M._msnip = ls.extend_decorator.apply(s, math_conditions)
 local text_conditions = {
   snippetType = "autosnippet",
   condition = M.in_text,
-  show_condition = M.in_text
+  show_condition = M.in_text,
+  wordTrig = true
 }
 M.tsnip = ls.extend_decorator.apply(parse, text_conditions)
 M._tsnip = ls.extend_decorator.apply(s, text_conditions)

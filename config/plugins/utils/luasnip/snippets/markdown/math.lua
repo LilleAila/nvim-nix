@@ -7,7 +7,7 @@ local _msnip = tex._msnip
 
 
 local M = {
-  tsnip({ trig = "mm", name = "inline math" }, [[$ $1 $]]),
+  tsnip({ trig = "mm", name = "inline math" }, [[$$1$]]),
   tsnip({ trig = "md", name = "display math" }, [[
     $$
     $1

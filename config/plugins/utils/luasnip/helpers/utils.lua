@@ -68,6 +68,8 @@ function M.get_cap(index)
   end)
 end
 
+-- M.line_begin = require("luasnip.extras.expand_conditions").line_begin
+
 -- autosnippet
 M.asnip = ls.extend_decorator.apply(s, { snippetType = "autosnippet" })
 
