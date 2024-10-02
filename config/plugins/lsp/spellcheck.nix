@@ -22,7 +22,7 @@ in
     spell = false; # Idk if it should be on or off by default, but it can be slow in big files
     # TODO: either create an autocommand checking the file size, check if cwd is obsidian or other notes or something similar
     spl = global_lang;
-    spf = global_file;
+    spf = global_file; # FIXME: this doesn't work, but the keybind with the excact same action does?
   };
 
   # Otherwise the cleanup script complains about not finding the path through a very cryptic error `No such variable: "s:fname"`, which just means that it has to be on runtimepath

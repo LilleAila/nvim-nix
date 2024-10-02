@@ -8,7 +8,7 @@
   extraPlugins = [ inputs.plugin-obsidian-todo.packages.${pkgs.system}.default ];
 
   plugins.telescope.settings.extensions.obsidian_todo = {
-    search_path = "/home/olai/Documents/Obsidian Vault";
+    search_path = "/home/olai/notes/obsidian";
   };
 
   extraConfigLua = # lua

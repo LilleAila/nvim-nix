@@ -9,5 +9,6 @@
     ./spellcheck.nix
     ./formatter.nix
     ./lint.nix
+    ./ltex.nix
   ];
 }
