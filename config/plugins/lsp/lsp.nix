@@ -4,6 +4,14 @@
     # NOTE: All packages, including LSPs and formatters should be installed through devshells!!
     enable = true;
     servers = {
+      clangd = {
+        enable = true;
+        package = null;
+      };
+      svelte = {
+        enable = true;
+        package = null;
+      };
       astro = {
         enable = true;
         package = null;
